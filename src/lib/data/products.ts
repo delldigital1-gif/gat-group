@@ -42,6 +42,24 @@ export const products: Product[] = [
     availability: "sur-commande",
   },
   {
+    slug: "pompe-centrifuge-bell-gossett-1510",
+    name: "Pompe centrifuge Bell & Gossett Series 1510",
+    brandSlug: "xylem",
+    categorySlug: "pompes-traitement-eau",
+    sectorSlugs: ["petrolier-industrie-lourde", "btp-electrification"],
+    reference: "B&G Series 1510",
+    shortDescription: "Pompe centrifuge à aspiration axiale, référence du marché pour les circuits industriels et CVC.",
+    description:
+      "La Series 1510 de Bell & Gossett (marque Xylem) est une pompe centrifuge end-suction conçue pour limiter les arrêts de maintenance : démontage sans déplacer la tuyauterie (True Back Pullout), garniture mécanique auto-nettoyante, volute à pied intégral et accouplement à dégagement central. Monitoring vibratoire i-ALERT™ disponible en option.",
+    specs: [
+      { label: "Marque", value: "Bell & Gossett — a Xylem brand" },
+      { label: "Conception", value: "True Back Pullout" },
+      { label: "Garniture", value: "Mécanique auto-nettoyante" },
+      { label: "Monitoring (option)", value: "i-ALERT™ vibration & température" },
+    ],
+    availability: "import",
+  },
+  {
     slug: "compteur-eau-volumetrique",
     name: "Compteur d'eau volumétrique DN15-DN40",
     brandSlug: "xylem",
@@ -60,18 +78,19 @@ export const products: Product[] = [
   },
   {
     slug: "chaine-transmission-delta",
-    name: "Chaîne de transmission série DELTA",
+    name: "Chaîne de transmission Delta® HR 20B-1",
     brandSlug: "sedis",
     categorySlug: "chaines-transmission-levage",
-    sectorSlugs: ["petrolier-industrie-lourde", "agro-industrie"],
-    reference: "GAT-SD-CHN-101",
-    shortDescription: "Chaîne à rouleaux haute performance pour transmission de puissance.",
+    sectorSlugs: ["petrolier-industrie-lourde", "btp-electrification"],
+    reference: "20B-1 / 17TD",
+    shortDescription: "Chaîne à rouleaux traitement Delta®, pour milieux abrasifs (travaux publics, cimenterie).",
     description:
-      "Chaîne à rouleaux conçue pour les applications de transmission exigeantes : cimenteries, convoyeurs lourds, machinisme agricole.",
+      "Chaîne à rouleaux de la gamme Delta® HR, dont le traitement thermochimique exclusif Sedis confère une dureté de surface de 1800 Vickers — contre 700 pour une cémentation classique. Recommandée pour les centrales d'enrobé, convoyeurs et environnements très abrasifs.",
     specs: [
-      { label: "Pas", value: "19,05 mm (ASA 60)" },
-      { label: "Charge à la rupture", value: "31,8 kN" },
-      { label: "Finition", value: "Zinguée" },
+      { label: "Référence ISO 606 / SEDIS", value: "20B-1 / 17TD" },
+      { label: "Pas (norme 20B)", value: "31,75 mm" },
+      { label: "Traitement", value: "Delta®" },
+      { label: "Dureté de surface", value: "1800 HV (vs 700 HV cémentation classique)" },
     ],
     availability: "stock",
   },
@@ -249,6 +268,24 @@ export const products: Product[] = [
       { label: "Tension assignée", value: "1000 V" },
     ],
     availability: "stock",
+  },
+  {
+    slug: "omicron-cmc500",
+    name: "OMICRON CMC 500 — Système de test universel",
+    brandSlug: "omicron",
+    categorySlug: "cables-appareillage",
+    sectorSlugs: ["energie", "automatisme"],
+    reference: "OMICRON CMC 500",
+    shortDescription: "Système de test portable pour relais de protection et équipements de réseau électrique.",
+    description:
+      "Le CMC 500 génère et mesure tension et courant pour tester relais de protection, transformateurs de mesure et disjoncteurs. Boîtier robuste avec entrées binaires/analogiques, trois sorties voltage/courant indépendantes, et connectique réseau pour pilotage PC.",
+    specs: [
+      { label: "Entrées Binaire/Analogique", value: "10 voies" },
+      { label: "Sorties", value: "3 voies voltage/courant (A, B, C)" },
+      { label: "Connectivité", value: "3× ETH, USB, 4× ports d'extension" },
+    ],
+    availability: "import",
+    imageUrl: "/images/omicron-cmc500.png",
   },
 ];
 

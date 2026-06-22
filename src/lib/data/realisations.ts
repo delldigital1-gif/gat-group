@@ -26,7 +26,7 @@ export const realisations: Realisation[] = [
     sectorSlug: "btp-electrification",
     description:
       "Construction de deux hangars pour le marché aux villageois et de latrines publiques à Tabligbo, pour ScanTogo.",
-    imageUrl: "https://gatgroup.org/wp-content/uploads/2024/03/btpscantogo_ok-1.jpg",
+    imageUrl: "/images/realisation-latrines-construction.jpg",
   },
   {
     slug: "cnss-menuiserie-aluminium",

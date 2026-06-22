@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
@@ -9,14 +10,27 @@ import { brands } from "@/lib/data/brands";
 export default function SectorsPage() {
   return (
     <Container className="py-12">
-      <Eyebrow>Nos secteurs</Eyebrow>
-      <h1 className="mt-3 max-w-2xl font-display text-3xl font-semibold text-blueprint sm:text-4xl">
-        Une réponse spécialisée, secteur par secteur
-      </h1>
-      <p className="mt-3 max-w-2xl text-base leading-relaxed text-steel">
-        La bonne connaissance de son métier et sa capacité à fournir une réponse spécialisée ont
-        permis à GAT de satisfaire une clientèle industrielle dans les secteurs suivants.
-      </p>
+      <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+        <div>
+          <Eyebrow>Nos secteurs</Eyebrow>
+          <h1 className="mt-3 font-display text-3xl font-semibold text-blueprint sm:text-4xl">
+            Une réponse spécialisée, secteur par secteur
+          </h1>
+          <p className="mt-3 text-base leading-relaxed text-steel">
+            La bonne connaissance de son métier et sa capacité à fournir une réponse spécialisée
+            ont permis à GAT de satisfaire une clientèle industrielle dans les secteurs suivants.
+          </p>
+        </div>
+        <div className="relative aspect-[4/3] overflow-hidden border border-steel-soft/30 lg:aspect-[16/11]">
+          <Image
+            src="/images/eau-bassin-reservoir.jpg"
+            alt="Bassin de rétention d'eau — projet eau & assainissement suivi par GAT"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+      </div>
 
       <SectionDivider />
 
