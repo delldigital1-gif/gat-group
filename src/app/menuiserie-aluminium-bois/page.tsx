@@ -12,7 +12,7 @@ const process = [
   {
     step: "Transport",
     text: "Les vitrages et profilés sont conditionnés et acheminés jusqu'au chantier.",
-    image: "/images/menuiserie-transport-2.jpg",
+    image: "/images/menuiserie-livraison-vitrage.jpg",
   },
   {
     step: "Pose",
@@ -126,6 +126,18 @@ export default function CarpentryPage() {
           </div>
         </div>
       )}
+
+      <div className="mt-14">
+        <SectionDivider label="Galerie chantiers" />
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className="relative aspect-[16/10] overflow-hidden border border-steel-soft/30">
+            <Image src="/images/menuiserie-facade-immeuble.jpg" alt="Façade vitrée en cours de pose" fill className="object-cover" />
+          </div>
+          <div className="relative aspect-[16/10] overflow-hidden border border-steel-soft/30">
+            <Image src="/images/menuiserie-chantier-soir.jpg" alt="Pose de baies vitrées en fin de chantier" fill className="object-cover" />
+          </div>
+        </div>
+      </div>
 
       <div className="mt-14 flex flex-wrap items-center justify-between gap-6 border border-steel-soft/30 bg-mist-2 p-8">
         <div>

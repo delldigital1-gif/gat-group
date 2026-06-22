@@ -22,6 +22,7 @@ export const products: Product[] = [
       { label: "Alimentation", value: "Tri 380V" },
     ],
     availability: "import",
+    imageUrl: "/images/xylem-pompe-immergee.jpg",
   },
   {
     slug: "station-traitement-compacte",

@@ -11,6 +11,11 @@ export const brands: Brand[] = [
     website: "https://www.xylem.com",
     logoInitials: "XY",
     logoUrl: "https://gatgroup.org/wp-content/uploads/2024/04/xylem.jpg",
+    photoUrls: [
+      "/images/xylem-pompe-immergee.jpg",
+      "/images/xylem-station-pompage-1.jpg",
+      "/images/xylem-inspection-pompe.jpg",
+    ],
     sectors: ["eau-assainissement", "petrolier-industrie-lourde", "medical"],
   },
   {
@@ -23,7 +28,7 @@ export const brands: Brand[] = [
     website: "https://www.sedis.com",
     logoInitials: "SD",
     logoUrl: "https://gatgroup.org/wp-content/uploads/2024/04/SEDIS-e1712063286856.png",
-    photoUrl: "/images/sedis-atelier-pignons.jpg",
+    photoUrls: ["/images/sedis-atelier-pignons.jpg"],
     sectors: ["marine-levage", "agro-industrie", "petrolier-industrie-lourde"],
   },
   {

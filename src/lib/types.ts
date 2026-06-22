@@ -13,7 +13,7 @@ export type Brand = {
   website?: string;
   logoInitials: string; // tant qu'on n'a pas les vrais logos, on affiche un monogramme
   logoUrl?: string; // logo officiel réel, quand disponible
-  photoUrl?: string; // photo terrain réelle (auto-hébergée), quand disponible
+  photoUrls?: string[]; // photos terrain réelles (auto-hébergées), quand disponibles
   sectors: string[]; // slugs de secteurs couverts
 };
 
@@ -35,6 +35,7 @@ export type Product = {
   specs: { label: string; value: string }[];
   availability: "stock" | "sur-commande" | "import";
   datasheetUrl?: string;
+  imageUrl?: string; // photo réelle, quand disponible
 };
 
 export type Sector = {

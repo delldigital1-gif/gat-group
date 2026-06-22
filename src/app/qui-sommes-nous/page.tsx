@@ -90,6 +90,24 @@ export default function AboutPage() {
           </p>
         </div>
       </div>
+      <div className="mt-14">
+        <SectionDivider label="Notre équipe" />
+        <div className="mt-6 grid gap-6 sm:grid-cols-[1fr_1.1fr] sm:items-center">
+          <p className="text-base leading-relaxed text-steel">
+            Techniciens, poseurs et commerciaux interviennent au quotidien sur les chantiers et
+            chez nos clients — au Togo comme en Côte d&apos;Ivoire — pour livrer, installer et
+            entretenir les équipements que GAT distribue.
+          </p>
+          <div className="relative aspect-[4/3] overflow-hidden border border-steel-soft/30 sm:aspect-[16/10]">
+            <Image
+              src="/images/equipe-gat-chantier.jpg"
+              alt="Équipe GAT Group sur un chantier de menuiserie aluminium"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </div>
     </Container>
   );
 }

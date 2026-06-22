@@ -44,11 +44,18 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       <Link href={`/catalogue/${product.slug}`} className="block">
-        <div className="flex h-32 items-center justify-center bg-mist-2 bg-[linear-gradient(0deg,transparent_24%,var(--color-steel-soft)_25%,var(--color-steel-soft)_26%,transparent_27%,transparent_74%,var(--color-steel-soft)_75%,var(--color-steel-soft)_76%,transparent_77%,transparent),linear-gradient(90deg,transparent_24%,var(--color-steel-soft)_25%,var(--color-steel-soft)_26%,transparent_27%,transparent_74%,var(--color-steel-soft)_75%,var(--color-steel-soft)_76%,transparent_77%,transparent)] bg-[length:24px_24px] opacity-90">
-          <span className="font-display text-2xl font-semibold text-blueprint/30">
-            {brand?.logoInitials ?? "GAT"}
-          </span>
-        </div>
+        {product.imageUrl ? (
+          <div className="relative h-32 overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element -- image locale rendue dans une carte de taille variable, fill+next/image ajouterait peu ici */}
+            <img src={product.imageUrl} alt={product.name} className="h-full w-full object-cover" loading="lazy" />
+          </div>
+        ) : (
+          <div className="flex h-32 items-center justify-center bg-mist-2 bg-[linear-gradient(0deg,transparent_24%,var(--color-steel-soft)_25%,var(--color-steel-soft)_26%,transparent_27%,transparent_74%,var(--color-steel-soft)_75%,var(--color-steel-soft)_76%,transparent_77%,transparent),linear-gradient(90deg,transparent_24%,var(--color-steel-soft)_25%,var(--color-steel-soft)_26%,transparent_27%,transparent_74%,var(--color-steel-soft)_75%,var(--color-steel-soft)_76%,transparent_77%,transparent)] bg-[length:24px_24px] opacity-90">
+            <span className="font-display text-2xl font-semibold text-blueprint/30">
+              {brand?.logoInitials ?? "GAT"}
+            </span>
+          </div>
+        )}
       </Link>
 
       <div className="flex flex-1 flex-col px-4 py-4">

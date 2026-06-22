@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, FileDown } from "lucide-react";
@@ -35,10 +36,16 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </Link>
 
       <div className="mt-6 grid gap-10 lg:grid-cols-[1.1fr_1fr]">
-        <div className="blueprint-corners flex aspect-[4/3] items-center justify-center border border-steel-soft/30 bg-mist-2 bg-[linear-gradient(0deg,transparent_24%,var(--color-steel-soft)_25%,var(--color-steel-soft)_26%,transparent_27%,transparent_74%,var(--color-steel-soft)_75%,var(--color-steel-soft)_76%,transparent_77%,transparent),linear-gradient(90deg,transparent_24%,var(--color-steel-soft)_25%,var(--color-steel-soft)_26%,transparent_27%,transparent_74%,var(--color-steel-soft)_75%,var(--color-steel-soft)_76%,transparent_77%,transparent)] bg-[length:32px_32px]">
-          <span className="font-display text-5xl font-semibold text-blueprint/25">
-            {brand?.logoInitials ?? "GAT"}
-          </span>
+        <div className="blueprint-corners relative aspect-[4/3] overflow-hidden border border-steel-soft/30">
+          {product.imageUrl ? (
+            <Image src={product.imageUrl} alt={product.name} fill className="object-cover" priority />
+          ) : (
+            <div className="flex h-full items-center justify-center bg-mist-2 bg-[linear-gradient(0deg,transparent_24%,var(--color-steel-soft)_25%,var(--color-steel-soft)_26%,transparent_27%,transparent_74%,var(--color-steel-soft)_75%,var(--color-steel-soft)_76%,transparent_77%,transparent),linear-gradient(90deg,transparent_24%,var(--color-steel-soft)_25%,var(--color-steel-soft)_26%,transparent_27%,transparent_74%,var(--color-steel-soft)_75%,var(--color-steel-soft)_76%,transparent_77%,transparent)] bg-[length:32px_32px]">
+              <span className="font-display text-5xl font-semibold text-blueprint/25">
+                {brand?.logoInitials ?? "GAT"}
+              </span>
+            </div>
+          )}
         </div>
 
         <div>
