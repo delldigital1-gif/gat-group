@@ -1,5 +1,10 @@
 import { Realisation } from "@/lib/types";
 
+// NOTE : les imageUrl pointent pour l'instant directement vers les fichiers
+// déjà publiés sur l'ancien site gatgroup.org (mêmes photos, même
+// propriétaire — GAT). À téléverser et auto-héberger dans le nouveau
+// projet (ou Supabase Storage) avant la bascule définitive du domaine,
+// pour ne pas dépendre de la disponibilité de l'ancien site.
 export const realisations: Realisation[] = [
   {
     slug: "boad-eclairage-anniversaire",
@@ -10,6 +15,7 @@ export const realisations: Realisation[] = [
     sectorSlug: "energie",
     description:
       "Remplacement des plots et lampadaires du siège de la BOAD à l'occasion de son 40ᵉ anniversaire.",
+    imageUrl: "https://gatgroup.org/wp-content/uploads/2024/03/plotboad_ok2.jpg",
   },
   {
     slug: "scantogo-hangars-latrines",
@@ -20,6 +26,7 @@ export const realisations: Realisation[] = [
     sectorSlug: "btp-electrification",
     description:
       "Construction de deux hangars pour le marché aux villageois et de latrines publiques à Tabligbo, pour ScanTogo.",
+    imageUrl: "https://gatgroup.org/wp-content/uploads/2024/03/btpscantogo_ok-1.jpg",
   },
   {
     slug: "cnss-menuiserie-aluminium",
@@ -29,6 +36,7 @@ export const realisations: Realisation[] = [
     year: "2023",
     sectorSlug: "btp-electrification",
     description: "Réalisation de travaux d'aluminium sur un bâtiment de la CNSS.",
+    imageUrl: "https://gatgroup.org/wp-content/uploads/2024/03/TACNSS5.jpg",
   },
   {
     slug: "tova-amenagement",
@@ -38,6 +46,7 @@ export const realisations: Realisation[] = [
     year: "2023",
     sectorSlug: "btp-electrification",
     description: "Travaux d'aménagement et de menuiserie réalisés sur le site de TOVA.",
+    imageUrl: "https://gatgroup.org/wp-content/uploads/2024/03/tova3.jpg",
   },
   {
     slug: "voirie-dos-ane",
@@ -47,6 +56,7 @@ export const realisations: Realisation[] = [
     year: "2023",
     sectorSlug: "btp-electrification",
     description: "Travaux de construction d'un ralentisseur routier (dos d'âne).",
+    imageUrl: "https://gatgroup.org/wp-content/uploads/2024/03/ouvrage2.jpg",
   },
 ];
 

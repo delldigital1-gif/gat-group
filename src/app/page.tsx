@@ -12,6 +12,7 @@ import { ProductCard } from "@/components/catalogue/ProductCard";
 import { sectors } from "@/lib/data/sectors";
 import { brands } from "@/lib/data/brands";
 import { products } from "@/lib/data/products";
+import { realisations } from "@/lib/data/realisations";
 
 export default function HomePage() {
   const featuredSectors = sectors.slice(0, 6);
@@ -69,6 +70,39 @@ export default function HomePage() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {featuredSectors.map((s) => (
               <SectorCard key={s.slug} sector={s} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* SUR LE TERRAIN — vraies photos de chantiers */}
+      <section className="py-4">
+        <Container>
+          <SectionDivider label="Sur le terrain" />
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {realisations.slice(0, 4).map((r) => (
+              <Link
+                key={r.slug}
+                href="/realisations"
+                className="group relative block aspect-[4/3] overflow-hidden border border-steel-soft/30"
+              >
+                {r.imageUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element -- photo externe hotlinkée (ancien site GAT), temporaire en attendant l'auto-hébergement
+                  <img
+                    src={r.imageUrl}
+                    alt={r.title}
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="h-full w-full bg-mist-2" />
+                )}
+                <div className="absolute inset-x-0 bottom-0 bg-blueprint/85 px-2.5 py-1.5">
+                  <p className="truncate font-mono text-[10px] uppercase tracking-[0.06em] text-mist">
+                    {r.client}
+                  </p>
+                </div>
+              </Link>
             ))}
           </div>
         </Container>

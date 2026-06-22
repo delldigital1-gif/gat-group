@@ -12,6 +12,7 @@ export type Brand = {
   country: string;
   website?: string;
   logoInitials: string; // tant qu'on n'a pas les vrais logos, on affiche un monogramme
+  logoUrl?: string; // logo officiel réel, quand disponible
   sectors: string[]; // slugs de secteurs couverts
 };
 
@@ -49,6 +50,7 @@ export type Realisation = {
   year: string;
   sectorSlug: string;
   description: string;
+  imageUrl?: string;
 };
 
 export type QuoteItem = {

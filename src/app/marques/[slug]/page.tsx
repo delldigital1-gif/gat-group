@@ -45,8 +45,13 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
             </a>
           )}
         </div>
-        <div className="flex h-20 w-20 shrink-0 items-center justify-center border border-steel-soft/40 font-display text-2xl font-semibold text-blueprint">
-          {brand.logoInitials}
+        <div className="flex h-20 w-20 shrink-0 items-center justify-center border border-steel-soft/40 p-2">
+          {brand.logoUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element -- logo externe hotlinké, pas d'optimisation next/image nécessaire pour ce visuel temporaire
+            <img src={brand.logoUrl} alt={`Logo ${brand.name}`} className="h-full w-full object-contain" />
+          ) : (
+            <span className="font-display text-2xl font-semibold text-blueprint">{brand.logoInitials}</span>
+          )}
         </div>
       </div>
 

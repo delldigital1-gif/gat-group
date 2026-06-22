@@ -10,6 +10,7 @@ export const brands: Brand[] = [
     country: "États-Unis",
     website: "https://www.xylem.com",
     logoInitials: "XY",
+    logoUrl: "https://gatgroup.org/wp-content/uploads/2024/04/xylem.jpg",
     sectors: ["eau-assainissement", "petrolier-industrie-lourde", "medical"],
   },
   {
@@ -21,6 +22,7 @@ export const brands: Brand[] = [
     country: "France",
     website: "https://www.sedis.com",
     logoInitials: "SD",
+    logoUrl: "https://gatgroup.org/wp-content/uploads/2024/04/SEDIS-e1712063286856.png",
     sectors: ["marine-levage", "agro-industrie", "petrolier-industrie-lourde"],
   },
   {

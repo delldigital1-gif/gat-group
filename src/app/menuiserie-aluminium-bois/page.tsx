@@ -52,12 +52,23 @@ export default function CarpentryPage() {
           <SectionDivider label="Réalisations" />
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {carpentryProjects.map((r) => (
-              <div key={r.slug} className="border border-steel-soft/30 bg-paper p-5">
-                <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-copper">
-                  {r.client} · {r.location} · {r.year}
-                </p>
-                <h3 className="mt-1.5 font-display text-base font-semibold text-blueprint">{r.title}</h3>
-                <p className="mt-2 text-sm text-steel">{r.description}</p>
+              <div key={r.slug} className="flex gap-4 border border-steel-soft/30 bg-paper p-5">
+                {r.imageUrl && (
+                  // eslint-disable-next-line @next/next/no-img-element -- photo externe hotlinkée (ancien site GAT), temporaire en attendant l'auto-hébergement
+                  <img
+                    src={r.imageUrl}
+                    alt={r.title}
+                    className="h-24 w-24 shrink-0 object-cover"
+                    loading="lazy"
+                  />
+                )}
+                <div>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-copper">
+                    {r.client} · {r.location} · {r.year}
+                  </p>
+                  <h3 className="mt-1.5 font-display text-base font-semibold text-blueprint">{r.title}</h3>
+                  <p className="mt-2 text-sm text-steel">{r.description}</p>
+                </div>
               </div>
             ))}
           </div>
