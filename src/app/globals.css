@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/*
+  GAT — Global African Trading
+  Direction : "réseau industriel" — GAT comme nœud central qui relie
+  les grandes marques mondiales (Xylem, Sedis, Castrol, Maxwill…) aux
+  besoins de l'industrie africaine. Le vocabulaire visuel vient du
+  monde du distributeur technique : schémas de réseau / plan de
+  câblage, plaques signalétiques d'équipement, cartouches de plan
+  technique ("title block"), fiches techniques.
+*/
+
+:root {
+  /* Couleurs nommées */
+  --color-blueprint: #0F2A42; /* bleu plan technique — fonds sombres, nav, footer */
+  --color-blueprint-2: #18405F; /* variante plus claire, hover/accents sombres */
+  --color-steel: #4A6478; /* bleu-gris acier — texte secondaire, bordures */
+  --color-steel-soft: #8FA2B0; /* acier clair — bordures discrètes, placeholders */
+  --color-mist: #F4F7F8; /* fond clair froid (PAS crème) */
+  --color-mist-2: #E7EDEF; /* panneaux / sections alternées */
+  --color-copper: #C2680F; /* accent cuivre — CTA, liens actifs */
+  --color-copper-2: #A8550A; /* cuivre foncé — hover */
+  --color-ink: #11181F; /* texte principal, légèrement bleuté */
+  --color-verdigris: #2F7A52; /* disponibilité / validation, usage rare */
+  --color-paper: #FFFFFF;
+
+  --background: var(--color-mist);
+  --foreground: var(--color-ink);
+}
+
+@theme inline {
+  --color-blueprint: var(--color-blueprint);
+  --color-blueprint-2: var(--color-blueprint-2);
+  --color-steel: var(--color-steel);
+  --color-steel-soft: var(--color-steel-soft);
+  --color-mist: var(--color-mist);
+  --color-mist-2: var(--color-mist-2);
+  --color-copper: var(--color-copper);
+  --color-copper-2: var(--color-copper-2);
+  --color-ink: var(--color-ink);
+  --color-verdigris: var(--color-verdigris);
+  --color-paper: var(--color-paper);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-display: var(--font-space-grotesk), "Avenir Next", "Segoe UI", sans-serif;
+  --font-body: var(--font-plex-sans), "Segoe UI", Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), "SFMono-Regular", Consolas, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+/* Focus clavier visible partout — accessibilité */
+:focus-visible {
+  outline: 2px solid var(--color-copper);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- Motif signature : ligne schématique / canalisation ---------- */
+.schematic-rule {
+  position: relative;
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--color-steel-soft) 0,
+    var(--color-steel-soft) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+.schematic-rule::before,
+.schematic-rule::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-copper);
+  transform: translateY(-50%);
+}
+.schematic-rule::before { left: -3px; }
+.schematic-rule::after { right: -3px; }
+
+/* ---------- Amorces de plan technique (coins) ---------- */
+.blueprint-corners {
+  position: relative;
+}
+.blueprint-corners::before,
+.blueprint-corners::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--color-steel-soft);
+  opacity: 0.7;
+}
+.blueprint-corners::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+.blueprint-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+/* ---------- Cartouche "title block" (footer) ---------- */
+.title-block-cell {
+  border-top: 1px solid rgba(143, 162, 176, 0.35);
+  padding-top: 0.6rem;
+}
+
+/* Scrollbar fine pour les rails de marques / filtres horizontaux */
+.thin-scroll::-webkit-scrollbar { height: 6px; }
+.thin-scroll::-webkit-scrollbar-thumb { background: var(--color-steel-soft); border-radius: 999px; }
+.thin-scroll::-webkit-scrollbar-track { background: transparent; }
