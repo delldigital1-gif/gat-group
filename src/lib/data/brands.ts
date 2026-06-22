@@ -23,6 +23,7 @@ export const brands: Brand[] = [
     website: "https://www.sedis.com",
     logoInitials: "SD",
     logoUrl: "https://gatgroup.org/wp-content/uploads/2024/04/SEDIS-e1712063286856.png",
+    photoUrl: "/images/sedis-atelier-pignons.jpg",
     sectors: ["marine-levage", "agro-industrie", "petrolier-industrie-lourde"],
   },
   {

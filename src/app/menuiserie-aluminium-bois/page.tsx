@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -7,23 +8,54 @@ import { ProductCard } from "@/components/catalogue/ProductCard";
 import { products } from "@/lib/data/products";
 import { realisations } from "@/lib/data/realisations";
 
+const process = [
+  {
+    step: "Transport",
+    text: "Les vitrages et profilés sont conditionnés et acheminés jusqu'au chantier.",
+    image: "/images/menuiserie-transport-2.jpg",
+  },
+  {
+    step: "Pose",
+    text: "Portes, baies et façades sont posées par nos équipes, à l'intérieur comme en hauteur.",
+    image: "/images/menuiserie-pose-interieur.jpg",
+  },
+  {
+    step: "Finition",
+    text: "Façade vitrée terminée, prête à l'usage — ici sur un bâtiment tertiaire à Lomé.",
+    image: "/images/menuiserie-facade-exterieure.jpg",
+  },
+];
+
 export default function CarpentryPage() {
   const carpentryProducts = products.filter((p) => p.categorySlug === "menuiserie-aluminium");
   const carpentryProjects = realisations.filter((r) => r.sectorSlug === "btp-electrification");
 
   return (
     <Container className="py-12">
-      <Eyebrow>Service dédié</Eyebrow>
-      <h1 className="mt-3 max-w-2xl font-display text-3xl font-semibold text-blueprint sm:text-4xl">
-        Menuiserie Aluminium &amp; Bois
-      </h1>
-      <p className="mt-3 max-w-2xl text-base leading-relaxed text-steel">
-        GAT conçoit et réalise des ouvrages de menuiserie aluminium et bois pour le résidentiel,
-        le tertiaire et les bâtiments publics : fenêtres, portes, façades et vérandas — avec les
-        profilés <strong className="text-blueprint">Maxwill</strong>.
-      </p>
+      <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+        <div>
+          <Eyebrow>Service dédié</Eyebrow>
+          <h1 className="mt-3 font-display text-3xl font-semibold text-blueprint sm:text-4xl">
+            Menuiserie Aluminium &amp; Bois
+          </h1>
+          <p className="mt-3 text-base leading-relaxed text-steel">
+            GAT conçoit et réalise des ouvrages de menuiserie aluminium et bois pour le
+            résidentiel, le tertiaire et les bâtiments publics : fenêtres, portes, façades et
+            vérandas — avec les profilés <strong className="text-blueprint">Maxwill</strong>.
+          </p>
+        </div>
+        <div className="relative aspect-[4/5] overflow-hidden border border-steel-soft/30 lg:aspect-[3/4]">
+          <Image
+            src="/images/menuiserie-facade-exterieure.jpg"
+            alt="Pose d'une façade vitrée par une équipe GAT à Lomé"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+      </div>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+      <div className="mt-10 grid gap-4 sm:grid-cols-3">
         {[
           { title: "Fenêtres & baies", text: "Systèmes coulissants et oscillo-battants, simple ou double vitrage." },
           { title: "Portes", text: "Portes battantes intérieures et extérieures, finitions anodisées ou laquées." },
@@ -34,6 +66,26 @@ export default function CarpentryPage() {
             <p className="mt-2 text-sm leading-relaxed text-steel">{s.text}</p>
           </div>
         ))}
+      </div>
+
+      <div className="mt-14">
+        <SectionDivider label="Notre process" />
+        <div className="mt-6 grid gap-5 sm:grid-cols-3">
+          {process.map((p, i) => (
+            <div key={p.step} className="border border-steel-soft/30 bg-paper">
+              <div className="relative aspect-[4/3]">
+                <Image src={p.image} alt={p.step} fill className="object-cover" />
+                <span className="absolute left-0 top-0 bg-copper px-2.5 py-1 font-mono text-[11px] text-white">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <div className="p-4">
+                <h3 className="font-display text-sm font-semibold text-blueprint">{p.step}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-steel">{p.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="mt-14">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
@@ -54,6 +55,12 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
           )}
         </div>
       </div>
+
+      {brand.photoUrl && (
+        <div className="relative mt-8 aspect-[16/7] overflow-hidden border border-steel-soft/30">
+          <Image src={brand.photoUrl} alt={`GAT et ${brand.name} sur le terrain`} fill className="object-cover" />
+        </div>
+      )}
 
       {brand.sectors.length > 0 && (
         <div className="mt-8 flex flex-wrap gap-2">

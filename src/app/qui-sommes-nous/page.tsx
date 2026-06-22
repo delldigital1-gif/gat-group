@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionDivider } from "@/components/ui/SectionDivider";
@@ -72,12 +73,21 @@ export default function AboutPage() {
       </div>
 
       <div className="mt-14 grid gap-6 sm:grid-cols-[auto_1fr] sm:items-center border border-steel-soft/30 p-6">
-        <div className="flex h-16 w-16 items-center justify-center border border-steel-soft/40 font-display text-lg font-semibold text-blueprint">
-          GT
+        <div className="relative h-28 w-28 shrink-0 overflow-hidden border border-steel-soft/40">
+          <Image
+            src="/images/equipe-site-industriel.jpg"
+            alt="Responsable GAT sur un site industriel partenaire"
+            fill
+            className="object-cover"
+          />
         </div>
         <div>
           <p className="font-display text-base font-semibold text-blueprint">Gérald TONA</p>
           <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-copper">Directeur Général</p>
+          <p className="mt-2 text-sm text-steel">
+            En visite sur un site industriel partenaire — au plus près des fournitures que GAT
+            recommande à ses clients.
+          </p>
         </div>
       </div>
     </Container>
