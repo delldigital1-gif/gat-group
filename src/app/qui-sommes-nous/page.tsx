@@ -31,7 +31,7 @@ const timeline = [
 export default function AboutPage() {
   return (
     <Container className="py-12">
-      <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-start">
+      <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-stretch">
         <div>
           <Eyebrow>Qui sommes-nous</Eyebrow>
           <h1 className="mt-3 font-display text-3xl font-semibold text-blueprint sm:text-4xl">
@@ -53,7 +53,7 @@ export default function AboutPage() {
             Hitachi, Doosan...) et légers.
           </p>
         </div>
-        <div className="relative aspect-[4/5] overflow-hidden border border-steel-soft/30 lg:aspect-[3/4]">
+        <div className="relative aspect-[4/5] overflow-hidden border border-steel-soft/30 lg:aspect-auto lg:h-full lg:min-h-[360px]">
           <Image
             src={assetPath("/images/sedis-atelier-pignons.jpg")}
             alt="Contrôle qualité de pignons et chaînes en atelier partenaire"
