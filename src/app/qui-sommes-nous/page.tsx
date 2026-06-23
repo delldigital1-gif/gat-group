@@ -57,15 +57,11 @@ export default function AboutPage() {
 
       <div className="mt-14">
         <SectionDivider label="Notre histoire" />
-        <div className="mt-8 grid gap-0 sm:grid-cols-4">
-          {timeline.map((step, i) => (
-            <div
-              key={step.year}
-              className={`border-t-2 border-copper px-0 py-5 sm:px-5 sm:border-t-0 sm:border-l-2 ${
-                i === 0 ? "sm:pl-0 sm:border-l-0 sm:border-t-2" : ""
-              }`}
-            >
-              <p className="font-mono text-sm font-medium text-copper">{step.year}</p>
+        <div className="mt-8 grid gap-4 sm:grid-cols-4">
+          {timeline.map((step) => (
+            <div key={step.year} className="border border-steel-soft/30 bg-paper p-5">
+              <span className="block h-1.5 w-7 bg-copper" aria-hidden />
+              <p className="mt-3 font-mono text-sm font-medium text-copper">{step.year}</p>
               <h3 className="mt-2 font-display text-base font-semibold text-blueprint">{step.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-steel">{step.text}</p>
             </div>
