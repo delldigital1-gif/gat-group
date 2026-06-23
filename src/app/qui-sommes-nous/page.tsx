@@ -31,25 +31,38 @@ const timeline = [
 export default function AboutPage() {
   return (
     <Container className="py-12">
-      <Eyebrow>Qui sommes-nous</Eyebrow>
-      <h1 className="mt-3 max-w-3xl font-display text-3xl font-semibold text-blueprint sm:text-4xl">
-        Spécialiste de la fourniture d&apos;équipements industriels et de la menuiserie aluminium &amp; bois
-      </h1>
-      <p className="mt-5 max-w-2xl text-base leading-relaxed text-steel">
-        Global African Trading (GAT) est une société de droit togolais spécialisée dans la
-        fourniture d&apos;équipements industriels. Forte de son expérience depuis 2007 et de ses
-        partenaires internationaux, GAT est présente dans des secteurs diversifiés qui vont de
-        l&apos;électricité à l&apos;agriculture, en passant par l&apos;assainissement, l&apos;adduction
-        d&apos;eau potable, le BTP, l&apos;énergie, les télécommunications et l&apos;environnement.
-      </p>
-      <p className="mt-4 max-w-2xl text-base leading-relaxed text-steel">
-        GAT distribue notamment des générateurs solaires et pylônes d&apos;éclairage, du machinisme
-        agricole, des équipements d&apos;assainissement et d&apos;adduction d&apos;eau, des engrais
-        chimiques, des lubrifiants Castrol, ainsi que des équipements médicaux et produits
-        chimiques de laboratoire. Un réseau dédié — Motopart — complète l&apos;offre en pièces de
-        rechange pour matériels lourds (Caterpillar, Volvo, Komatsu, JCB, Cummins, Perkins,
-        Hitachi, Doosan...) et légers.
-      </p>
+      <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-start">
+        <div>
+          <Eyebrow>Qui sommes-nous</Eyebrow>
+          <h1 className="mt-3 font-display text-3xl font-semibold text-blueprint sm:text-4xl">
+            Spécialiste de la fourniture d&apos;équipements industriels et de la menuiserie aluminium &amp; bois
+          </h1>
+          <p className="mt-5 text-base leading-relaxed text-steel">
+            Global African Trading (GAT) est une société de droit togolais spécialisée dans la
+            fourniture d&apos;équipements industriels. Forte de son expérience depuis 2007 et de ses
+            partenaires internationaux, GAT est présente dans des secteurs diversifiés qui vont de
+            l&apos;électricité à l&apos;agriculture, en passant par l&apos;assainissement, l&apos;adduction
+            d&apos;eau potable, le BTP, l&apos;énergie, les télécommunications et l&apos;environnement.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-steel">
+            GAT distribue notamment des générateurs solaires et pylônes d&apos;éclairage, du machinisme
+            agricole, des équipements d&apos;assainissement et d&apos;adduction d&apos;eau, des engrais
+            chimiques, des lubrifiants Castrol, ainsi que des équipements médicaux et produits
+            chimiques de laboratoire. Un réseau dédié — Motopart — complète l&apos;offre en pièces de
+            rechange pour matériels lourds (Caterpillar, Volvo, Komatsu, JCB, Cummins, Perkins,
+            Hitachi, Doosan...) et légers.
+          </p>
+        </div>
+        <div className="relative aspect-[4/5] overflow-hidden border border-steel-soft/30 lg:aspect-[3/4]">
+          <Image
+            src={assetPath("/images/sedis-atelier-pignons.jpg")}
+            alt="Contrôle qualité de pignons et chaînes en atelier partenaire"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+      </div>
 
       <div className="mt-10">
         <Nameplate />
