@@ -1,4 +1,5 @@
 import { Container } from "@/components/layout/Container";
+import { assetPath } from "@/lib/asset-path";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { realisations } from "@/lib/data/realisations";
@@ -26,7 +27,7 @@ export default function RealisationsPage() {
               {r.imageUrl && (
                 // eslint-disable-next-line @next/next/no-img-element -- photo externe hotlinkée (ancien site GAT), temporaire en attendant l'auto-hébergement
                 <img
-                  src={r.imageUrl}
+                  src={assetPath(r.imageUrl)}
                   alt={r.title}
                   className="h-44 w-full object-cover"
                   loading="lazy"

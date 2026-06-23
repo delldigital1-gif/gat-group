@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { assetPath } from "@/lib/asset-path";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
@@ -23,7 +24,7 @@ export default function SectorsPage() {
         </div>
         <div className="relative aspect-[4/3] overflow-hidden border border-steel-soft/30 lg:aspect-[16/11]">
           <Image
-            src="/images/eau-bassin-reservoir.jpg"
+            src={assetPath("/images/eau-bassin-reservoir.jpg")}
             alt="Bassin de rétention d'eau — projet eau & assainissement suivi par GAT"
             fill
             className="object-cover"

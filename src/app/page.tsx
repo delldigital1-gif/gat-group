@@ -13,6 +13,7 @@ import { sectors } from "@/lib/data/sectors";
 import { brands } from "@/lib/data/brands";
 import { products } from "@/lib/data/products";
 import { realisations } from "@/lib/data/realisations";
+import { assetPath } from "@/lib/asset-path";
 
 export default function HomePage() {
   const featuredSectors = sectors.slice(0, 6);
@@ -89,7 +90,7 @@ export default function HomePage() {
                 {r.imageUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element -- photo externe hotlinkée (ancien site GAT), temporaire en attendant l'auto-hébergement
                   <img
-                    src={r.imageUrl}
+                    src={assetPath(r.imageUrl)}
                     alt={r.title}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"

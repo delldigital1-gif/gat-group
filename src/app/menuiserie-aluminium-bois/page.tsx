@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { assetPath } from "@/lib/asset-path";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -46,7 +47,7 @@ export default function CarpentryPage() {
         </div>
         <div className="relative aspect-[4/5] overflow-hidden border border-steel-soft/30 lg:aspect-[3/4]">
           <Image
-            src="/images/menuiserie-facade-exterieure.jpg"
+            src={assetPath("/images/menuiserie-facade-exterieure.jpg")}
             alt="Pose d'une façade vitrée par une équipe GAT à Lomé"
             fill
             className="object-cover"
@@ -74,7 +75,7 @@ export default function CarpentryPage() {
           {process.map((p, i) => (
             <div key={p.step} className="border border-steel-soft/30 bg-paper">
               <div className="relative aspect-[4/3]">
-                <Image src={p.image} alt={p.step} fill className="object-cover" />
+                <Image src={assetPath(p.image)} alt={p.step} fill className="object-cover" />
                 <span className="absolute left-0 top-0 bg-copper px-2.5 py-1 font-mono text-[11px] text-white">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -108,7 +109,7 @@ export default function CarpentryPage() {
                 {r.imageUrl && (
                   // eslint-disable-next-line @next/next/no-img-element -- photo externe hotlinkée (ancien site GAT), temporaire en attendant l'auto-hébergement
                   <img
-                    src={r.imageUrl}
+                    src={assetPath(r.imageUrl)}
                     alt={r.title}
                     className="h-24 w-24 shrink-0 object-cover"
                     loading="lazy"
@@ -131,10 +132,10 @@ export default function CarpentryPage() {
         <SectionDivider label="Galerie chantiers" />
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           <div className="relative aspect-[16/10] overflow-hidden border border-steel-soft/30">
-            <Image src="/images/menuiserie-facade-immeuble.jpg" alt="Façade vitrée en cours de pose" fill className="object-cover" />
+            <Image src={assetPath("/images/menuiserie-facade-immeuble.jpg")} alt="Façade vitrée en cours de pose" fill className="object-cover" />
           </div>
           <div className="relative aspect-[16/10] overflow-hidden border border-steel-soft/30">
-            <Image src="/images/menuiserie-chantier-soir.jpg" alt="Pose de baies vitrées en fin de chantier" fill className="object-cover" />
+            <Image src={assetPath("/images/menuiserie-chantier-soir.jpg")} alt="Pose de baies vitrées en fin de chantier" fill className="object-cover" />
           </div>
         </div>
       </div>

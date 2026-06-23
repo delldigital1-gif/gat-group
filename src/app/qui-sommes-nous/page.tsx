@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { assetPath } from "@/lib/asset-path";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionDivider } from "@/components/ui/SectionDivider";
@@ -75,7 +76,7 @@ export default function AboutPage() {
       <div className="mt-14 grid gap-6 sm:grid-cols-[auto_1fr] sm:items-center border border-steel-soft/30 p-6">
         <div className="relative h-28 w-28 shrink-0 overflow-hidden border border-steel-soft/40">
           <Image
-            src="/images/equipe-site-industriel.jpg"
+            src={assetPath("/images/equipe-site-industriel.jpg")}
             alt="Responsable GAT sur un site industriel partenaire"
             fill
             className="object-cover"
@@ -100,7 +101,7 @@ export default function AboutPage() {
           </p>
           <div className="relative aspect-[4/3] overflow-hidden border border-steel-soft/30 sm:aspect-[16/10]">
             <Image
-              src="/images/equipe-gat-chantier.jpg"
+              src={assetPath("/images/equipe-gat-chantier.jpg")}
               alt="Équipe GAT Group sur un chantier de menuiserie aluminium"
               fill
               className="object-cover"

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Brand } from "@/lib/types";
+import { assetPath } from "@/lib/asset-path";
 
 export function BrandCard({ brand }: { brand: Brand }) {
   return (
@@ -12,7 +13,7 @@ export function BrandCard({ brand }: { brand: Brand }) {
         {brand.logoUrl ? (
           // eslint-disable-next-line @next/next/no-img-element -- logo externe hotlinké, pas d'optimisation next/image nécessaire pour ce visuel temporaire
           <img
-            src={brand.logoUrl}
+            src={assetPath(brand.logoUrl)}
             alt={`Logo ${brand.name}`}
             className="h-12 w-auto max-w-[110px] object-contain"
           />

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { assetPath } from "@/lib/asset-path";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
@@ -49,7 +50,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
         <div className="flex h-20 w-20 shrink-0 items-center justify-center border border-steel-soft/40 p-2">
           {brand.logoUrl ? (
             // eslint-disable-next-line @next/next/no-img-element -- logo externe hotlinké, pas d'optimisation next/image nécessaire pour ce visuel temporaire
-            <img src={brand.logoUrl} alt={`Logo ${brand.name}`} className="h-full w-full object-contain" />
+            <img src={assetPath(brand.logoUrl)} alt={`Logo ${brand.name}`} className="h-full w-full object-contain" />
           ) : (
             <span className="font-display text-2xl font-semibold text-blueprint">{brand.logoInitials}</span>
           )}
@@ -65,7 +66,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
                 brand.photoUrls!.length === 1 ? "aspect-[16/7]" : i === 0 ? "aspect-[4/3] sm:col-span-1" : "aspect-[4/3]"
               }`}
             >
-              <Image src={url} alt={`GAT et ${brand.name} sur le terrain`} fill className="object-cover" />
+              <Image src={assetPath(url)} alt={`GAT et ${brand.name} sur le terrain`} fill className="object-cover" />
             </div>
           ))}
         </div>

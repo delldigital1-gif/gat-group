@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Product } from "@/lib/types";
 import { getBrand } from "@/lib/data/brands";
 import { useQuote } from "@/lib/quote-context";
+import { assetPath } from "@/lib/asset-path";
 
 const availabilityLabel: Record<Product["availability"], string> = {
   stock: "En stock",
@@ -47,7 +48,7 @@ export function ProductCard({ product }: { product: Product }) {
         {product.imageUrl ? (
           <div className="relative h-32 overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element -- image locale rendue dans une carte de taille variable, fill+next/image ajouterait peu ici */}
-            <img src={product.imageUrl} alt={product.name} className="h-full w-full object-cover" loading="lazy" />
+            <img src={assetPath(product.imageUrl)} alt={product.name} className="h-full w-full object-cover" loading="lazy" />
           </div>
         ) : (
           <div className="flex h-32 items-center justify-center bg-mist-2 bg-[linear-gradient(0deg,transparent_24%,var(--color-steel-soft)_25%,var(--color-steel-soft)_26%,transparent_27%,transparent_74%,var(--color-steel-soft)_75%,var(--color-steel-soft)_76%,transparent_77%,transparent),linear-gradient(90deg,transparent_24%,var(--color-steel-soft)_25%,var(--color-steel-soft)_26%,transparent_27%,transparent_74%,var(--color-steel-soft)_75%,var(--color-steel-soft)_76%,transparent_77%,transparent)] bg-[length:24px_24px] opacity-90">
