@@ -1,0 +1,4 @@
+:HL["/gat-group/_next/static/chunks/3zm48pjs8u3l8.css","style"]
+:HC["/",""]
+:HL["https://gatgroup.org/wp-content/uploads/2024/04/SEDIS-e1712063286856.png","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"marques","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"sedis","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"_CkbzT4HPA2NHjbxPYpei"}
