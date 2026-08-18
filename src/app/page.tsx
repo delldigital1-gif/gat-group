@@ -6,17 +6,16 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
 import { NetworkDiagram } from "@/components/home/NetworkDiagram";
 import { Nameplate } from "@/components/home/Nameplate";
-import { SectorCard } from "@/components/ui/SectorCard";
+import { PillarCard } from "@/components/ui/PillarCard";
 import { BrandCard } from "@/components/catalogue/BrandCard";
 import { ProductCard } from "@/components/catalogue/ProductCard";
-import { sectors } from "@/lib/data/sectors";
+import { pillars } from "@/lib/data/pillars";
 import { brands } from "@/lib/data/brands";
 import { products } from "@/lib/data/products";
 import { realisations } from "@/lib/data/realisations";
 import { assetPath } from "@/lib/asset-path";
 
 export default function HomePage() {
-  const featuredSectors = sectors.slice(0, 6);
   const featuredProducts = products.slice(0, 4);
 
   return (
@@ -56,21 +55,21 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* SECTEURS */}
+      {/* NOS 3 PÔLES D'ACTIVITÉ */}
       <section className="py-12">
         <Container>
-          <SectionDivider label="Nos secteurs" />
+          <SectionDivider label="Nos pôles d'activité" />
           <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
             <h2 className="font-display text-2xl font-semibold text-blueprint sm:text-3xl">
-              Une réponse spécialisée, secteur par secteur
+              Trois métiers, une réponse spécialisée pour chacun
             </h2>
             <Link href="/secteurs" className="flex items-center gap-1.5 text-sm font-medium text-copper hover:underline">
               Voir tous les secteurs <ArrowRight size={15} />
             </Link>
           </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredSectors.map((s) => (
-              <SectorCard key={s.slug} sector={s} />
+            {pillars.map((p) => (
+              <PillarCard key={p.slug} pillar={p} />
             ))}
           </div>
         </Container>

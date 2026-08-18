@@ -38,10 +38,18 @@ export type Product = {
   imageUrl?: string; // photo réelle, quand disponible
 };
 
+// Les 9 secteurs "métier" ci-dessous se regroupent tous sous l'un des 3
+// pôles d'activité de GAT (voir src/lib/data/pillars.ts) : BTP est
+// autonome, les 8 autres relèvent de la Centrale d'achat (représentation
+// des marques internationales pour ces industries) ; Menuiserie est le
+// 3e pôle, avec sa propre page dédiée (pas dans cette liste de secteurs).
+export type PillarSlug = "menuiserie" | "btp" | "centrale-achat";
+
 export type Sector = {
   slug: string;
   name: string;
   description: string;
+  pillar: PillarSlug;
 };
 
 export type Realisation = {
