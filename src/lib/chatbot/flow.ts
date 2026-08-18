@@ -3,6 +3,8 @@
 // avant un argument GAT et propose une action concrète (catalogue, devis,
 // contact) plutôt qu'une simple réponse informative.
 
+import { COMMERCIAL_EMAIL, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
+
 export type ChatAction =
   | { type: "node"; nodeId: string }
   | { type: "navigate"; href: string };
@@ -107,8 +109,7 @@ export const chatNodes: Record<string, ChatNode> = {
 
   contact: {
     id: "contact",
-    message:
-      "Vous pouvez joindre GAT directement :\n📍 Djidjolé, Lomé, Togo\n📞 +228 90 14 12 01\n✉️ gat@gatgroup.org\n\nOu passez par notre formulaire — un commercial vous répond rapidement.",
+    message: `Vous pouvez joindre GAT directement :\n📍 Djidjolé, Lomé, Togo\n📞 +228 90 14 12 01\n💬 WhatsApp commercial : ${WHATSAPP_NUMBER_DISPLAY}\n✉️ ${COMMERCIAL_EMAIL}\n\nOu passez par notre formulaire — un commercial vous répond rapidement.`,
     options: [
       { label: "Ouvrir le formulaire de contact", action: { type: "navigate", href: "/contact" } },
       { label: "⬅ Retour au menu", action: { type: "node", nodeId: "root" } },

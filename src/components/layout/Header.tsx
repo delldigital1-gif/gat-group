@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ChevronDown, Menu, X, FileText, Phone } from "lucide-react";
+import { ChevronDown, Menu, X, FileText, Phone, MessageCircle } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { useQuote } from "@/lib/quote-context";
+import { WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
 
 const gatLinks = [
   { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
@@ -29,9 +30,19 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-steel-soft/30 bg-paper/95 backdrop-blur-sm">
       <div className="hidden border-b border-steel-soft/20 bg-blueprint text-mist md:block">
         <Container className="flex h-9 items-center justify-between text-[12px]">
-          <a href="tel:+22890141201" className="flex items-center gap-1.5 hover:text-copper">
-            <Phone size={12} /> +228 90 14 12 01 — Lomé, Togo
-          </a>
+          <div className="flex items-center gap-4">
+            <a href="tel:+22890141201" className="flex items-center gap-1.5 hover:text-copper">
+              <Phone size={12} /> +228 90 14 12 01 — Lomé, Togo
+            </a>
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-copper"
+            >
+              <MessageCircle size={12} /> {WHATSAPP_NUMBER_DISPLAY}
+            </a>
+          </div>
           <div className="flex items-center gap-4 font-mono uppercase tracking-[0.12em] text-steel-soft">
             <Link href="/contact" className="hover:text-white">
               GAT Togo

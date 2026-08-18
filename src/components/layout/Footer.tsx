@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { COMMERCIAL_EMAIL, WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
 
 const siteLinks = [
   { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
@@ -77,6 +78,24 @@ export function Footer() {
                 <Mail size={15} className="shrink-0 text-copper" />
                 <a href="mailto:gat@gatgroup.org" className="hover:text-copper">
                   gat@gatgroup.org
+                </a>
+              </li>
+            </ul>
+
+            <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-steel-soft">
+              Service commercial
+            </p>
+            <ul className="mt-3 space-y-2.5 text-sm text-mist/90">
+              <li className="flex items-center gap-2">
+                <MessageCircle size={15} className="shrink-0 text-copper" />
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-copper">
+                  {WHATSAPP_NUMBER_DISPLAY}
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail size={15} className="shrink-0 text-copper" />
+                <a href={`mailto:${COMMERCIAL_EMAIL}`} className="hover:text-copper">
+                  {COMMERCIAL_EMAIL}
                 </a>
               </li>
             </ul>

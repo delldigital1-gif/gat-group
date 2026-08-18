@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MapPin, Phone, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone, CheckCircle2 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionDivider } from "@/components/ui/SectionDivider";
+import { COMMERCIAL_EMAIL, WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
 
 const offices = [
   {
@@ -46,6 +47,25 @@ export default function ContactPage() {
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_1.1fr]">
         <div className="space-y-5">
+          <div className="border border-copper bg-paper p-6">
+            <h2 className="font-display text-base font-semibold text-blueprint">Service commercial</h2>
+            <p className="mt-1 text-sm text-steel">Réponse rapide pour vos devis et demandes.</p>
+            <ul className="mt-3 space-y-2.5 text-sm text-steel">
+              <li className="flex items-center gap-2">
+                <MessageCircle size={15} className="shrink-0 text-copper" />
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-copper">
+                  {WHATSAPP_NUMBER_DISPLAY}
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail size={15} className="shrink-0 text-copper" />
+                <a href={`mailto:${COMMERCIAL_EMAIL}`} className="hover:text-copper">
+                  {COMMERCIAL_EMAIL}
+                </a>
+              </li>
+            </ul>
+          </div>
+
           {offices.map((office) => (
             <div key={office.name} className="border border-steel-soft/30 bg-paper p-6">
               <h2 className="font-display text-base font-semibold text-blueprint">{office.name}</h2>
