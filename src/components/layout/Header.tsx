@@ -51,6 +51,10 @@ export function Header() {
             <Link href="/contact" className="hover:text-white">
               GAT Côte d&apos;Ivoire — GESEC
             </Link>
+            <span aria-hidden>·</span>
+            <Link href="/contact" className="hover:text-white">
+              GAT Bénin
+            </Link>
           </div>
         </Container>
       </div>
