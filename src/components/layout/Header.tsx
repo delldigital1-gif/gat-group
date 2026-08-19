@@ -3,9 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ReactNode, useEffect, useState } from "react";
-import { ChevronDown, Check, Eye, Globe, Mail, MapPin, Menu, X, FileText, Phone, MessageCircle } from "lucide-react";
+import { ChevronDown, Check, Eye, Globe, Mail, MapPin, Menu, X, Phone, MessageCircle } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { useQuote } from "@/lib/quote-context";
 import { WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
 import { assetPath } from "@/lib/asset-path";
 import { categories } from "@/lib/data/categories";
@@ -272,7 +271,6 @@ function MobileUtilitySection({ onNavigate }: { onNavigate: () => void }) {
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { count } = useQuote();
   const closeMobile = () => setMobileOpen(false);
 
   return (
@@ -343,24 +341,6 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/contact"
-            className="hidden items-center px-4 py-2 text-sm font-medium text-white bg-copper hover:bg-copper-2 sm:inline-flex"
-          >
-            Contact
-          </Link>
-          <Link
-            href="/devis"
-            className="relative flex items-center gap-2 border border-blueprint px-3 py-2 text-sm font-medium text-blueprint hover:bg-blueprint hover:text-white"
-          >
-            <FileText size={16} />
-            <span className="hidden sm:inline">Ma liste de devis</span>
-            {count > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-copper font-mono text-[11px] text-white">
-                {count}
-              </span>
-            )}
-          </Link>
           <div className="hidden lg:block">
             <UtilityPanel />
           </div>
