@@ -3,12 +3,33 @@ import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 
+// Brochures officielles des marques distribuées par GAT (liens directs
+// vers les sites des marques — pas de copie hébergée sur ce site, pour
+// rester à jour et éviter d'alourdir le dépôt de gros PDF).
 const documents = [
-  { title: "Brochure institutionnelle GAT", type: "PDF", size: "—" },
-  { title: "Catalogue Xylem — pompage & traitement de l'eau", type: "PDF", size: "—" },
-  { title: "Catalogue Sedis — chaînes & levage", type: "PDF", size: "—" },
-  { title: "Gamme Maxwill — menuiserie aluminium", type: "PDF", size: "—" },
-  { title: "Présentation Groupe LOUKIL", type: "PDF", size: "—" },
+  { title: "Brochure institutionnelle GAT", type: "PDF" },
+  {
+    title: "Catalogue Xylem Flygt — pompes submersibles",
+    type: "PDF",
+    url: "https://www.xylem.com/siteassets/brand/flygt/resources/brochure/flygt_submersible_brochure_us23.pdf",
+  },
+  {
+    title: "Catalogue Sedis — chaînes, transmission & levage",
+    type: "PDF",
+    url: "https://www.sedis.com/fichiers/uploads/sedis-catalogue-principales-fabrications.pdf",
+  },
+  {
+    title: "Catalogue Castrol — lubrifiants industriels",
+    type: "PDF",
+    url: "https://www.castrol.com/content/dam/castrol/business-sites-new/en/global/corporate/documents/industries/industrial-product-catalogue/castrol-industrial-product-catalogue-english.pdf",
+  },
+  {
+    title: "OMICRON — présentation produits & solutions",
+    type: "PDF",
+    url: "https://www.alectrix.co.za/wp/wp-content/uploads/2025/02/OMICRON-Products-Solutions-Overview-ENU-02.2025.pdf",
+  },
+  { title: "Gamme Maxwill — menuiserie aluminium", type: "PDF" },
+  { title: "Présentation Groupe LOUKIL", type: "PDF" },
 ];
 
 export default function MediaLibraryPage() {
@@ -39,18 +60,31 @@ export default function MediaLibraryPage() {
                 <p className="font-mono text-[11px] uppercase tracking-[0.06em] text-steel">{doc.type}</p>
               </div>
             </div>
-            <button
-              disabled
-              className="flex items-center gap-1.5 whitespace-nowrap border border-steel-soft/40 px-3 py-1.5 text-xs font-medium text-steel"
-              title="Document à venir"
-            >
-              <FileDown size={14} /> Bientôt
-            </button>
+            {doc.url ? (
+              <a
+                href={doc.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 whitespace-nowrap border border-copper px-3 py-1.5 text-xs font-medium text-copper hover:bg-copper hover:text-white"
+              >
+                <FileDown size={14} /> Télécharger
+              </a>
+            ) : (
+              <button
+                disabled
+                className="flex items-center gap-1.5 whitespace-nowrap border border-steel-soft/40 px-3 py-1.5 text-xs font-medium text-steel"
+                title="Document à venir"
+              >
+                <FileDown size={14} /> Bientôt
+              </button>
+            )}
           </div>
         ))}
       </div>
       <p className="mt-4 font-mono text-[11px] text-steel-soft">
-        Les fichiers PDF seront mis en ligne dès leur finalisation.
+        Les brochures des marques partenaires sont fournies par leurs sites officiels respectifs
+        et s&apos;ouvrent dans un nouvel onglet. Les documents propres à GAT seront mis en ligne
+        dès leur finalisation.
       </p>
     </Container>
   );
