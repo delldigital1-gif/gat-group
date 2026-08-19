@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { COMMERCIAL_EMAIL, WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
+import { assetPath } from "@/lib/asset-path";
 
 const siteLinks = [
   { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
@@ -24,8 +26,14 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2.5 font-display text-lg font-semibold text-white">
-              <span className="flex h-8 w-8 items-center justify-center rounded-[2px] bg-mist font-mono text-[13px] text-blueprint">
-                GAT
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[2px] bg-mist p-1">
+                <Image
+                  src={assetPath("/images/logo-gat.png")}
+                  alt="GAT Group"
+                  width={32}
+                  height={32}
+                  className="h-full w-full object-contain"
+                />
               </span>
               Global African Trading
             </div>

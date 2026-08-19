@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { ChevronDown, Menu, X, FileText, Phone, MessageCircle } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { useQuote } from "@/lib/quote-context";
 import { WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
+import { assetPath } from "@/lib/asset-path";
 
 const gatLinks = [
   { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
@@ -61,9 +63,14 @@ export function Header() {
 
       <Container className="flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 font-display text-lg font-semibold text-blueprint">
-          <span className="flex h-8 w-8 items-center justify-center rounded-[2px] bg-blueprint font-mono text-[13px] text-mist">
-            GAT
-          </span>
+          <Image
+            src={assetPath("/images/logo-gat.png")}
+            alt="GAT Group"
+            width={40}
+            height={40}
+            className="h-10 w-10 object-contain"
+            priority
+          />
           <span className="hidden leading-tight sm:block">
             Global African
             <br />
