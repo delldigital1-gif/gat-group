@@ -76,7 +76,7 @@ export function Header() {
           <span className="hidden leading-tight sm:block">
             Global African
             <br />
-            <span className="text-copper">Trading</span>
+            <span className="text-copper">Trading Group</span>
           </span>
         </Link>
 

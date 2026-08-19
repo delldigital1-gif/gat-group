@@ -35,7 +35,7 @@ export function Footer() {
                   className="h-full w-full object-contain"
                 />
               </span>
-              Global African Trading
+              Global African Trading Group
             </div>
           </div>
 

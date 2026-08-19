@@ -35,7 +35,7 @@ export default function AboutPage() {
         <div>
           <Eyebrow>Qui sommes-nous</Eyebrow>
           <h1 className="mt-3 font-display text-3xl font-semibold text-blueprint sm:text-4xl">
-            Spécialiste de la fourniture d&apos;équipements industriels et de la menuiserie aluminium &amp; bois
+            Spécialiste de la fourniture d&apos;équipements industriels et de la menuiserie aluminium, bois &amp; métallique
           </h1>
           <p className="mt-5 text-base leading-relaxed text-steel">
             Global African Trading (GAT) est une société de droit togolais spécialisée dans la
