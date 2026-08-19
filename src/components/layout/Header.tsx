@@ -18,10 +18,9 @@ const sectorLinks = [
 ];
 
 const navLinks = [
-  { href: "/marques", label: "Marques partenaires" },
   { href: "/catalogue", label: "Catalogue" },
-  { href: "/mediatheque", label: "Médiathèque" },
-  { href: "/contact", label: "Contact" },
+  { href: "/marques", label: "Marques" },
+  { href: "/mediatheque", label: "Ressources" },
 ];
 
 export function Header() {
@@ -81,24 +80,6 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
-          <div className="relative" onMouseEnter={() => setAboutOpen(true)} onMouseLeave={() => setAboutOpen(false)}>
-            <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-ink hover:text-copper">
-              À propos <ChevronDown size={14} />
-            </button>
-            {aboutOpen && (
-              <div className="absolute left-0 top-full w-56 border border-steel-soft/30 bg-paper py-2 shadow-lg">
-                {aboutLinks.map((l) => (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    className="block px-4 py-2 text-sm text-ink hover:bg-mist-2 hover:text-copper"
-                  >
-                    {l.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
           <div
             className="relative"
             onMouseEnter={() => setSectorsOpen(true)}
@@ -130,9 +111,33 @@ export function Header() {
               {l.label}
             </Link>
           ))}
+          <div className="relative" onMouseEnter={() => setAboutOpen(true)} onMouseLeave={() => setAboutOpen(false)}>
+            <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-ink hover:text-copper">
+              À propos <ChevronDown size={14} />
+            </button>
+            {aboutOpen && (
+              <div className="absolute left-0 top-full w-56 border border-steel-soft/30 bg-paper py-2 shadow-lg">
+                {aboutLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className="block px-4 py-2 text-sm text-ink hover:bg-mist-2 hover:text-copper"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </nav>
 
         <div className="flex items-center gap-3">
+          <Link
+            href="/contact"
+            className="hidden items-center px-4 py-2 text-sm font-medium text-white bg-copper hover:bg-copper-2 sm:inline-flex"
+          >
+            Contact
+          </Link>
           <Link
             href="/devis"
             className="relative flex items-center gap-2 border border-blueprint px-3 py-2 text-sm font-medium text-blueprint hover:bg-blueprint hover:text-white"
@@ -159,19 +164,6 @@ export function Header() {
         <div className="border-t border-steel-soft/30 bg-paper lg:hidden">
           <Container className="flex flex-col py-3">
             <span className="px-2 pt-1 pb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">
-              À propos
-            </span>
-            {aboutLinks.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="px-2 py-2 text-sm text-ink hover:text-copper"
-                onClick={() => setMobileOpen(false)}
-              >
-                {l.label}
-              </Link>
-            ))}
-            <span className="px-2 pt-2 pb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">
               Nos secteurs
             </span>
             {sectorLinks.map((l) => (
@@ -195,6 +187,28 @@ export function Header() {
                   {l.label}
                 </Link>
               ))}
+            </div>
+            <span className="px-2 pt-2 pb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">
+              À propos
+            </span>
+            {aboutLinks.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="px-2 py-2 text-sm text-ink hover:text-copper"
+                onClick={() => setMobileOpen(false)}
+              >
+                {l.label}
+              </Link>
+            ))}
+            <div className="mt-2 border-t border-steel-soft/20 pt-2">
+              <Link
+                href="/contact"
+                className="block px-2 py-2 text-sm font-medium text-copper"
+                onClick={() => setMobileOpen(false)}
+              >
+                Contact
+              </Link>
             </div>
           </Container>
         </div>
