@@ -3,9 +3,10 @@ import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 
-// Brochures officielles des marques distribuées par GAT (liens directs
-// vers les sites des marques — pas de copie hébergée sur ce site, pour
-// rester à jour et éviter d'alourdir le dépôt de gros PDF).
+// Brochures officielles des marques distribuées par GAT. Documents
+// fournis directement par GAT hébergés sur ce site (public/docs/) ;
+// les gros catalogues disponibles sur le site de la marque pointent
+// vers l'URL officielle pour rester à jour sans alourdir le dépôt.
 const documents = [
   {
     title: "Catalogue Xylem Flygt — pompes submersibles",
@@ -31,6 +32,36 @@ const documents = [
     title: "Xylem Service Solutions — Custom Fabrication",
     type: "PDF",
     url: "/docs/xylem-service-solutions-custom-fabrication.pdf",
+  },
+  {
+    title: "Xylem — Solutions industrielles pour l'eau",
+    type: "PDF",
+    url: "/docs/xylem-industrial-solutions-catalogue.pdf",
+  },
+  {
+    title: "Xylem — Catalogue accessoires, gamme eaux usées",
+    type: "PDF",
+    url: "/docs/xylem-catalogue-accessoires-eaux-usees.pdf",
+  },
+  {
+    title: "Bell & Gossett Series 1510 — Catalogue",
+    type: "PDF",
+    url: "/docs/bell-gossett-series-1510-catalogue.pdf",
+  },
+  {
+    title: "Sedis — Métier Travaux Publics",
+    type: "PDF",
+    url: "/docs/sedis-brochure-travaux-publics.pdf",
+  },
+  {
+    title: "Sedis — Catalogue chaînes de manutention",
+    type: "PDF",
+    url: "https://www.sedis.com/fichiers/uploads/sedis-catalogue-manutention.pdf",
+  },
+  {
+    title: "ebro (Xylem) — Manuel enregistreur EBI 12-EX",
+    type: "PDF",
+    url: "/docs/ebro-manuel-ebi-12-ex.pdf",
   },
 ];
 
@@ -74,8 +105,8 @@ export default function MediaLibraryPage() {
         ))}
       </div>
       <p className="mt-4 font-mono text-[11px] text-steel-soft">
-        Ces brochures sont fournies par les sites officiels des marques partenaires et
-        s&apos;ouvrent dans un nouvel onglet.
+        Documentation fournie par GAT et les marques partenaires. Les liens s&apos;ouvrent dans un
+        nouvel onglet.
       </p>
     </Container>
   );
