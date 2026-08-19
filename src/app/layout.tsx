@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 // Polices auto-hébergées via Fontsource (fichiers bundlés au build, aucun
 // appel réseau vers fonts.googleapis.com requis). Seuls les poids
 // réellement utilisés par la charte GAT sont importés.
-import "@fontsource/space-grotesk/500.css";
-import "@fontsource/space-grotesk/600.css";
-import "@fontsource/space-grotesk/700.css";
+import "@fontsource/ibm-plex-serif/500.css";
+import "@fontsource/ibm-plex-serif/600.css";
+import "@fontsource/ibm-plex-serif/700.css";
 import "@fontsource/ibm-plex-sans/400.css";
 import "@fontsource/ibm-plex-sans/500.css";
 import "@fontsource/ibm-plex-sans/600.css";
