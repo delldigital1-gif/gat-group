@@ -2,6 +2,7 @@ import { FileDown, FileText } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionDivider } from "@/components/ui/SectionDivider";
+import { assetPath } from "@/lib/asset-path";
 
 // Brochures officielles des marques distribuées par GAT. Documents
 // fournis directement par GAT hébergés sur ce site (public/docs/) ;
@@ -94,7 +95,7 @@ export default function MediaLibraryPage() {
               </div>
             </div>
             <a
-              href={doc.url}
+              href={assetPath(doc.url)}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 whitespace-nowrap border border-copper px-3 py-1.5 text-xs font-medium text-copper hover:bg-copper hover:text-white"

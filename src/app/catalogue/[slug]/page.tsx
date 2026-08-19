@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, FileDown } from "lucide-react";
+import { assetPath } from "@/lib/asset-path";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionDivider } from "@/components/ui/SectionDivider";
@@ -80,9 +81,20 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <ProductActions productSlug={product.slug} />
           </div>
 
-          <button className="mt-4 flex items-center gap-2 text-sm font-medium text-steel hover:text-copper" disabled>
-            <FileDown size={15} /> Fiche PDF — bientôt disponible
-          </button>
+          {product.datasheetUrl ? (
+            <a
+              href={assetPath(product.datasheetUrl)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex items-center gap-2 text-sm font-medium text-copper hover:underline"
+            >
+              <FileDown size={15} /> Catalogue {brand?.name} (PDF)
+            </a>
+          ) : (
+            <button className="mt-4 flex items-center gap-2 text-sm font-medium text-steel hover:text-copper" disabled>
+              <FileDown size={15} /> Fiche PDF — bientôt disponible
+            </button>
+          )}
         </div>
       </div>
 

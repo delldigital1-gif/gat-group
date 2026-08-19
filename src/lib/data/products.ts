@@ -27,6 +27,7 @@ export const products: Product[] = [
     ],
     availability: "import",
     imageUrl: "/images/xylem-flygt-n-technology.jpg",
+    datasheetUrl: "/docs/xylem-industrial-solutions-catalogue.pdf",
   },
   {
     slug: "station-traitement-compacte",
@@ -44,6 +45,7 @@ export const products: Product[] = [
       { label: "Encombrement", value: "2,4 × 1,1 m" },
     ],
     availability: "sur-commande",
+    datasheetUrl: "/docs/xylem-industrial-solutions-catalogue.pdf",
   },
   {
     slug: "pompe-centrifuge-bell-gossett-1510",
@@ -63,6 +65,7 @@ export const products: Product[] = [
     ],
     availability: "import",
     imageUrl: "/images/xylem-bell-gossett-1510.jpg",
+    datasheetUrl: "/docs/bell-gossett-series-1510-catalogue.pdf",
   },
   {
     slug: "compteur-eau-volumetrique",
@@ -81,6 +84,7 @@ export const products: Product[] = [
     ],
     availability: "stock",
     imageUrl: "/images/xylem-sensus-compteur.jpg",
+    datasheetUrl: "/docs/xylem-industrial-solutions-catalogue.pdf",
   },
   {
     slug: "chaine-transmission-delta",
@@ -100,6 +104,7 @@ export const products: Product[] = [
     ],
     availability: "stock",
     imageUrl: "/images/sedis-chaine-delta.jpg",
+    datasheetUrl: "/docs/sedis-brochure-travaux-publics.pdf",
   },
   {
     slug: "chaine-levage-grade-80",
@@ -118,6 +123,7 @@ export const products: Product[] = [
     ],
     availability: "stock",
     imageUrl: "/images/sedis-chaine-levage.jpg",
+    datasheetUrl: "/docs/sedis-brochure-travaux-publics.pdf",
   },
   {
     slug: "roue-pignon-transmission",
@@ -134,6 +140,7 @@ export const products: Product[] = [
       { label: "Matière", value: "Acier traité" },
     ],
     availability: "sur-commande",
+    datasheetUrl: "/docs/sedis-brochure-travaux-publics.pdf",
   },
   {
     slug: "huile-moteur-castrol",
@@ -152,6 +159,8 @@ export const products: Product[] = [
     ],
     availability: "stock",
     imageUrl: "/images/castrol-vecton.jpg",
+    datasheetUrl:
+      "https://www.castrol.com/content/dam/castrol/business-sites-new/en/global/corporate/documents/industries/industrial-product-catalogue/castrol-industrial-product-catalogue-english.pdf",
   },
   {
     slug: "graisse-multiusage",
@@ -169,6 +178,8 @@ export const products: Product[] = [
       { label: "Conditionnement", value: "Fût 200 L" },
     ],
     availability: "stock",
+    datasheetUrl:
+      "https://www.castrol.com/content/dam/castrol/business-sites-new/en/global/corporate/documents/industries/industrial-product-catalogue/castrol-industrial-product-catalogue-english.pdf",
   },
   {
     slug: "huile-reducteur-alphasyn",
@@ -187,6 +198,8 @@ export const products: Product[] = [
     ],
     availability: "sur-commande",
     imageUrl: "/images/castrol-alphasyn.jpg",
+    datasheetUrl:
+      "https://www.castrol.com/content/dam/castrol/business-sites-new/en/global/corporate/documents/industries/industrial-product-catalogue/castrol-industrial-product-catalogue-english.pdf",
   },
   {
     slug: "profile-alu-fenetre-coulissante",
@@ -302,6 +315,7 @@ export const products: Product[] = [
     availability: "import",
     imageUrl: "/images/omicron-cmc500.png",
     imageUrls: ["/images/omicron-cmc500.png", "/images/omicron-cmc500-application.jpg"],
+    datasheetUrl: "https://www.alectrix.co.za/wp/wp-content/uploads/2025/02/OMICRON-Products-Solutions-Overview-ENU-02.2025.pdf",
   },
   {
     slug: "omicron-cmc256plus",
@@ -320,6 +334,7 @@ export const products: Product[] = [
     availability: "import",
     imageUrl: "/images/omicron-cmc256plus.jpg",
     imageUrls: ["/images/omicron-cmc256plus.jpg", "/images/omicron-cmc256plus-panel.jpg"],
+    datasheetUrl: "https://www.alectrix.co.za/wp/wp-content/uploads/2025/02/OMICRON-Products-Solutions-Overview-ENU-02.2025.pdf",
   },
 ];
 
