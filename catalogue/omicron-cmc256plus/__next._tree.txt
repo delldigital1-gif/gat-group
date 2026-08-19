@@ -1,3 +1,3 @@
 :HL["/gat-group/_next/static/chunks/3vrqai6crk3dy.css","style"]
 :HC["/",""]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"catalogue","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"omicron-cmc256plus","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"F-isBxR1oP8qC1HrljdP1"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"catalogue","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"omicron-cmc256plus","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"cJ8NKxL_oV0eGT8uYuFfO"}
