@@ -278,21 +278,6 @@ export const products: Product[] = [
     availability: "import",
   },
   {
-    slug: "cable-electrique-multibrin",
-    name: "Câble électrique multibrin U-1000 R2V",
-    brandSlug: "loukil",
-    categorySlug: "cables-appareillage",
-    sectorSlugs: ["btp-electrification", "energie"],
-    reference: "GAT-CB-ELC-016",
-    shortDescription: "Câble électrique pour installations basse et moyenne tension.",
-    description: "Câble électrique multibrin pour distribution basse tension, conforme aux normes en vigueur.",
-    specs: [
-      { label: "Section", value: "1,5 à 95 mm²" },
-      { label: "Tension assignée", value: "1000 V" },
-    ],
-    availability: "stock",
-  },
-  {
     slug: "omicron-cmc500",
     name: "OMICRON CMC 500 — Système de test universel",
     brandSlug: "omicron",
