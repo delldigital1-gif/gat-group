@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Container } from "@/components/layout/Container";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -12,9 +13,18 @@ import { sectors } from "@/lib/data/sectors";
 import { Search } from "lucide-react";
 
 export default function CataloguePage() {
-  const [brand, setBrand] = useState("all");
-  const [category, setCategory] = useState("all");
-  const [sector, setSector] = useState("all");
+  return (
+    <Suspense fallback={null}>
+      <CatalogueContent />
+    </Suspense>
+  );
+}
+
+function CatalogueContent() {
+  const searchParams = useSearchParams();
+  const [brand, setBrand] = useState(() => searchParams.get("marque") ?? "all");
+  const [category, setCategory] = useState(() => searchParams.get("categorie") ?? "all");
+  const [sector, setSector] = useState(() => searchParams.get("secteur") ?? "all");
   const [query, setQuery] = useState("");
 
   const filtered = useMemo(() => {

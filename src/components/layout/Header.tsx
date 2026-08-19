@@ -2,32 +2,125 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { ChevronDown, Menu, X, FileText, Phone, MessageCircle } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { useQuote } from "@/lib/quote-context";
 import { WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
 import { assetPath } from "@/lib/asset-path";
+import { categories } from "@/lib/data/categories";
+import { brands } from "@/lib/data/brands";
 
-const aboutLinks = [{ href: "/qui-sommes-nous", label: "Qui sommes-nous" }];
+type NavLink = { href: string; label: string };
 
-const sectorLinks = [
+const sectorLinks: NavLink[] = [
   { href: "/secteurs", label: "Centrale d'achat" },
   { href: "/menuiserie-aluminium-bois", label: "Menuiserie Aluminium, Bois & Métallique" },
   { href: "/btp", label: "BTP" },
 ];
 
-const navLinks = [
-  { href: "/catalogue", label: "Catalogue" },
-  { href: "/marques", label: "Marques" },
-  { href: "/mediatheque", label: "Ressources" },
+const catalogueLinks: NavLink[] = categories.map((c) => ({
+  href: `/catalogue?categorie=${c.slug}`,
+  label: c.name,
+}));
+
+const brandLinks: NavLink[] = brands.map((b) => ({ href: `/marques/${b.slug}`, label: b.name }));
+
+const resourceLinks: NavLink[] = [
+  { href: "/mediatheque", label: "Médiathèque" },
+  { href: "/realisations", label: "Nos réalisations" },
+  { href: "/contact", label: "Contact" },
 ];
+
+const aboutLinks: NavLink[] = [{ href: "/qui-sommes-nous", label: "Qui sommes-nous" }];
+
+function NavDropdown({
+  label,
+  items,
+  footerLink,
+  width = "w-56",
+}: {
+  label: string;
+  items: NavLink[];
+  footerLink?: NavLink;
+  width?: string;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+      <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-ink hover:text-copper">
+        {label} <ChevronDown size={14} />
+      </button>
+      {open && (
+        <div className={`absolute left-0 top-full ${width} border border-steel-soft/30 bg-paper py-2 shadow-lg`}>
+          {items.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="block px-4 py-2 text-sm text-ink hover:bg-mist-2 hover:text-copper"
+            >
+              {l.label}
+            </Link>
+          ))}
+          {footerLink && (
+            <Link
+              href={footerLink.href}
+              className="mt-1 block border-t border-steel-soft/20 px-4 pt-2.5 text-sm font-medium text-copper hover:underline"
+            >
+              {footerLink.label}
+            </Link>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MobileNavGroup({
+  label,
+  items,
+  footerLink,
+  onNavigate,
+}: {
+  label: string;
+  items: NavLink[];
+  footerLink?: NavLink;
+  onNavigate: () => void;
+}) {
+  return (
+    <>
+      <span className="px-2 pt-2 pb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">{label}</span>
+      {items.map((l) => (
+        <Link
+          key={l.href}
+          href={l.href}
+          className="px-2 py-2 text-sm text-ink hover:text-copper"
+          onClick={onNavigate}
+        >
+          {l.label}
+        </Link>
+      ))}
+      {footerLink && (
+        <Link
+          href={footerLink.href}
+          className="px-2 py-2 text-sm font-medium text-copper"
+          onClick={onNavigate}
+        >
+          {footerLink.label}
+        </Link>
+      )}
+    </>
+  );
+}
+
+function MobileSection({ children }: { children: ReactNode }) {
+  return <div className="flex flex-col border-t border-steel-soft/20 pt-2 mt-2 first:mt-0 first:border-t-0 first:pt-0">{children}</div>;
+}
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
-  const [sectorsOpen, setSectorsOpen] = useState(false);
   const { count } = useQuote();
+  const closeMobile = () => setMobileOpen(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-steel-soft/30 bg-paper/95 backdrop-blur-sm">
@@ -80,55 +173,20 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
-          <div
-            className="relative"
-            onMouseEnter={() => setSectorsOpen(true)}
-            onMouseLeave={() => setSectorsOpen(false)}
-          >
-            <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-ink hover:text-copper">
-              Nos secteurs <ChevronDown size={14} />
-            </button>
-            {sectorsOpen && (
-              <div className="absolute left-0 top-full w-64 border border-steel-soft/30 bg-paper py-2 shadow-lg">
-                {sectorLinks.map((l) => (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    className="block px-4 py-2 text-sm text-ink hover:bg-mist-2 hover:text-copper"
-                  >
-                    {l.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-          {navLinks.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="px-3 py-2 text-sm font-medium text-ink hover:text-copper"
-            >
-              {l.label}
-            </Link>
-          ))}
-          <div className="relative" onMouseEnter={() => setAboutOpen(true)} onMouseLeave={() => setAboutOpen(false)}>
-            <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-ink hover:text-copper">
-              À propos <ChevronDown size={14} />
-            </button>
-            {aboutOpen && (
-              <div className="absolute left-0 top-full w-56 border border-steel-soft/30 bg-paper py-2 shadow-lg">
-                {aboutLinks.map((l) => (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    className="block px-4 py-2 text-sm text-ink hover:bg-mist-2 hover:text-copper"
-                  >
-                    {l.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+          <NavDropdown label="Nos secteurs" items={sectorLinks} width="w-64" />
+          <NavDropdown
+            label="Catalogue"
+            items={catalogueLinks}
+            footerLink={{ href: "/catalogue", label: "Tout le catalogue" }}
+            width="w-72"
+          />
+          <NavDropdown
+            label="Marques"
+            items={brandLinks}
+            footerLink={{ href: "/marques", label: "Toutes les marques" }}
+          />
+          <NavDropdown label="Ressources" items={resourceLinks} />
+          <NavDropdown label="À propos" items={aboutLinks} />
         </nav>
 
         <div className="flex items-center gap-3">
@@ -163,53 +221,31 @@ export function Header() {
       {mobileOpen && (
         <div className="border-t border-steel-soft/30 bg-paper lg:hidden">
           <Container className="flex flex-col py-3">
-            <span className="px-2 pt-1 pb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">
-              Nos secteurs
-            </span>
-            {sectorLinks.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="px-2 py-2 text-sm text-ink hover:text-copper"
-                onClick={() => setMobileOpen(false)}
-              >
-                {l.label}
-              </Link>
-            ))}
-            <div className="mt-2 border-t border-steel-soft/20 pt-2">
-              {navLinks.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="block px-2 py-2 text-sm text-ink hover:text-copper"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </div>
-            <span className="px-2 pt-2 pb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">
-              À propos
-            </span>
-            {aboutLinks.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="px-2 py-2 text-sm text-ink hover:text-copper"
-                onClick={() => setMobileOpen(false)}
-              >
-                {l.label}
-              </Link>
-            ))}
-            <div className="mt-2 border-t border-steel-soft/20 pt-2">
-              <Link
-                href="/contact"
-                className="block px-2 py-2 text-sm font-medium text-copper"
-                onClick={() => setMobileOpen(false)}
-              >
-                Contact
-              </Link>
-            </div>
+            <MobileSection>
+              <MobileNavGroup label="Nos secteurs" items={sectorLinks} onNavigate={closeMobile} />
+            </MobileSection>
+            <MobileSection>
+              <MobileNavGroup
+                label="Catalogue"
+                items={catalogueLinks}
+                footerLink={{ href: "/catalogue", label: "Tout le catalogue" }}
+                onNavigate={closeMobile}
+              />
+            </MobileSection>
+            <MobileSection>
+              <MobileNavGroup
+                label="Marques"
+                items={brandLinks}
+                footerLink={{ href: "/marques", label: "Toutes les marques" }}
+                onNavigate={closeMobile}
+              />
+            </MobileSection>
+            <MobileSection>
+              <MobileNavGroup label="Ressources" items={resourceLinks} onNavigate={closeMobile} />
+            </MobileSection>
+            <MobileSection>
+              <MobileNavGroup label="À propos" items={aboutLinks} onNavigate={closeMobile} />
+            </MobileSection>
           </Container>
         </div>
       )}
