@@ -1,3 +1,3 @@
 :HL["/gat-group/_next/static/chunks/1qy6690-ma89j.css","style"]
 :HC["/",""]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"catalogue","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"huile-moteur-castrol","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"PV4tFcajYjQ5-sz_FseFd"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"catalogue","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"huile-moteur-castrol","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"Nf3r3bi5zN0hN7yEY5MqB"}
