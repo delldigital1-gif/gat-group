@@ -25,8 +25,8 @@ export default function SectorsPage() {
         </div>
         <div className="relative aspect-[4/3] overflow-hidden border border-steel-soft/30 lg:aspect-[16/11]">
           <Image
-            src={assetPath("/images/eau-bassin-reservoir.jpg")}
-            alt="Bassin de rétention d'eau — projet eau & assainissement suivi par GAT"
+            src={assetPath("/images/eau-bassin-reservoir-2.jpg")}
+            alt="Équipe GAT en visite sur un bassin de rétention d'eau"
             fill
             className="object-cover"
             priority

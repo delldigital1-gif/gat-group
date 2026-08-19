@@ -117,6 +117,24 @@ export default function AboutPage() {
             />
           </div>
         </div>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className="relative aspect-[16/10] overflow-hidden border border-steel-soft/30">
+            <Image
+              src={assetPath("/images/gat-reunion-projet.jpg")}
+              alt="Réunion de suivi de projet avec l'équipe GAT"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="relative aspect-[16/10] overflow-hidden border border-steel-soft/30">
+            <Image
+              src={assetPath("/images/realisation-chantier-reunion.jpg")}
+              alt="Visite de chantier avec l'équipe GAT"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
       </div>
     </Container>
   );

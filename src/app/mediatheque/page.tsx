@@ -27,6 +27,11 @@ const documents = [
     type: "PDF",
     url: "https://www.alectrix.co.za/wp/wp-content/uploads/2025/02/OMICRON-Products-Solutions-Overview-ENU-02.2025.pdf",
   },
+  {
+    title: "Xylem Service Solutions — Custom Fabrication",
+    type: "PDF",
+    url: "/docs/xylem-service-solutions-custom-fabrication.pdf",
+  },
 ];
 
 export default function MediaLibraryPage() {

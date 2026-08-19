@@ -11,19 +11,19 @@ import { realisations } from "@/lib/data/realisations";
 
 const process = [
   {
+    step: "Fabrication",
+    text: "Les profilés Alustar sont façonnés en usine avant d'être conditionnés pour l'export.",
+    image: "/images/alustar-usine-profiles.jpg",
+  },
+  {
     step: "Transport",
-    text: "Les vitrages et profilés sont conditionnés et acheminés jusqu'au chantier.",
-    image: "/images/menuiserie-livraison-vitrage.jpg",
+    text: "Les profilés et vitrages sont chargés et acheminés jusqu'au chantier.",
+    image: "/images/alustar-livraison-profiles.jpg",
   },
   {
     step: "Pose",
     text: "Portes, baies et façades sont posées par nos équipes, à l'intérieur comme en hauteur.",
-    image: "/images/menuiserie-pose-interieur.jpg",
-  },
-  {
-    step: "Finition",
-    text: "Façade vitrée terminée, prête à l'usage — ici sur un bâtiment tertiaire à Lomé.",
-    image: "/images/menuiserie-facade-exterieure.jpg",
+    image: "/images/menuiserie-facade-vitree-pose.jpg",
   },
 ];
 
@@ -42,7 +42,7 @@ export default function CarpentryPage() {
           <p className="mt-3 text-base leading-relaxed text-steel">
             GAT conçoit et réalise des ouvrages de menuiserie aluminium et bois pour le
             résidentiel, le tertiaire et les bâtiments publics : fenêtres, portes, façades et
-            vérandas — avec les profilés <strong className="text-blueprint">Maxwill</strong>.
+            vérandas — avec les profilés <strong className="text-blueprint">Alustar</strong>.
           </p>
         </div>
         <div className="relative aspect-[4/5] overflow-hidden border border-steel-soft/30 lg:aspect-[3/4]">
@@ -90,7 +90,7 @@ export default function CarpentryPage() {
       </div>
 
       <div className="mt-14">
-        <SectionDivider label="Gamme Maxwill" />
+        <SectionDivider label="Gamme Alustar" />
         {carpentryProducts.length > 0 && (
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {carpentryProducts.map((p) => (
@@ -132,10 +132,16 @@ export default function CarpentryPage() {
         <SectionDivider label="Galerie chantiers" />
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           <div className="relative aspect-[16/10] overflow-hidden border border-steel-soft/30">
-            <Image src={assetPath("/images/menuiserie-facade-immeuble.jpg")} alt="Façade vitrée en cours de pose" fill className="object-cover" />
+            <Image src={assetPath("/images/menuiserie-echafaudage-facade.jpg")} alt="Façade vitrée en cours de pose sur échafaudage" fill className="object-cover" />
           </div>
           <div className="relative aspect-[16/10] overflow-hidden border border-steel-soft/30">
-            <Image src={assetPath("/images/menuiserie-chantier-soir.jpg")} alt="Pose de baies vitrées en fin de chantier" fill className="object-cover" />
+            <Image src={assetPath("/images/menuiserie-facade-jour.jpg")} alt="Façade vitrée terminée" fill className="object-cover" />
+          </div>
+          <div className="relative aspect-[16/10] overflow-hidden border border-steel-soft/30">
+            <Image src={assetPath("/images/menuiserie-pose-porte-vitree.jpg")} alt="Équipe GAT posant une porte vitrée aluminium" fill className="object-cover" />
+          </div>
+          <div className="relative aspect-[16/10] overflow-hidden border border-steel-soft/30">
+            <Image src={assetPath("/images/menuiserie-equipe-celebration.jpg")} alt="Équipe GAT après la pose d'une menuiserie aluminium" fill className="object-cover" />
           </div>
         </div>
       </div>

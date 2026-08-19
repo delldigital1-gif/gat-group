@@ -12,7 +12,7 @@ export const pillars: Pillar[] = [
     slug: "menuiserie",
     name: "Menuiserie Aluminium, Bois & Métallique",
     description:
-      "Conception et réalisation d'ouvrages sur-mesure — fenêtres, portes, façades, vérandas et structures métalliques — avec les profilés Maxwill.",
+      "Conception et réalisation d'ouvrages sur-mesure — fenêtres, portes, façades, vérandas et structures métalliques — avec les profilés Alustar.",
     href: "/menuiserie-aluminium-bois",
   },
   {

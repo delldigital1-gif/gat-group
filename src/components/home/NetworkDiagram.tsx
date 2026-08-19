@@ -7,7 +7,7 @@ const brandNodes: BrandNode[] = [
   { label: "Xylem", sub: "Eau & traitement", href: "/marques/xylem" },
   { label: "Sedis", sub: "Chaînes & levage", href: "/marques/sedis" },
   { label: "Castrol", sub: "Lubrifiants", href: "/marques/castrol" },
-  { label: "Maxwill", sub: "Alu menuiserie", href: "/marques/maxwill" },
+  { label: "Alustar", sub: "Alu menuiserie", href: "/marques/alustar" },
   { label: "LOUKIL", sub: "Énergie & agro", href: "/marques/loukil" },
 ];
 

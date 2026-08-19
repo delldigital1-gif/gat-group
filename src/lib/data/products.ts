@@ -4,8 +4,9 @@ import { Product } from "@/lib/types";
 // références réelles (recherchées sur les sites officiels des marques,
 // GAT étant distributeur agréé). Références internes GAT (GAT-XX-...)
 // conservées quand la marque n'a pas de référence produit publique.
-// Produits Maxwill : noms de démonstration en attendant la confirmation
-// du vrai fabricant représenté par GAT pour la menuiserie aluminium.
+// Produits Alustar : marque confirmée par le client (visible sur les
+// profilés en usine sur les photos GAT) ; noms de produits toujours
+// génériques en attendant le catalogue Alustar détaillé.
 
 export const products: Product[] = [
   {
@@ -190,10 +191,10 @@ export const products: Product[] = [
   {
     slug: "profile-alu-fenetre-coulissante",
     name: "Profilé aluminium fenêtre coulissante",
-    brandSlug: "maxwill",
+    brandSlug: "alustar",
     categorySlug: "menuiserie-aluminium",
     sectorSlugs: ["btp-electrification"],
-    reference: "GAT-MX-FEN-060",
+    reference: "GAT-AS-FEN-060",
     shortDescription: "Système coulissant 2 rails pour fenêtres et baies vitrées.",
     description:
       "Profilé aluminium thermolaqué pour fenêtres coulissantes, compatible vitrage simple et double, avec accessoires de quincaillerie assortis.",
@@ -207,10 +208,10 @@ export const products: Product[] = [
   {
     slug: "profile-alu-porte-battante",
     name: "Profilé aluminium porte battante",
-    brandSlug: "maxwill",
+    brandSlug: "alustar",
     categorySlug: "menuiserie-aluminium",
     sectorSlugs: ["btp-electrification"],
-    reference: "GAT-MX-PRT-045",
+    reference: "GAT-AS-PRT-045",
     shortDescription: "Profilé robuste pour portes battantes intérieures et extérieures.",
     description:
       "Système de porte battante en aluminium, conçu pour les accès à fort passage — bureaux, commerces, bâtiments publics.",
@@ -223,10 +224,10 @@ export const products: Product[] = [
   {
     slug: "veranda-aluminium-modulaire",
     name: "Système véranda aluminium modulaire",
-    brandSlug: "maxwill",
+    brandSlug: "alustar",
     categorySlug: "menuiserie-aluminium",
     sectorSlugs: ["btp-electrification"],
-    reference: "GAT-MX-VER-030",
+    reference: "GAT-AS-VER-030",
     shortDescription: "Structure modulaire pour vérandas et auvents en aluminium.",
     description: "Structure aluminium modulaire pour la réalisation de vérandas, auvents et extensions vitrées.",
     specs: [

@@ -87,7 +87,7 @@ export const chatNodes: Record<string, ChatNode> = {
   carpentry: {
     id: "carpentry",
     message:
-      "Notre activité Menuiserie Aluminium & Bois couvre fenêtres, portes, façades et vérandas avec les profilés Maxwill. Nos équipes gèrent le transport, la pose et la finition jusqu'au chantier — au Togo comme en Côte d'Ivoire.",
+      "Notre activité Menuiserie Aluminium & Bois couvre fenêtres, portes, façades et vérandas avec les profilés Alustar. Nos équipes gèrent le transport, la pose et la finition jusqu'au chantier — au Togo comme en Côte d'Ivoire.",
     options: [
       { label: "Voir des réalisations", action: { type: "navigate", href: "/menuiserie-aluminium-bois" } },
       { label: "Demander un devis", action: { type: "node", nodeId: "quote" } },
@@ -161,7 +161,7 @@ const keywordGroups: { nodeId: string; keywords: string[] }[] = [
   },
   {
     nodeId: "carpentry",
-    keywords: ["menuiserie", "aluminium", "fenetre", "fenêtre", "porte", "facade", "façade", "veranda", "véranda", "bois", "maxwill"],
+    keywords: ["menuiserie", "aluminium", "fenetre", "fenêtre", "porte", "facade", "façade", "veranda", "véranda", "bois", "alustar"],
   },
   { nodeId: "quote", keywords: ["devis", "prix", "tarif", "cout", "coût", "commande", "combien"] },
   {
