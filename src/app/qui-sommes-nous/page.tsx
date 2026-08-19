@@ -24,7 +24,7 @@ const timeline = [
   {
     year: "Aujourd'hui",
     title: "Un réseau régional",
-    text: "GAT opère au Togo et en Côte d'Ivoire (GESEC), avec un magasin dédié aux pièces d'origine Toyota à Lomé.",
+    text: "GAT opère partout en Afrique de l'Ouest, avec un magasin dédié aux pièces d'origine Toyota à Lomé.",
   },
 ];
 
@@ -105,7 +105,7 @@ export default function AboutPage() {
         <div className="mt-6 grid gap-6 sm:grid-cols-[1fr_1.1fr] sm:items-center">
           <p className="text-base leading-relaxed text-steel">
             Techniciens, poseurs et commerciaux interviennent au quotidien sur les chantiers et
-            chez nos clients — au Togo comme en Côte d&apos;Ivoire — pour livrer, installer et
+            chez nos clients — partout en Afrique de l&apos;Ouest — pour livrer, installer et
             entretenir les équipements que GAT distribue.
           </p>
           <div className="relative aspect-[4/3] overflow-hidden border border-steel-soft/30 sm:aspect-[16/10]">

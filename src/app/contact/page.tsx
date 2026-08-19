@@ -14,12 +14,6 @@ const offices = [
     phone: "+228 90 14 12 01",
     email: "gat@gatgroup.org",
   },
-  {
-    name: "GAT Côte d'Ivoire — GESEC",
-    address: "Abidjan, Côte d'Ivoire",
-    phone: "—",
-    email: "gesec@gatgroup.org",
-  },
 ];
 
 export default function ContactPage() {
@@ -39,8 +33,8 @@ export default function ContactPage() {
         Parlons de votre projet
       </h1>
       <p className="mt-3 max-w-2xl text-base leading-relaxed text-steel">
-        Une question sur un produit, un devis ou un chantier ? Nos équipes au Togo et en Côte
-        d&apos;Ivoire vous répondent.
+        Une question sur un produit, un devis ou un chantier ? Nos équipes vous répondent, partout
+        en Afrique de l&apos;Ouest.
       </p>
 
       <SectionDivider />

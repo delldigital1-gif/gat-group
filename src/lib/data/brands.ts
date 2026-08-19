@@ -6,7 +6,7 @@ export const brands: Brand[] = [
     name: "Xylem",
     tagline: "Solutions globales pour l'eau",
     description:
-      "GAT est partenaire de Xylem au Togo et au Bénin pour le pompage, le traitement et la mesure de l'eau — du point de captage au réseau de distribution. Au-delà de la fourniture d'équipements (gammes Flygt, Bell & Gossett et Sensus pour le comptage), GAT s'appuie sur les services Xylem Service Solutions : conception, installation/mise en service et exploitation/maintenance.",
+      "GAT est partenaire de Xylem en Afrique de l'Ouest pour le pompage, le traitement et la mesure de l'eau — du point de captage au réseau de distribution. Au-delà de la fourniture d'équipements (gammes Flygt, Bell & Gossett et Sensus pour le comptage), GAT s'appuie sur les services Xylem Service Solutions : conception, installation/mise en service et exploitation/maintenance.",
     country: "États-Unis",
     website: "https://www.xylem.com",
     logoInitials: "XY",
@@ -27,7 +27,7 @@ export const brands: Brand[] = [
     name: "Sedis",
     tagline: "Chaînes industrielles depuis 70 ans",
     description:
-      "1ᵉʳ fabricant français de chaînes industrielles : transmission, levage, manutention et agricole. GAT distribue la gamme Sedis au Togo et au Bénin, dont les chaînes traitement Delta®, conçues pour les travaux publics en milieu abrasif (dureté de surface jusqu'à 1800 Vickers).",
+      "1ᵉʳ fabricant français de chaînes industrielles : transmission, levage, manutention et agricole. GAT distribue la gamme Sedis en Afrique de l'Ouest, dont les chaînes traitement Delta®, conçues pour les travaux publics en milieu abrasif (dureté de surface jusqu'à 1800 Vickers).",
     country: "France",
     website: "https://www.sedis.com",
     logoInitials: "SD",
@@ -51,7 +51,7 @@ export const brands: Brand[] = [
     name: "Alustar",
     tagline: "Profilés & panneaux composites aluminium",
     description:
-      "Profilés et panneaux composites aluminium (ACP) utilisés par GAT pour ses ouvrages de menuiserie — fenêtres, portes, façades vitrées et vérandas. Livrés directement d'usine et posés par les équipes GAT au Togo et en Côte d'Ivoire.",
+      "Profilés et panneaux composites aluminium (ACP) utilisés par GAT pour ses ouvrages de menuiserie — fenêtres, portes, façades vitrées et vérandas. Livrés directement d'usine et posés par les équipes GAT partout en Afrique de l'Ouest.",
     country: "Chine",
     logoInitials: "AS",
     photoUrls: ["/images/alustar-usine-profiles.jpg", "/images/alustar-usine-moustiquaires.jpg", "/images/alustar-livraison-profiles.jpg"],

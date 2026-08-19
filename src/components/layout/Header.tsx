@@ -416,15 +416,7 @@ export function Header() {
           </div>
           <div className="flex items-center gap-4 font-mono uppercase tracking-[0.12em] text-steel-soft">
             <Link href="/contact" className="hover:text-white">
-              GAT Togo
-            </Link>
-            <span aria-hidden>·</span>
-            <Link href="/contact" className="hover:text-white">
-              GAT Côte d&apos;Ivoire — GESEC
-            </Link>
-            <span aria-hidden>·</span>
-            <Link href="/contact" className="hover:text-white">
-              GAT Bénin
+              GAT — Afrique de l&apos;Ouest
             </Link>
           </div>
         </Container>

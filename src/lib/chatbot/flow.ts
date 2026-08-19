@@ -52,7 +52,7 @@ export const chatNodes: Record<string, ChatNode> = {
   "brand-xylem": {
     id: "brand-xylem",
     message:
-      "Xylem est notre partenaire pour l'eau au Togo et au Bénin : pompes immergées, stations de traitement, compteurs, accessoires Flygt. Idéal pour vos projets d'adduction d'eau ou d'assainissement. Je vous mets ça dans votre liste de devis ?",
+      "Xylem est notre partenaire pour l'eau partout en Afrique de l'Ouest : pompes immergées, stations de traitement, compteurs, accessoires Flygt. Idéal pour vos projets d'adduction d'eau ou d'assainissement. Je vous mets ça dans votre liste de devis ?",
     options: [
       { label: "Voir les produits Xylem", action: { type: "navigate", href: "/marques/xylem" } },
       { label: "Aller au catalogue", action: { type: "navigate", href: "/catalogue" } },
@@ -87,7 +87,7 @@ export const chatNodes: Record<string, ChatNode> = {
   carpentry: {
     id: "carpentry",
     message:
-      "Notre activité Menuiserie Aluminium & Bois couvre fenêtres, portes, façades et vérandas avec les profilés Alustar. Nos équipes gèrent le transport, la pose et la finition jusqu'au chantier — au Togo comme en Côte d'Ivoire.",
+      "Notre activité Menuiserie Aluminium & Bois couvre fenêtres, portes, façades et vérandas avec les profilés Alustar. Nos équipes gèrent le transport, la pose et la finition jusqu'au chantier — partout en Afrique de l'Ouest.",
     options: [
       { label: "Voir des réalisations", action: { type: "navigate", href: "/menuiserie-aluminium-bois" } },
       { label: "Demander un devis", action: { type: "node", nodeId: "quote" } },

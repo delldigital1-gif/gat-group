@@ -32,7 +32,7 @@ export default function HomePage() {
               <p className="mt-5 max-w-md text-base leading-relaxed text-steel">
                 GAT fournit, distribue et installe les équipements industriels et solutions de
                 menuiserie aluminium &amp; bois pour l&apos;énergie, l&apos;eau, le BTP, le
-                pétrolier et l&apos;agro-industrie — au Togo et en Côte d&apos;Ivoire.
+                pétrolier et l&apos;agro-industrie — partout en Afrique de l&apos;Ouest.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <Button href="/catalogue" variant="copper">

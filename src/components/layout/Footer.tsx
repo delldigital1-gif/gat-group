@@ -114,7 +114,7 @@ export function Footer() {
           </div>
           <div className="title-block-cell">
             <p className="text-steel-soft/70">Échelle</p>
-            <p className="mt-1 text-mist">Togo — Côte d&apos;Ivoire</p>
+            <p className="mt-1 text-mist">Afrique de l&apos;Ouest</p>
           </div>
           <div className="title-block-cell">
             <p className="text-steel-soft/70">Révision</p>

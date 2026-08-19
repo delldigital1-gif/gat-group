@@ -20,7 +20,7 @@ import { ChatWidget } from "@/components/chat/ChatWidget";
 export const metadata: Metadata = {
   title: "GAT — Global African Trading | Fournitures industrielles & Menuiserie Aluminium",
   description:
-    "GAT distribue des équipements industriels (Xylem, Sedis, Castrol, LOUKIL) et conçoit des solutions de menuiserie aluminium & bois au Togo et en Côte d'Ivoire depuis 2007.",
+    "GAT distribue des équipements industriels (Xylem, Sedis, Castrol, LOUKIL) et conçoit des solutions de menuiserie aluminium & bois en Afrique de l'Ouest depuis 2007.",
 };
 
 export default function RootLayout({
