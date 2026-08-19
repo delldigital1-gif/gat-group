@@ -1,3 +1,3 @@
-:HL["/gat-group/_next/static/chunks/2h36muo2oabwt.css","style"]
+:HL["/gat-group/_next/static/chunks/3-4qa8jjeaqlu.css","style"]
 :HC["/",""]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"catalogue","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"profile-alu-porte-battante","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"-TnZ6pqs0ctO1LIN4yXx-"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"catalogue","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"profile-alu-porte-battante","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"dLlSqAn9KhGcNeiQrHBWF"}
