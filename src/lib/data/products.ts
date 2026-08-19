@@ -25,7 +25,7 @@ export const products: Product[] = [
       { label: "Alimentation", value: "Tri 380V" },
     ],
     availability: "import",
-    imageUrl: "/images/xylem-pompe-immergee.jpg",
+    imageUrl: "/images/xylem-flygt-n-technology.jpg",
   },
   {
     slug: "station-traitement-compacte",
@@ -61,23 +61,25 @@ export const products: Product[] = [
       { label: "Monitoring (option)", value: "i-ALERT™ vibration & température" },
     ],
     availability: "import",
+    imageUrl: "/images/xylem-bell-gossett-1510.jpg",
   },
   {
     slug: "compteur-eau-volumetrique",
-    name: "Compteur d'eau Sensus, une marque Xylem",
+    name: "Compteur d'eau Sensus iPERL+, une marque Xylem",
     brandSlug: "xylem",
     categorySlug: "pompes-traitement-eau",
     sectorSlugs: ["eau-assainissement"],
     reference: "GAT-XY-CPT-008",
-    shortDescription: "Compteur d'eau froide Sensus pour branchements particuliers et collectifs.",
+    shortDescription: "Compteur d'eau intelligent Sensus pour branchements particuliers et collectifs.",
     description:
-      "Compteur volumétrique à piston rotatif de la marque Sensus (Xylem), classe métrologique C, livré avec accessoires de branchement et pièces de raccord. Sensus équipe aussi GAT pour des solutions de comptage intelligent et de télérelève (réseau FlexNet) pour les projets qui le nécessitent.",
+      "Compteur d'eau Sensus iPERL+ (Xylem) à technologie électromagnétique, sans pièces mécaniques mobiles à l'usure. Journalisation de données intégrée, boîtier polymère ou métal selon le besoin. Sensus équipe aussi GAT pour des solutions de comptage intelligent et de télérelève (réseau FlexNet) sur les projets qui le nécessitent.",
     specs: [
+      { label: "Gamme", value: "Sensus iPERL+" },
       { label: "Diamètres", value: "DN15 à DN40" },
-      { label: "Classe métrologique", value: "C" },
-      { label: "Pression max.", value: "16 bar" },
+      { label: "Technologie", value: "Électromagnétique, sans pièces mobiles" },
     ],
     availability: "stock",
+    imageUrl: "/images/xylem-sensus-compteur.jpg",
   },
   {
     slug: "chaine-transmission-delta",
@@ -96,6 +98,7 @@ export const products: Product[] = [
       { label: "Dureté de surface", value: "1800 HV (vs 700 HV cémentation classique)" },
     ],
     availability: "stock",
+    imageUrl: "/images/sedis-chaine-delta.jpg",
   },
   {
     slug: "chaine-levage-grade-80",
@@ -132,20 +135,21 @@ export const products: Product[] = [
   },
   {
     slug: "huile-moteur-castrol",
-    name: "Castrol Vecton 15W-40 CK-4",
+    name: "Castrol Vecton Long Drain 10W-40 E6/E9",
     brandSlug: "castrol",
     categorySlug: "lubrifiants",
     sectorSlugs: ["btp-electrification", "petrolier-industrie-lourde"],
     reference: "GAT-CA-LUB-15W40",
     shortDescription: "Huile moteur diesel longue durée pour groupes électrogènes et engins de chantier.",
     description:
-      "Huile moteur diesel Castrol Vecton 15W-40 CK-4, formulée avec la System Pro Technology™ pour une réserve de performance prolongée : contrôle de l'oxydation, réduction des dépôts, neutralisation des acides. Adaptée aux moteurs sollicités en continu — groupes électrogènes, engins de chantier, flottes utilitaires.",
+      "Huile moteur diesel Castrol Vecton Long Drain 10W-40, formulée avec la System Pro Technology™ pour une réserve de performance prolongée : contrôle de l'oxydation, réduction des dépôts, neutralisation des acides. Adaptée aux moteurs sollicités en continu — groupes électrogènes, engins de chantier, flottes utilitaires.",
     specs: [
-      { label: "Viscosité", value: "15W-40" },
-      { label: "Spécification API", value: "CK-4" },
+      { label: "Viscosité", value: "10W-40" },
+      { label: "Spécification ACEA", value: "E6/E9" },
       { label: "Conditionnement", value: "Bidon 20 L / fût 200 L" },
     ],
     availability: "stock",
+    imageUrl: "/images/castrol-vecton.jpg",
   },
   {
     slug: "graisse-multiusage",
@@ -180,6 +184,7 @@ export const products: Product[] = [
       { label: "Additifs", value: "Extrême Pression (S/P)" },
     ],
     availability: "sur-commande",
+    imageUrl: "/images/castrol-alphasyn.jpg",
   },
   {
     slug: "profile-alu-fenetre-coulissante",
@@ -310,6 +315,7 @@ export const products: Product[] = [
       { label: "Précision", value: "Haute exactitude (étalonnage compteurs/PMU)" },
     ],
     availability: "import",
+    imageUrl: "/images/omicron-cmc256plus.jpg",
   },
 ];
 
