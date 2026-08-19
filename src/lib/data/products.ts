@@ -116,6 +116,7 @@ export const products: Product[] = [
       { label: "Norme", value: "ISO 4347 / EN 818-2" },
     ],
     availability: "stock",
+    imageUrl: "/images/sedis-chaine-levage.jpg",
   },
   {
     slug: "roue-pignon-transmission",
@@ -299,6 +300,7 @@ export const products: Product[] = [
     ],
     availability: "import",
     imageUrl: "/images/omicron-cmc500.png",
+    imageUrls: ["/images/omicron-cmc500.png", "/images/omicron-cmc500-application.jpg"],
   },
   {
     slug: "omicron-cmc256plus",
@@ -316,6 +318,7 @@ export const products: Product[] = [
     ],
     availability: "import",
     imageUrl: "/images/omicron-cmc256plus.jpg",
+    imageUrls: ["/images/omicron-cmc256plus.jpg", "/images/omicron-cmc256plus-panel.jpg"],
   },
 ];
 

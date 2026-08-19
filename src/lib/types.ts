@@ -35,7 +35,8 @@ export type Product = {
   specs: { label: string; value: string }[];
   availability: "stock" | "sur-commande" | "import";
   datasheetUrl?: string;
-  imageUrl?: string; // photo réelle, quand disponible
+  imageUrl?: string; // photo réelle, quand disponible (miniature catalogue = 1ère de imageUrls si présent)
+  imageUrls?: string[]; // galerie fiche produit ; à défaut, retombe sur imageUrl seul
 };
 
 // Les 9 secteurs "métier" ci-dessous se regroupent tous sous l'un des 3
