@@ -7,7 +7,6 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 // vers les sites des marques — pas de copie hébergée sur ce site, pour
 // rester à jour et éviter d'alourdir le dépôt de gros PDF).
 const documents = [
-  { title: "Brochure institutionnelle GAT", type: "PDF" },
   {
     title: "Catalogue Xylem Flygt — pompes submersibles",
     type: "PDF",
@@ -28,8 +27,6 @@ const documents = [
     type: "PDF",
     url: "https://www.alectrix.co.za/wp/wp-content/uploads/2025/02/OMICRON-Products-Solutions-Overview-ENU-02.2025.pdf",
   },
-  { title: "Gamme Maxwill — menuiserie aluminium", type: "PDF" },
-  { title: "Présentation Groupe LOUKIL", type: "PDF" },
 ];
 
 export default function MediaLibraryPage() {
@@ -60,31 +57,20 @@ export default function MediaLibraryPage() {
                 <p className="font-mono text-[11px] uppercase tracking-[0.06em] text-steel">{doc.type}</p>
               </div>
             </div>
-            {doc.url ? (
-              <a
-                href={doc.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 whitespace-nowrap border border-copper px-3 py-1.5 text-xs font-medium text-copper hover:bg-copper hover:text-white"
-              >
-                <FileDown size={14} /> Télécharger
-              </a>
-            ) : (
-              <button
-                disabled
-                className="flex items-center gap-1.5 whitespace-nowrap border border-steel-soft/40 px-3 py-1.5 text-xs font-medium text-steel"
-                title="Document à venir"
-              >
-                <FileDown size={14} /> Bientôt
-              </button>
-            )}
+            <a
+              href={doc.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 whitespace-nowrap border border-copper px-3 py-1.5 text-xs font-medium text-copper hover:bg-copper hover:text-white"
+            >
+              <FileDown size={14} /> Télécharger
+            </a>
           </div>
         ))}
       </div>
       <p className="mt-4 font-mono text-[11px] text-steel-soft">
-        Les brochures des marques partenaires sont fournies par leurs sites officiels respectifs
-        et s&apos;ouvrent dans un nouvel onglet. Les documents propres à GAT seront mis en ligne
-        dès leur finalisation.
+        Ces brochures sont fournies par les sites officiels des marques partenaires et
+        s&apos;ouvrent dans un nouvel onglet.
       </p>
     </Container>
   );
