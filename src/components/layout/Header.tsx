@@ -10,9 +10,9 @@ import { WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
 import { assetPath } from "@/lib/asset-path";
 
 const sectorLinks = [
-  { href: "/secteurs#centrale-achat", label: "Centrale d'achat" },
+  { href: "/secteurs", label: "Centrale d'achat" },
   { href: "/menuiserie-aluminium-bois", label: "Menuiserie Aluminium, Bois & Métallique" },
-  { href: "/secteurs#btp", label: "BTP" },
+  { href: "/btp", label: "BTP" },
 ];
 
 const navLinks = [

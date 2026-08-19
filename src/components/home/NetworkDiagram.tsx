@@ -14,7 +14,7 @@ const brandNodes: BrandNode[] = [
 const sectorNodes: SectorNode[] = [
   { label: "Énergie", href: "/secteurs#energie" },
   { label: "Eau & assainissement", href: "/secteurs#eau-assainissement" },
-  { label: "BTP & électrification", href: "/secteurs#btp-electrification" },
+  { label: "BTP & électrification", href: "/btp" },
   { label: "Télécommunications", href: "/secteurs#telecommunications" },
   { label: "Industrie lourde", href: "/secteurs#petrolier-industrie-lourde" },
 ];

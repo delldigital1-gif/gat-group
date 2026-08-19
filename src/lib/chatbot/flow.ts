@@ -78,7 +78,7 @@ export const chatNodes: Record<string, ChatNode> = {
     options: [
       { label: "Énergie", action: { type: "navigate", href: "/secteurs#energie" } },
       { label: "Eau & assainissement", action: { type: "navigate", href: "/secteurs#eau-assainissement" } },
-      { label: "BTP & électrification", action: { type: "navigate", href: "/secteurs#btp-electrification" } },
+      { label: "BTP & électrification", action: { type: "navigate", href: "/btp" } },
       { label: "Voir tous les secteurs", action: { type: "navigate", href: "/secteurs" } },
       { label: "⬅ Retour au menu", action: { type: "node", nodeId: "root" } },
     ],
