@@ -9,6 +9,8 @@ import { useQuote } from "@/lib/quote-context";
 import { WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
 import { assetPath } from "@/lib/asset-path";
 
+const aboutLinks = [{ href: "/qui-sommes-nous", label: "Qui sommes-nous" }];
+
 const sectorLinks = [
   { href: "/secteurs", label: "Centrale d'achat" },
   { href: "/menuiserie-aluminium-bois", label: "Menuiserie Aluminium, Bois & Métallique" },
@@ -24,6 +26,7 @@ const navLinks = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [sectorsOpen, setSectorsOpen] = useState(false);
   const { count } = useQuote();
 
@@ -78,9 +81,24 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
-          <Link href="/qui-sommes-nous" className="px-3 py-2 text-sm font-medium text-ink hover:text-copper">
-            Qui sommes-nous
-          </Link>
+          <div className="relative" onMouseEnter={() => setAboutOpen(true)} onMouseLeave={() => setAboutOpen(false)}>
+            <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-ink hover:text-copper">
+              À propos <ChevronDown size={14} />
+            </button>
+            {aboutOpen && (
+              <div className="absolute left-0 top-full w-56 border border-steel-soft/30 bg-paper py-2 shadow-lg">
+                {aboutLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className="block px-4 py-2 text-sm text-ink hover:bg-mist-2 hover:text-copper"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
           <div
             className="relative"
             onMouseEnter={() => setSectorsOpen(true)}
@@ -140,13 +158,19 @@ export function Header() {
       {mobileOpen && (
         <div className="border-t border-steel-soft/30 bg-paper lg:hidden">
           <Container className="flex flex-col py-3">
-            <Link
-              href="/qui-sommes-nous"
-              className="px-2 py-2 text-sm text-ink hover:text-copper"
-              onClick={() => setMobileOpen(false)}
-            >
-              Qui sommes-nous
-            </Link>
+            <span className="px-2 pt-1 pb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">
+              À propos
+            </span>
+            {aboutLinks.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="px-2 py-2 text-sm text-ink hover:text-copper"
+                onClick={() => setMobileOpen(false)}
+              >
+                {l.label}
+              </Link>
+            ))}
             <span className="px-2 pt-2 pb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">
               Nos secteurs
             </span>

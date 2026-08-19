@@ -37,10 +37,6 @@ export function Footer() {
               </span>
               Global African Trading
             </div>
-            <p className="mt-4 max-w-xs text-sm text-steel-soft">
-              Fournitures industrielles et menuiserie aluminium &amp; bois — au
-              service de l&apos;industrie togolaise et ouest-africaine depuis 2007.
-            </p>
           </div>
 
           <div>
