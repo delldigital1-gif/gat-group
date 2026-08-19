@@ -2,13 +2,28 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ReactNode, useEffect, useState } from "react";
-import { ChevronDown, Check, Eye, Globe, Mail, MapPin, Menu, X, Phone, MessageCircle } from "lucide-react";
+import { ReactNode, useEffect, useRef, useState } from "react";
+import {
+  ChevronDown,
+  Check,
+  Eye,
+  Globe,
+  Mail,
+  MapPin,
+  Menu,
+  Search,
+  X,
+  Phone,
+  MessageCircle,
+} from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
 import { assetPath } from "@/lib/asset-path";
 import { categories } from "@/lib/data/categories";
 import { brands } from "@/lib/data/brands";
+import { products } from "@/lib/data/products";
+import { sectors } from "@/lib/data/sectors";
+import { pillars } from "@/lib/data/pillars";
 
 type NavLink = { href: string; label: string };
 
@@ -32,6 +47,38 @@ const resourceLinks: NavLink[] = [
 ];
 
 const aboutLinks: NavLink[] = [{ href: "/qui-sommes-nous", label: "Qui sommes-nous" }];
+
+type SearchItem = { href: string; label: string; type: string; hint?: string };
+
+const staticPageResults: SearchItem[] = [
+  { href: "/qui-sommes-nous", label: "Qui sommes-nous", type: "Page" },
+  { href: "/contact", label: "Contact", type: "Page" },
+  { href: "/mediatheque", label: "Médiathèque", type: "Page" },
+  { href: "/realisations", label: "Nos réalisations", type: "Page" },
+  { href: "/catalogue", label: "Catalogue", type: "Page" },
+  { href: "/devis", label: "Ma liste de devis", type: "Page" },
+];
+
+const searchIndex: SearchItem[] = [
+  ...pillars.map((p) => ({ href: p.href, label: p.name, type: "Pôle d'activité" })),
+  ...sectors.map((s) => ({
+    href: s.pillar === "btp" ? "/btp" : `/secteurs#${s.slug}`,
+    label: s.name,
+    type: "Secteur",
+  })),
+  ...brands.map((b) => ({ href: `/marques/${b.slug}`, label: b.name, type: "Marque" })),
+  ...categories.map((c) => ({ href: `/catalogue?categorie=${c.slug}`, label: c.name, type: "Catégorie" })),
+  ...products.map((p) => ({ href: `/catalogue/${p.slug}`, label: p.name, type: "Produit", hint: p.reference })),
+  ...staticPageResults,
+];
+
+function searchSite(query: string): SearchItem[] {
+  const q = query.trim().toLowerCase();
+  if (q.length < 2) return [];
+  return searchIndex
+    .filter((item) => item.label.toLowerCase().includes(q) || item.hint?.toLowerCase().includes(q))
+    .slice(0, 8);
+}
 
 function NavDropdown({
   label,
@@ -132,6 +179,83 @@ function ContrastToggle({ on }: { on: boolean }) {
         }`}
       />
     </span>
+  );
+}
+
+function SearchPanel() {
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (open) inputRef.current?.focus();
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+
+  const close = () => {
+    setOpen(false);
+    setQuery("");
+  };
+
+  const results = searchSite(query);
+
+  return (
+    <div className="relative">
+      <button
+        aria-label={open ? "Fermer la recherche" : "Rechercher"}
+        className="p-2 text-blueprint hover:text-copper"
+        onClick={() => setOpen((v) => !v)}
+      >
+        {open ? <X size={20} /> : <Search size={20} />}
+      </button>
+      {open && (
+        <>
+          <div className="fixed inset-0 z-40" onClick={close} />
+          <div className="absolute right-0 top-full z-50 w-[min(22rem,calc(100vw-2rem))] border border-steel-soft/30 bg-paper shadow-lg">
+            <div className="flex items-center gap-2 border-b border-steel-soft/20 px-3 py-2.5">
+              <Search size={16} className="shrink-0 text-steel-soft" />
+              <input
+                ref={inputRef}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Rechercher un produit, une marque, un secteur…"
+                className="w-full bg-transparent text-sm text-ink placeholder:text-steel-soft focus:outline-none"
+              />
+            </div>
+            {query.trim().length >= 2 && (
+              <div className="max-h-80 overflow-y-auto py-1">
+                {results.length > 0 ? (
+                  results.map((r) => (
+                    <Link
+                      key={`${r.type}-${r.href}-${r.label}`}
+                      href={r.href}
+                      onClick={close}
+                      className="flex items-center justify-between gap-3 px-4 py-2.5 text-sm hover:bg-mist-2"
+                    >
+                      <span className="text-ink">{r.label}</span>
+                      <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.08em] text-copper">
+                        {r.type}
+                      </span>
+                    </Link>
+                  ))
+                ) : (
+                  <p className="px-4 py-4 text-sm text-steel">Aucun résultat pour « {query} ».</p>
+                )}
+              </div>
+            )}
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 
@@ -341,6 +465,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <SearchPanel />
           <div className="hidden lg:block">
             <UtilityPanel />
           </div>
