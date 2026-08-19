@@ -50,8 +50,8 @@ function CatalogueContent() {
         Trouvez l&apos;équipement, ajoutez-le à votre devis
       </h1>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-steel">
-        Catalogue de démonstration construit sur les familles générales des marques distribuées
-        par GAT. Aucun paiement en ligne : constituez votre liste, nous vous envoyons un devis.
+        Sélection de gammes réellement distribuées par GAT — Xylem, Sedis, Castrol, LOUKIL et
+        OMICRON. Aucun paiement en ligne : constituez votre liste, nous vous envoyons un devis.
       </p>
 
       <SectionDivider label="Filtres" />

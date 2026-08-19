@@ -6,7 +6,7 @@ export const brands: Brand[] = [
     name: "Xylem",
     tagline: "Solutions globales pour l'eau",
     description:
-      "GAT est partenaire de Xylem au Togo et au Bénin pour le pompage, le traitement et la mesure de l'eau — du point de captage au réseau de distribution. Au-delà de la fourniture d'équipements (gammes Flygt et Bell & Gossett), GAT s'appuie sur les services Xylem Service Solutions : conception, installation/mise en service et exploitation/maintenance.",
+      "GAT est partenaire de Xylem au Togo et au Bénin pour le pompage, le traitement et la mesure de l'eau — du point de captage au réseau de distribution. Au-delà de la fourniture d'équipements (gammes Flygt, Bell & Gossett et Sensus pour le comptage), GAT s'appuie sur les services Xylem Service Solutions : conception, installation/mise en service et exploitation/maintenance.",
     country: "États-Unis",
     website: "https://www.xylem.com",
     logoInitials: "XY",
@@ -37,7 +37,7 @@ export const brands: Brand[] = [
     name: "Castrol",
     tagline: "Lubrifiants industriels et automobiles",
     description:
-      "Distribution des lubrifiants Castrol pour parcs automobiles, engins lourds et installations industrielles.",
+      "GAT distribue les gammes industrielles Castrol : Vecton (huiles moteur diesel longue durée pour groupes électrogènes et engins de chantier), Hyspin (huiles hydrauliques) et Alphasyn (huiles synthétiques pour réducteurs) — pour les parcs automobiles, engins lourds et installations industrielles.",
     country: "Royaume-Uni",
     website: "https://www.castrol.com",
     logoInitials: "CA",
@@ -58,7 +58,7 @@ export const brands: Brand[] = [
     name: "Groupe LOUKIL",
     tagline: "Industriel tunisien, partenaire GAT depuis 2010",
     description:
-      "Fabricant et distributeur tunisien de générateurs solaires, pylônes, machinisme agricole et engrais — partenaire historique de GAT en Afrique de l'Ouest.",
+      "Industriel tunisien fondé en 1976, présent dans une trentaine de sociétés : générateurs solaires, pylônes télécom, machinisme agricole (représentant notamment Kubota, SAME, Gaspardo et Maschio) et engrais — partenaire historique de GAT en Afrique de l'Ouest.",
     country: "Tunisie",
     logoInitials: "LK",
     sectors: ["energie", "telecommunications", "agro-industrie"],

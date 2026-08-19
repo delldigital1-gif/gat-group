@@ -1,20 +1,23 @@
 import { Product } from "@/lib/types";
 
-// Catalogue de démonstration construit sur des familles générales.
-// À remplacer / enrichir avec le catalogue réel (réf., specs, fiches PDF)
-// quand il sera disponible — la structure ne change pas.
+// Produits Xylem, Sedis, Castrol, LOUKIL et OMICRON : gammes et
+// références réelles (recherchées sur les sites officiels des marques,
+// GAT étant distributeur agréé). Références internes GAT (GAT-XX-...)
+// conservées quand la marque n'a pas de référence produit publique.
+// Produits Maxwill : noms de démonstration en attendant la confirmation
+// du vrai fabricant représenté par GAT pour la menuiserie aluminium.
 
 export const products: Product[] = [
   {
     slug: "pompe-immergee-flygt",
-    name: "Pompe immergée pour eaux usées",
+    name: "Pompe immergée Flygt N-Technology",
     brandSlug: "xylem",
     categorySlug: "pompes-traitement-eau",
     sectorSlugs: ["eau-assainissement", "petrolier-industrie-lourde"],
     reference: "GAT-XY-PMP-014",
-    shortDescription: "Pompe submersible pour relevage d'eaux usées et eaux chargées.",
+    shortDescription: "Pompe submersible auto-nettoyante pour relevage d'eaux usées et eaux chargées.",
     description:
-      "Pompe immergée robuste destinée au relevage d'eaux usées en milieu municipal ou industriel. Roue anti-colmatage, moteur étanche IP68, adaptée aux postes de relevage et fosses de collecte.",
+      "Pompe immergée de la gamme Flygt N-Technology (Xylem) : roue N auto-nettoyante à passage libre, conçue pour les eaux usées non tamisées jusqu'à 8 % de matières solides. Près de 100 ans d'expérience Flygt dans le pompage d'eaux usées, plus d'un million de pompes installées dans le monde. Moteur étanche IP68, adaptée aux postes de relevage et fosses de collecte.",
     specs: [
       { label: "Débit max.", value: "180 m³/h" },
       { label: "HMT max.", value: "22 m" },
@@ -61,14 +64,14 @@ export const products: Product[] = [
   },
   {
     slug: "compteur-eau-volumetrique",
-    name: "Compteur d'eau volumétrique DN15-DN40",
+    name: "Compteur d'eau Sensus, une marque Xylem",
     brandSlug: "xylem",
     categorySlug: "pompes-traitement-eau",
     sectorSlugs: ["eau-assainissement"],
     reference: "GAT-XY-CPT-008",
-    shortDescription: "Compteur d'eau froide pour branchements particuliers et collectifs.",
+    shortDescription: "Compteur d'eau froide Sensus pour branchements particuliers et collectifs.",
     description:
-      "Compteur volumétrique à piston rotatif, classe métrologique C, livré avec accessoires de branchement et pièces de raccord.",
+      "Compteur volumétrique à piston rotatif de la marque Sensus (Xylem), classe métrologique C, livré avec accessoires de branchement et pièces de raccord. Sensus équipe aussi GAT pour des solutions de comptage intelligent et de télérelève (réseau FlexNet) pour les projets qui le nécessitent.",
     specs: [
       { label: "Diamètres", value: "DN15 à DN40" },
       { label: "Classe métrologique", value: "C" },
@@ -96,18 +99,18 @@ export const products: Product[] = [
   },
   {
     slug: "chaine-levage-grade-80",
-    name: "Chaîne de levage Grade 80",
+    name: "Chaîne de levage Sedis série LH (BL)",
     brandSlug: "sedis",
     categorySlug: "chaines-transmission-levage",
     sectorSlugs: ["marine-levage", "petrolier-industrie-lourde"],
     reference: "GAT-SD-LEV-080",
-    shortDescription: "Chaîne calibrée pour élingues et systèmes de levage certifiés.",
+    shortDescription: "Chaîne calibrée pour élingues et systèmes de levage certifiés, conforme ISO 4347.",
     description:
-      "Chaîne de levage Grade 80 calibrée, conforme aux normes en vigueur pour les opérations de levage portuaire et industriel.",
+      "Chaîne de levage de la série LH (BL) Sedis, conforme à la norme ISO 4347, calibrée pour les opérations de levage portuaire et industriel. Sedis propose aussi les séries J (LL, plaques type européen B) et AL (plaques type ANSI A) selon les accessoires et normes du client.",
     specs: [
       { label: "Diamètre", value: "10 mm" },
       { label: "CMU", value: "3,2 t" },
-      { label: "Norme", value: "EN 818-2" },
+      { label: "Norme", value: "ISO 4347 / EN 818-2" },
     ],
     availability: "stock",
   },
@@ -129,34 +132,54 @@ export const products: Product[] = [
   },
   {
     slug: "huile-moteur-castrol",
-    name: "Huile moteur multigrade industrielle",
+    name: "Castrol Vecton 15W-40 CK-4",
     brandSlug: "castrol",
     categorySlug: "lubrifiants",
     sectorSlugs: ["btp-electrification", "petrolier-industrie-lourde"],
     reference: "GAT-CA-LUB-15W40",
-    shortDescription: "Lubrifiant multigrade pour moteurs diesel et engins de chantier.",
+    shortDescription: "Huile moteur diesel longue durée pour groupes électrogènes et engins de chantier.",
     description:
-      "Huile moteur 15W-40 formulée pour les moteurs diesel sollicités en continu : groupes électrogènes, engins de chantier, flottes utilitaires.",
+      "Huile moteur diesel Castrol Vecton 15W-40 CK-4, formulée avec la System Pro Technology™ pour une réserve de performance prolongée : contrôle de l'oxydation, réduction des dépôts, neutralisation des acides. Adaptée aux moteurs sollicités en continu — groupes électrogènes, engins de chantier, flottes utilitaires.",
     specs: [
       { label: "Viscosité", value: "15W-40" },
+      { label: "Spécification API", value: "CK-4" },
       { label: "Conditionnement", value: "Bidon 20 L / fût 200 L" },
     ],
     availability: "stock",
   },
   {
     slug: "graisse-multiusage",
-    name: "Graisse technique multiusage",
+    name: "Castrol Hyspin AWS 46",
     brandSlug: "castrol",
     categorySlug: "lubrifiants",
     sectorSlugs: ["petrolier-industrie-lourde", "marine-levage"],
-    reference: "GAT-CA-GRS-002",
-    shortDescription: "Graisse lithium complexe pour paliers et roulements sollicités.",
-    description: "Graisse multiusage résistante à l'eau, adaptée aux roulements de pompes, treuils et convoyeurs.",
+    reference: "GAT-CA-HYS-046",
+    shortDescription: "Huile hydraulique anti-usure pour circuits de pompes, treuils et engins.",
+    description:
+      "Huile hydraulique Castrol Hyspin AWS 46, formulée pour une bonne résistance à l'usure et une stabilité thermique élevée — adaptée aux circuits hydrauliques de pompes, treuils, convoyeurs et engins de chantier sollicités en continu.",
     specs: [
-      { label: "Type de savon", value: "Lithium complexe" },
-      { label: "Conditionnement", value: "Cartouche 400 g" },
+      { label: "Gamme", value: "Hyspin AWS" },
+      { label: "Viscosité ISO", value: "VG 46" },
+      { label: "Conditionnement", value: "Fût 200 L" },
     ],
     availability: "stock",
+  },
+  {
+    slug: "huile-reducteur-alphasyn",
+    name: "Castrol Alphasyn EP",
+    brandSlug: "castrol",
+    categorySlug: "lubrifiants",
+    sectorSlugs: ["petrolier-industrie-lourde", "agro-industrie"],
+    reference: "GAT-CA-ALP-EP",
+    shortDescription: "Huile synthétique pour réducteurs, additifs Extrême Pression.",
+    description:
+      "Huile pour réducteurs Castrol Alphasyn EP, synthétique, avec additifs Extrême Pression soufre/phosphore — recommandée pour les réducteurs exposés au micro-piqûrage et aux environnements sévères (cimenteries, convoyeurs, machinisme agricole).",
+    specs: [
+      { label: "Gamme", value: "Alphasyn EP" },
+      { label: "Type", value: "Huile synthétique" },
+      { label: "Additifs", value: "Extrême Pression (S/P)" },
+    ],
+    availability: "sur-commande",
   },
   {
     slug: "profile-alu-fenetre-coulissante",
@@ -240,14 +263,14 @@ export const products: Product[] = [
   },
   {
     slug: "tracteur-agricole-loukil",
-    name: "Tracteur agricole avec attachements",
+    name: "Tracteur Kubota, distribué par LOUKIL",
     brandSlug: "loukil",
     categorySlug: "materiel-agricole",
     sectorSlugs: ["agro-industrie"],
     reference: "GAT-LK-TRC-075",
-    shortDescription: "Tracteur agricole polyvalent avec gamme d'attachements.",
+    shortDescription: "Tracteur agricole polyvalent avec gamme d'attachements — marque représentée par LOUKIL.",
     description:
-      "Tracteur agricole conçu pour les exploitations de taille moyenne, livrable avec charrue, herse et remorque selon les besoins du projet.",
+      "Tracteur Kubota, l'une des marques agricoles historiquement représentées par le Groupe LOUKIL (aux côtés de SAME, Gaspardo et Maschio pour le machinisme agricole). Conçu pour les exploitations de taille moyenne, livrable avec charrue, herse et remorque selon les besoins du projet.",
     specs: [
       { label: "Puissance moteur", value: "75 ch" },
       { label: "Attachements disponibles", value: "Charrue, herse, remorque" },
@@ -286,6 +309,22 @@ export const products: Product[] = [
     ],
     availability: "import",
     imageUrl: "/images/omicron-cmc500.png",
+  },
+  {
+    slug: "omicron-cmc256plus",
+    name: "OMICRON CMC 256plus",
+    brandSlug: "omicron",
+    categorySlug: "cables-appareillage",
+    sectorSlugs: ["energie", "automatisme"],
+    reference: "OMICRON CMC 256plus",
+    shortDescription: "Système de test relais haute précision et calibrateur universel.",
+    description:
+      "Le CMC 256plus combine test de relais de protection et calibrateur universel : sa précision permet aussi l'étalonnage de compteurs d'énergie, transducteurs de mesure, appareils de qualité d'énergie et PMU — pour les applications exigeant la plus haute exactitude.",
+    specs: [
+      { label: "Usage", value: "Test relais + calibrateur universel" },
+      { label: "Précision", value: "Haute exactitude (étalonnage compteurs/PMU)" },
+    ],
+    availability: "import",
   },
 ];
 
