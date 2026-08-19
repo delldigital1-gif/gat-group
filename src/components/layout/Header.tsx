@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ReactNode, useState } from "react";
-import { ChevronDown, Menu, X, FileText, Phone, MessageCircle } from "lucide-react";
+import { ReactNode, useEffect, useState } from "react";
+import { ChevronDown, Check, Eye, Globe, Mail, MapPin, Menu, X, FileText, Phone, MessageCircle } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { useQuote } from "@/lib/quote-context";
 import { WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
@@ -117,6 +117,159 @@ function MobileSection({ children }: { children: ReactNode }) {
   return <div className="flex flex-col border-t border-steel-soft/20 pt-2 mt-2 first:mt-0 first:border-t-0 first:pt-0">{children}</div>;
 }
 
+type Lang = "fr" | "en";
+
+function ContrastToggle({ on }: { on: boolean }) {
+  return (
+    <span
+      aria-hidden
+      className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
+        on ? "bg-copper" : "bg-mist/30"
+      }`}
+    >
+      <span
+        className={`inline-block h-4 w-4 translate-x-0.5 rounded-full bg-white transition-transform ${
+          on ? "translate-x-[18px]" : ""
+        }`}
+      />
+    </span>
+  );
+}
+
+function UtilityPanel() {
+  const [open, setOpen] = useState(false);
+  const [contrastOn, setContrastOn] = useState(false);
+  const [lang, setLang] = useState<Lang>("fr");
+
+  useEffect(() => {
+    const savedContrast = localStorage.getItem("gat-contrast") === "1";
+    setContrastOn(savedContrast);
+    document.documentElement.classList.toggle("contrast-high", savedContrast);
+    const savedLang = localStorage.getItem("gat-lang");
+    if (savedLang === "en" || savedLang === "fr") setLang(savedLang);
+  }, []);
+
+  const toggleContrast = () => {
+    const next = !contrastOn;
+    setContrastOn(next);
+    document.documentElement.classList.toggle("contrast-high", next);
+    localStorage.setItem("gat-contrast", next ? "1" : "0");
+  };
+
+  const chooseLang = (l: Lang) => {
+    setLang(l);
+    localStorage.setItem("gat-lang", l);
+    // NOTE : sélection persistée, mais le contenu du site n'est pas
+    // encore traduit — bascule fonctionnelle en attendant le chantier
+    // de traduction complète (voir échange avec le client).
+  };
+
+  return (
+    <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+      <button aria-label="Plus d'options" className="p-2 text-blueprint hover:text-copper">
+        <Menu size={20} />
+      </button>
+      {open && (
+        <div className="absolute right-0 top-full w-72 border border-blueprint-2 bg-blueprint py-2 text-mist shadow-lg">
+          <Link href="/contact" className="flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-blueprint-2">
+            <Mail size={16} /> Demande d&apos;information
+          </Link>
+          <Link href="/contact" className="flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-blueprint-2">
+            <MapPin size={16} /> Rechercher une agence
+          </Link>
+          <button
+            onClick={toggleContrast}
+            className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-sm hover:bg-blueprint-2"
+          >
+            <span className="flex items-center gap-3">
+              <Eye size={16} /> Activer le mode contraste élevé
+            </span>
+            <ContrastToggle on={contrastOn} />
+          </button>
+          <div className="mt-1 border-t border-mist/15 pt-1">
+            <button
+              onClick={() => chooseLang("fr")}
+              className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-sm hover:bg-blueprint-2"
+            >
+              <span className="flex items-center gap-3">
+                <Globe size={16} /> Français
+              </span>
+              {lang === "fr" && <Check size={15} className="text-copper" />}
+            </button>
+            <button
+              onClick={() => chooseLang("en")}
+              className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-sm hover:bg-blueprint-2"
+            >
+              <span className="flex items-center gap-3 pl-[26px]">English</span>
+              {lang === "en" && <Check size={15} className="text-copper" />}
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MobileUtilitySection({ onNavigate }: { onNavigate: () => void }) {
+  const [contrastOn, setContrastOn] = useState(false);
+  const [lang, setLang] = useState<Lang>("fr");
+
+  useEffect(() => {
+    setContrastOn(localStorage.getItem("gat-contrast") === "1");
+    const savedLang = localStorage.getItem("gat-lang");
+    if (savedLang === "en" || savedLang === "fr") setLang(savedLang);
+  }, []);
+
+  const toggleContrast = () => {
+    const next = !contrastOn;
+    setContrastOn(next);
+    document.documentElement.classList.toggle("contrast-high", next);
+    localStorage.setItem("gat-contrast", next ? "1" : "0");
+  };
+
+  const chooseLang = (l: Lang) => {
+    setLang(l);
+    localStorage.setItem("gat-lang", l);
+  };
+
+  return (
+    <MobileSection>
+      <span className="px-2 pt-2 pb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">Options</span>
+      <Link href="/contact" className="flex items-center gap-2 px-2 py-2 text-sm text-ink hover:text-copper" onClick={onNavigate}>
+        <Mail size={15} className="text-copper" /> Demande d&apos;information
+      </Link>
+      <Link href="/contact" className="flex items-center gap-2 px-2 py-2 text-sm text-ink hover:text-copper" onClick={onNavigate}>
+        <MapPin size={15} className="text-copper" /> Rechercher une agence
+      </Link>
+      <button
+        onClick={toggleContrast}
+        className="flex w-full items-center justify-between gap-2 px-2 py-2 text-sm text-ink hover:text-copper"
+      >
+        <span className="flex items-center gap-2">
+          <Eye size={15} className="text-copper" /> Contraste élevé
+        </span>
+        <ContrastToggle on={contrastOn} />
+      </button>
+      <div className="flex items-center gap-2 px-2 py-2 text-sm text-ink">
+        <Globe size={15} className="text-copper" />
+        <button
+          onClick={() => chooseLang("fr")}
+          className={lang === "fr" ? "font-semibold text-copper" : "text-ink hover:text-copper"}
+        >
+          Français
+        </button>
+        <span className="text-steel-soft">/</span>
+        <button
+          onClick={() => chooseLang("en")}
+          className={lang === "en" ? "font-semibold text-copper" : "text-ink hover:text-copper"}
+        >
+          English
+        </button>
+      </div>
+    </MobileSection>
+  );
+}
+
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { count } = useQuote();
@@ -208,6 +361,9 @@ export function Header() {
               </span>
             )}
           </Link>
+          <div className="hidden lg:block">
+            <UtilityPanel />
+          </div>
           <button
             aria-label="Ouvrir le menu"
             className="p-2 text-blueprint lg:hidden"
@@ -246,6 +402,7 @@ export function Header() {
             <MobileSection>
               <MobileNavGroup label="À propos" items={aboutLinks} onNavigate={closeMobile} />
             </MobileSection>
+            <MobileUtilitySection onNavigate={closeMobile} />
           </Container>
         </div>
       )}

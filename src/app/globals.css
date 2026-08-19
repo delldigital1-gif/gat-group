@@ -65,6 +65,20 @@ body {
   border-radius: 2px;
 }
 
+/* Mode contraste élevé — activé via le panneau du header, persiste en
+   localStorage. Assombrit les couleurs secondaires (texte gris-acier,
+   bordures, cuivre) pour un meilleur ratio de contraste WCAG. */
+html.contrast-high {
+  --color-steel: #16222D;
+  --color-steel-soft: #52697C;
+  --color-copper: #8A4608;
+  --color-copper-2: #6E3706;
+}
+
+html.contrast-high :focus-visible {
+  outline-width: 3px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
