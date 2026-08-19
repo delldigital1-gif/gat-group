@@ -35,7 +35,23 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <ArrowLeft size={15} /> Retour au catalogue
       </Link>
 
-      <div className="mt-6 grid gap-10 lg:grid-cols-[1.1fr_1fr]">
+      <div className="mt-6 max-w-2xl">
+        <div className="flex items-center justify-between">
+          {brand && <Eyebrow>{brand.name}</Eyebrow>}
+          <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-steel">
+            Réf. {product.reference}
+          </span>
+        </div>
+        <h1 className="mt-3 font-display text-3xl font-semibold text-blueprint">{product.name}</h1>
+        <p className="mt-3 text-base leading-relaxed text-steel">{product.description}</p>
+
+        <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.08em] text-copper">
+          {availabilityLabel[product.availability]}
+          {category && <span className="text-steel"> · {category.name}</span>}
+        </p>
+      </div>
+
+      <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_1fr]">
         <ProductGallery
           images={product.imageUrls ?? (product.imageUrl ? [product.imageUrl] : [])}
           alt={product.name}
@@ -43,21 +59,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         />
 
         <div>
-          <div className="flex items-center justify-between">
-            {brand && <Eyebrow>{brand.name}</Eyebrow>}
-            <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-steel">
-              Réf. {product.reference}
-            </span>
-          </div>
-          <h1 className="mt-3 font-display text-3xl font-semibold text-blueprint">{product.name}</h1>
-          <p className="mt-3 text-base leading-relaxed text-steel">{product.description}</p>
-
-          <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.08em] text-copper">
-            {availabilityLabel[product.availability]}
-            {category && <span className="text-steel"> · {category.name}</span>}
-          </p>
-
-          <div className="mt-6 border border-steel-soft/30">
+          <div className="border border-steel-soft/30">
             <p className="border-b border-steel-soft/20 bg-mist-2 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.1em] text-steel">
               Fiche technique
             </p>
