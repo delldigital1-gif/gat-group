@@ -31,7 +31,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
       <div className="mt-6 flex flex-wrap items-start justify-between gap-6">
         <div>
           <Eyebrow>{brand.country}</Eyebrow>
-          <h1 className="mt-3 font-display text-3xl font-semibold text-blueprint sm:text-4xl">
+          <h1 className="mt-3 font-display text-2xl font-semibold text-blueprint sm:text-3xl">
             {brand.name}
           </h1>
           <p className="mt-1 font-mono text-[12px] uppercase tracking-[0.08em] text-copper">{brand.tagline}</p>

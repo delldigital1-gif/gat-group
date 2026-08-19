@@ -18,7 +18,7 @@ export default function SectorsPage() {
       <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
         <div>
           <Eyebrow>Pôle d&apos;activité</Eyebrow>
-          <h1 className="mt-3 font-display text-3xl font-semibold text-blueprint sm:text-4xl">
+          <h1 className="mt-3 font-display text-2xl font-semibold text-blueprint sm:text-3xl">
             Centrale d&apos;achat
           </h1>
           <p className="mt-3 text-base leading-relaxed text-steel">{centraleAchat.description}</p>

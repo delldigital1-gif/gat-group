@@ -36,7 +36,7 @@ export default function CataloguePage() {
   return (
     <Container className="py-12">
       <Eyebrow>Catalogue produits</Eyebrow>
-      <h1 className="mt-3 font-display text-3xl font-semibold text-blueprint sm:text-4xl">
+      <h1 className="mt-3 font-display text-2xl font-semibold text-blueprint sm:text-3xl">
         Trouvez l&apos;équipement, ajoutez-le à votre devis
       </h1>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-steel">

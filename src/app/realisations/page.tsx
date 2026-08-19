@@ -9,7 +9,7 @@ export default function RealisationsPage() {
   return (
     <Container className="py-12">
       <Eyebrow>Nos réalisations</Eyebrow>
-      <h1 className="mt-3 max-w-2xl font-display text-3xl font-semibold text-blueprint sm:text-4xl">
+      <h1 className="mt-3 max-w-2xl font-display text-2xl font-semibold text-blueprint sm:text-3xl">
         Des projets exécutés sur le terrain
       </h1>
       <p className="mt-3 max-w-2xl text-base leading-relaxed text-steel">

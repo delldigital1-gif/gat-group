@@ -34,7 +34,7 @@ export default function AboutPage() {
       <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-stretch">
         <div>
           <Eyebrow>Qui sommes-nous</Eyebrow>
-          <h1 className="mt-3 font-display text-3xl font-semibold text-blueprint sm:text-4xl">
+          <h1 className="mt-3 font-display text-2xl font-semibold text-blueprint sm:text-3xl">
             Spécialiste de la fourniture d&apos;équipements industriels et de la menuiserie aluminium, bois &amp; métallique
           </h1>
           <p className="mt-5 text-base leading-relaxed text-steel">

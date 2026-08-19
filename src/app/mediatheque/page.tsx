@@ -15,7 +15,7 @@ export default function MediaLibraryPage() {
   return (
     <Container className="py-12">
       <Eyebrow>Médiathèque</Eyebrow>
-      <h1 className="mt-3 max-w-2xl font-display text-3xl font-semibold text-blueprint sm:text-4xl">
+      <h1 className="mt-3 max-w-2xl font-display text-2xl font-semibold text-blueprint sm:text-3xl">
         Brochures &amp; fiches techniques
       </h1>
       <p className="mt-3 max-w-2xl text-base leading-relaxed text-steel">
