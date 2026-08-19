@@ -1,2 +1,2 @@
-:HL["/gat-group/_next/static/chunks/36d6t4fa6vz87.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"amhnVT0WJYuj-KAoZcz-i"}
+:HL["/gat-group/_next/static/chunks/3ex8olg3ub67r.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"VIW3G_XMJRHkAAAVeOz2c"}
