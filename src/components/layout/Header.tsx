@@ -9,23 +9,22 @@ import { useQuote } from "@/lib/quote-context";
 import { WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
 import { assetPath } from "@/lib/asset-path";
 
-const gatLinks = [
-  { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
-  { href: "/secteurs", label: "Nos secteurs" },
-  { href: "/realisations", label: "Nos réalisations" },
+const sectorLinks = [
+  { href: "/secteurs#centrale-achat", label: "Centrale d'achat" },
+  { href: "/menuiserie-aluminium-bois", label: "Menuiserie Aluminium, Bois & Métallique" },
+  { href: "/secteurs#btp", label: "BTP" },
 ];
 
 const navLinks = [
-  { href: "/catalogue", label: "Catalogue" },
   { href: "/marques", label: "Marques partenaires" },
-  { href: "/menuiserie-aluminium-bois", label: "Menuiserie Alu & Bois" },
+  { href: "/catalogue", label: "Catalogue" },
   { href: "/mediatheque", label: "Médiathèque" },
   { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [gatOpen, setGatOpen] = useState(false);
+  const [sectorsOpen, setSectorsOpen] = useState(false);
   const { count } = useQuote();
 
   return (
@@ -79,13 +78,20 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
-          <div className="relative" onMouseEnter={() => setGatOpen(true)} onMouseLeave={() => setGatOpen(false)}>
+          <Link href="/qui-sommes-nous" className="px-3 py-2 text-sm font-medium text-ink hover:text-copper">
+            Qui sommes-nous
+          </Link>
+          <div
+            className="relative"
+            onMouseEnter={() => setSectorsOpen(true)}
+            onMouseLeave={() => setSectorsOpen(false)}
+          >
             <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-ink hover:text-copper">
-              GAT <ChevronDown size={14} />
+              Nos secteurs <ChevronDown size={14} />
             </button>
-            {gatOpen && (
-              <div className="absolute left-0 top-full w-56 border border-steel-soft/30 bg-paper py-2 shadow-lg">
-                {gatLinks.map((l) => (
+            {sectorsOpen && (
+              <div className="absolute left-0 top-full w-64 border border-steel-soft/30 bg-paper py-2 shadow-lg">
+                {sectorLinks.map((l) => (
                   <Link
                     key={l.href}
                     href={l.href}
@@ -134,10 +140,17 @@ export function Header() {
       {mobileOpen && (
         <div className="border-t border-steel-soft/30 bg-paper lg:hidden">
           <Container className="flex flex-col py-3">
-            <span className="px-2 pt-1 pb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">
-              GAT
+            <Link
+              href="/qui-sommes-nous"
+              className="px-2 py-2 text-sm text-ink hover:text-copper"
+              onClick={() => setMobileOpen(false)}
+            >
+              Qui sommes-nous
+            </Link>
+            <span className="px-2 pt-2 pb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">
+              Nos secteurs
             </span>
-            {gatLinks.map((l) => (
+            {sectorLinks.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
