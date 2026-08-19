@@ -1,4 +1,4 @@
-:HL["/gat-group/_next/static/chunks/1ckyw1bxlusb5.css","style"]
+:HL["/gat-group/_next/static/chunks/1lxcgnrzs2-al.css","style"]
 :HC["/",""]
 :HL["https://gatgroup.org/wp-content/uploads/2024/04/xylem.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"marques","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"xylem","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"RbG1GBYwhFrx23BAmUEiP"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"marques","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"xylem","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"kR8-SykB10fQa2IlsvXVF"}
