@@ -11,17 +11,17 @@
 */
 
 :root {
-  /* Couleurs nommées */
-  --color-blueprint: #0F2A42; /* bleu plan technique — fonds sombres, nav, footer */
-  --color-blueprint-2: #18405F; /* variante plus claire, hover/accents sombres */
-  --color-steel: #4A6478; /* bleu-gris acier — texte secondaire, bordures */
-  --color-steel-soft: #8FA2B0; /* acier clair — bordures discrètes, placeholders */
+  /* Couleurs nommées — palette alignée sur le logo GAT (vert / noir / rouge bordeaux) */
+  --color-blueprint: #128A56; /* vert GAT — titres, fonds sombres, nav, footer */
+  --color-blueprint-2: #1AA366; /* variante plus claire, hover/accents */
+  --color-steel: #55564F; /* gris neutre — texte secondaire, bordures/séparateurs */
+  --color-steel-soft: #9C9D97; /* gris clair — bordures discrètes, placeholders */
   --color-mist: #F4F7F8; /* fond clair froid (PAS crème) */
   --color-mist-2: #E7EDEF; /* panneaux / sections alternées */
-  --color-copper: #C2680F; /* accent cuivre — CTA, liens actifs */
-  --color-copper-2: #A8550A; /* cuivre foncé — hover */
-  --color-ink: #11181F; /* texte principal, légèrement bleuté */
-  --color-verdigris: #2F7A52; /* disponibilité / validation, usage rare */
+  --color-copper: #A22834; /* rouge bordeaux GAT — CTA, liens actifs */
+  --color-copper-2: #7E1E27; /* bordeaux foncé — hover */
+  --color-ink: #1C1D1C; /* texte principal, noir GAT */
+  --color-verdigris: #1F7A6B; /* disponibilité / validation, usage rare — distinct du vert de marque */
   --color-paper: #FFFFFF;
 
   --background: var(--color-mist);
@@ -69,10 +69,10 @@ body {
    localStorage. Assombrit les couleurs secondaires (texte gris-acier,
    bordures, cuivre) pour un meilleur ratio de contraste WCAG. */
 html.contrast-high {
-  --color-steel: #16222D;
-  --color-steel-soft: #52697C;
-  --color-copper: #8A4608;
-  --color-copper-2: #6E3706;
+  --color-steel: #2A2A27;
+  --color-steel-soft: #6E6F68;
+  --color-copper: #7E1E27;
+  --color-copper-2: #5C1620;
 }
 
 html.contrast-high :focus-visible {
