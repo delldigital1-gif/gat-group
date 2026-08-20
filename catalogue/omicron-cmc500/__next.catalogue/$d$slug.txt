@@ -2,4 +2,4 @@
 2:I[39756,["/gat-group/_next/static/chunks/34kc0xvgz6y-b.js","/gat-group/_next/static/chunks/14mrh2-p_w84d.js"],"default"]
 3:I[37457,["/gat-group/_next/static/chunks/34kc0xvgz6y-b.js","/gat-group/_next/static/chunks/14mrh2-p_w84d.js"],"default"]
 4:[]
-0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"aqabu_CLBFY0V5czIsA64"}
+0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"39PT0mCJ_xem043DtNaK6"}
