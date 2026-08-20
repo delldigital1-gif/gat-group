@@ -27,7 +27,7 @@ export default function HomePage() {
             <div>
               <Eyebrow>Global African Trading · depuis 2007</Eyebrow>
               <h1 className="mt-4 font-display text-4xl font-semibold leading-[1.08] text-blueprint sm:text-5xl">
-                Le hub qui relie marques, BTP et menuiserie industrielle.
+                De la fourniture au chantier livré : GAT fait avancer l&apos;industrie africaine.
               </h1>
               <p className="mt-5 max-w-md text-base leading-relaxed text-steel">
                 GAT fournit, distribue et installe les équipements industriels et solutions de
