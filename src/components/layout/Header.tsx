@@ -34,7 +34,7 @@ const sectorLinks: NavLink[] = [
 ];
 
 const catalogueLinks: NavLink[] = categories.map((c) => ({
-  href: `/catalogue?categorie=${c.slug}`,
+  href: `/catalogue/categorie/${c.slug}`,
   label: c.name,
 }));
 
@@ -67,7 +67,7 @@ const searchIndex: SearchItem[] = [
     type: "Secteur",
   })),
   ...brands.map((b) => ({ href: `/marques/${b.slug}`, label: b.name, type: "Marque" })),
-  ...categories.map((c) => ({ href: `/catalogue?categorie=${c.slug}`, label: c.name, type: "Catégorie" })),
+  ...categories.map((c) => ({ href: `/catalogue/categorie/${c.slug}`, label: c.name, type: "Catégorie" })),
   ...products.map((p) => ({ href: `/catalogue/${p.slug}`, label: p.name, type: "Produit", hint: p.reference })),
   ...staticPageResults,
 ];
