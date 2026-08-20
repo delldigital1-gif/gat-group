@@ -140,6 +140,7 @@ export const products: Product[] = [
       { label: "Matière", value: "Acier traité" },
     ],
     availability: "sur-commande",
+    imageUrl: "/images/sedis-roue-pignon.jpg",
     datasheetUrl: "/docs/sedis-brochure-travaux-publics.pdf",
   },
   {
@@ -175,9 +176,10 @@ export const products: Product[] = [
     specs: [
       { label: "Gamme", value: "Hyspin AWS" },
       { label: "Viscosité ISO", value: "VG 46" },
-      { label: "Conditionnement", value: "Fût 200 L" },
+      { label: "Conditionnement", value: "Bidon 20 L" },
     ],
     availability: "stock",
+    imageUrl: "/images/castrol-hyspin.jpg",
     datasheetUrl:
       "https://www.castrol.com/content/dam/castrol/business-sites-new/en/global/corporate/documents/industries/industrial-product-catalogue/castrol-industrial-product-catalogue-english.pdf",
   },
@@ -283,18 +285,19 @@ export const products: Product[] = [
   },
   {
     slug: "tracteur-agricole-loukil",
-    name: "Tracteur Kubota, distribué par LOUKIL",
+    name: "Tracteur Kubota M7040, distribué par LOUKIL",
     brandSlug: "loukil",
     categorySlug: "materiel-agricole",
     sectorSlugs: ["agro-industrie"],
     reference: "GAT-LK-TRC-075",
     shortDescription: "Tracteur agricole polyvalent avec gamme d'attachements — marque représentée par LOUKIL.",
     description:
-      "Tracteur Kubota, l'une des marques agricoles historiquement représentées par le Groupe LOUKIL (aux côtés de SAME, Gaspardo et Maschio pour le machinisme agricole). Conçu pour les exploitations de taille moyenne, livrable avec charrue, herse et remorque selon les besoins du projet.",
+      "Tracteur Kubota M7040, l'une des marques agricoles historiquement représentées par le Groupe LOUKIL (aux côtés de SAME, Gaspardo et Maschio pour le machinisme agricole). Conçu pour les exploitations de taille moyenne, livrable avec charrue, herse et remorque selon les besoins du projet.",
     specs: [
-      { label: "Puissance moteur", value: "75 ch" },
+      { label: "Puissance moteur", value: "74 ch" },
       { label: "Attachements disponibles", value: "Charrue, herse, remorque" },
     ],
+    imageUrl: "/images/loukil-kubota-m7040.jpg",
     availability: "import",
   },
   {
