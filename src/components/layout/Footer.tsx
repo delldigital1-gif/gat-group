@@ -4,22 +4,30 @@ import { Container } from "@/components/layout/Container";
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { COMMERCIAL_EMAIL, WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
 import { assetPath } from "@/lib/asset-path";
+import { Locale, getDictionary } from "@/lib/i18n/dictionary";
 
-const siteLinks = [
-  { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
-  { href: "/secteurs", label: "Nos secteurs" },
-  { href: "/marques", label: "Marques partenaires" },
-  { href: "/catalogue", label: "Catalogue" },
-];
+function withLocale(path: string, locale: Locale): string {
+  return locale === "en" ? `/en${path}` : path;
+}
 
-const moreLinks = [
-  { href: "/menuiserie-aluminium-bois", label: "Menuiserie Alu & Bois" },
-  { href: "/realisations", label: "Nos réalisations" },
-  { href: "/mediatheque", label: "Médiathèque" },
-  { href: "/contact", label: "Contact" },
-];
+export function Footer({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
+  const l = (path: string) => withLocale(path, locale);
 
-export function Footer() {
+  const siteLinks = [
+    { href: l("/qui-sommes-nous"), label: dict.footer.quiSommesNous },
+    { href: l("/secteurs"), label: dict.footer.secteurs },
+    { href: l("/marques"), label: dict.footer.marques },
+    { href: l("/catalogue"), label: dict.footer.catalogue },
+  ];
+
+  const moreLinks = [
+    { href: l("/menuiserie-aluminium-bois"), label: dict.footer.menuiserie },
+    { href: l("/realisations"), label: dict.footer.realisations },
+    { href: l("/mediatheque"), label: dict.footer.mediatheque },
+    { href: l("/contact"), label: dict.footer.contact },
+  ];
+
   return (
     <footer className="mt-24 bg-blueprint text-mist">
       <Container className="py-14">
@@ -40,7 +48,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-steel-soft">Le site</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-steel-soft">{dict.footer.siteSection}</p>
             <ul className="mt-3 space-y-2 text-sm">
               {siteLinks.map((l) => (
                 <li key={l.href}>
@@ -53,7 +61,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-steel-soft">Ressources</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-steel-soft">{dict.footer.resourcesSection}</p>
             <ul className="mt-3 space-y-2 text-sm">
               {moreLinks.map((l) => (
                 <li key={l.href}>
@@ -66,7 +74,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-steel-soft">Siège — Lomé</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-steel-soft">{dict.footer.hq}</p>
             <ul className="mt-3 space-y-2.5 text-sm text-mist/90">
               <li className="flex items-start gap-2">
                 <MapPin size={15} className="mt-0.5 shrink-0 text-copper" />
@@ -87,7 +95,7 @@ export function Footer() {
             </ul>
 
             <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-steel-soft">
-              Service commercial
+              {dict.footer.commercial}
             </p>
             <ul className="mt-3 space-y-2.5 text-sm text-mist/90">
               <li className="flex items-center gap-2">
@@ -109,25 +117,27 @@ export function Footer() {
         {/* Cartouche façon plan technique */}
         <div className="mt-12 grid grid-cols-2 gap-4 border border-steel-soft/30 p-4 font-mono text-[11px] uppercase tracking-[0.1em] text-steel-soft sm:grid-cols-4">
           <div className="title-block-cell">
-            <p className="text-steel-soft/70">Désignation</p>
-            <p className="mt-1 text-mist">Site web GAT Group</p>
+            <p className="text-steel-soft/70">{dict.footer.designation}</p>
+            <p className="mt-1 text-mist">{dict.footer.designationValue}</p>
           </div>
           <div className="title-block-cell">
-            <p className="text-steel-soft/70">Échelle</p>
-            <p className="mt-1 text-mist">Afrique de l&apos;Ouest</p>
+            <p className="text-steel-soft/70">{dict.footer.scale}</p>
+            <p className="mt-1 text-mist">{dict.footer.scaleValue}</p>
           </div>
           <div className="title-block-cell">
-            <p className="text-steel-soft/70">Révision</p>
-            <p className="mt-1 text-mist">Refonte {new Date().getFullYear()}</p>
+            <p className="text-steel-soft/70">{dict.footer.revision}</p>
+            <p className="mt-1 text-mist">
+              {dict.footer.revisionValue} {new Date().getFullYear()}
+            </p>
           </div>
           <div className="title-block-cell">
-            <p className="text-steel-soft/70">Statut</p>
-            <p className="mt-1 text-mist">Catalogue &amp; devis</p>
+            <p className="text-steel-soft/70">{dict.footer.status}</p>
+            <p className="mt-1 text-mist">{dict.footer.statusValue}</p>
           </div>
         </div>
 
         <div className="mt-8 flex flex-col gap-3 text-xs text-steel-soft sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Global African Trading SARL — Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} Global African Trading SARL — {dict.footer.rightsReserved}</p>
           <p>RC Lomé · Djidjolé, Togo</p>
         </div>
       </Container>

@@ -1,23 +1,33 @@
-const stats = [
-  { value: "15+", label: "Années d'expérience" },
-  { value: "50+", label: "Clients satisfaits" },
-  { value: "40+", label: "Projets exécutés" },
-  { value: "10+", label: "Personnel formé" },
-];
+import { Locale } from "@/lib/i18n/dictionary";
 
-export function Nameplate() {
+const stats = {
+  fr: [
+    { value: "15+", label: "Années d'expérience" },
+    { value: "50+", label: "Clients satisfaits" },
+    { value: "40+", label: "Projets exécutés" },
+    { value: "10+", label: "Personnel formé" },
+  ],
+  en: [
+    { value: "15+", label: "Years of experience" },
+    { value: "50+", label: "Satisfied clients" },
+    { value: "40+", label: "Projects completed" },
+    { value: "10+", label: "Trained staff" },
+  ],
+} as const;
+
+export function Nameplate({ locale = "fr" }: { locale?: Locale }) {
   return (
     <div className="border border-steel-soft/40 bg-blueprint">
       <div className="flex items-center justify-between border-b border-steel-soft/25 px-5 py-2.5">
         <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-steel-soft">
-          Plaque signalétique
+          {locale === "en" ? "Nameplate" : "Plaque signalétique"}
         </span>
         <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-steel-soft">
           GAT GROUP SARL
         </span>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-4">
-        {stats.map((s, i) => (
+        {stats[locale].map((s, i) => (
           <div
             key={s.label}
             className={`px-5 py-6 ${i !== 0 ? "border-l border-steel-soft/25" : ""} ${

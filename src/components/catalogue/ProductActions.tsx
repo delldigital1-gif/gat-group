@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { Check, Minus, Plus } from "lucide-react";
 import { useQuote } from "@/lib/quote-context";
+import { Locale, getDictionary } from "@/lib/i18n/dictionary";
 
-export function ProductActions({ productSlug }: { productSlug: string }) {
+export function ProductActions({ productSlug, locale = "fr" }: { productSlug: string; locale?: Locale }) {
+  const dict = getDictionary(locale);
   const { addItem } = useQuote();
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
@@ -19,7 +21,7 @@ export function ProductActions({ productSlug }: { productSlug: string }) {
     <div className="flex flex-wrap items-center gap-3">
       <div className="flex items-center border border-steel-soft/40">
         <button
-          aria-label="Diminuer la quantité"
+          aria-label={locale === "en" ? "Decrease quantity" : "Diminuer la quantité"}
           onClick={() => setQuantity((q) => Math.max(1, q - 1))}
           className="p-2.5 text-blueprint hover:text-copper"
         >
@@ -27,7 +29,7 @@ export function ProductActions({ productSlug }: { productSlug: string }) {
         </button>
         <span className="w-10 text-center font-mono text-sm text-ink">{quantity}</span>
         <button
-          aria-label="Augmenter la quantité"
+          aria-label={locale === "en" ? "Increase quantity" : "Augmenter la quantité"}
           onClick={() => setQuantity((q) => q + 1)}
           className="p-2.5 text-blueprint hover:text-copper"
         >
@@ -43,7 +45,7 @@ export function ProductActions({ productSlug }: { productSlug: string }) {
         }`}
       >
         {added ? <Check size={16} /> : null}
-        {added ? "Ajouté à votre liste de devis" : "Ajouter à ma liste de devis"}
+        {added ? dict.common.addedToQuoteLong : dict.common.addToQuoteLong}
       </button>
     </div>
   );

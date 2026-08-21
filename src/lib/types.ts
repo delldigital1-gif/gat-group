@@ -8,8 +8,11 @@ export type Brand = {
   slug: string;
   name: string;
   tagline: string;
+  taglineEn: string;
   description: string;
+  descriptionEn: string;
   country: string;
+  countryEn: string;
   website?: string;
   logoInitials: string; // tant qu'on n'a pas les vrais logos, on affiche un monogramme
   logoUrl?: string; // logo officiel réel, quand disponible
@@ -20,19 +23,25 @@ export type Brand = {
 export type Category = {
   slug: string;
   name: string;
+  nameEn: string;
   description: string;
+  descriptionEn: string;
 };
 
 export type Product = {
   slug: string;
   name: string;
+  nameEn: string;
   brandSlug: string;
   categorySlug: string;
   sectorSlugs: string[];
   reference: string; // code article façon fiche technique
   shortDescription: string;
+  shortDescriptionEn: string;
   description: string;
+  descriptionEn: string;
   specs: { label: string; value: string }[];
+  specsEn: { label: string; value: string }[];
   availability: "stock" | "sur-commande" | "import";
   datasheetUrl?: string;
   imageUrl?: string; // photo réelle, quand disponible (miniature catalogue = 1ère de imageUrls si présent)
@@ -49,18 +58,22 @@ export type PillarSlug = "menuiserie" | "btp" | "centrale-achat";
 export type Sector = {
   slug: string;
   name: string;
+  nameEn: string;
   description: string;
+  descriptionEn: string;
   pillar: PillarSlug;
 };
 
 export type Realisation = {
   slug: string;
   title: string;
+  titleEn: string;
   client: string;
   location: string;
   year: string;
   sectorSlug: string;
   description: string;
+  descriptionEn: string;
   imageUrl?: string;
 };
 

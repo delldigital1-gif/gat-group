@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import {
   ChevronDown,
@@ -24,58 +25,88 @@ import { brands } from "@/lib/data/brands";
 import { products } from "@/lib/data/products";
 import { sectors } from "@/lib/data/sectors";
 import { pillars } from "@/lib/data/pillars";
+import { Locale, getDictionary, localizedPath } from "@/lib/i18n/dictionary";
 
 type NavLink = { href: string; label: string };
 
-const sectorLinks: NavLink[] = [
-  { href: "/secteurs", label: "Centrale d'achat" },
-  { href: "/menuiserie-aluminium-bois", label: "Menuiserie Aluminium, Bois & Métallique" },
-  { href: "/btp", label: "BTP" },
-];
+function withLocale(path: string, locale: Locale): string {
+  return locale === "en" ? `/en${path}` : path;
+}
 
-const catalogueLinks: NavLink[] = categories.map((c) => ({
-  href: `/catalogue/categorie/${c.slug}`,
-  label: c.name,
-}));
+function buildNavData(locale: Locale) {
+  const dict = getDictionary(locale);
+  const l = (path: string) => withLocale(path, locale);
 
-const brandLinks: NavLink[] = brands.map((b) => ({ href: `/marques/${b.slug}`, label: b.name }));
+  const sectorLinks: NavLink[] = [
+    { href: l("/secteurs"), label: dict.header.centraleAchat },
+    { href: l("/menuiserie-aluminium-bois"), label: dict.header.menuiserie },
+    { href: l("/btp"), label: dict.header.btp },
+  ];
 
-const resourceLinks: NavLink[] = [
-  { href: "/mediatheque", label: "Médiathèque" },
-  { href: "/realisations", label: "Nos réalisations" },
-  { href: "/contact", label: "Contact" },
-];
+  const catalogueLinks: NavLink[] = categories.map((c) => ({
+    href: l(`/catalogue/categorie/${c.slug}`),
+    label: locale === "en" ? c.nameEn : c.name,
+  }));
 
-const aboutLinks: NavLink[] = [{ href: "/qui-sommes-nous", label: "Qui sommes-nous" }];
+  const brandLinks: NavLink[] = brands.map((b) => ({ href: l(`/marques/${b.slug}`), label: b.name }));
+
+  const resourceLinks: NavLink[] = [
+    { href: l("/mediatheque"), label: dict.header.mediatheque },
+    { href: l("/realisations"), label: dict.header.realisations },
+    { href: l("/contact"), label: dict.header.contact },
+  ];
+
+  const aboutLinks: NavLink[] = [{ href: l("/qui-sommes-nous"), label: dict.header.quiSommesNous }];
+
+  return { sectorLinks, catalogueLinks, brandLinks, resourceLinks, aboutLinks };
+}
 
 type SearchItem = { href: string; label: string; type: string; hint?: string };
 
-const staticPageResults: SearchItem[] = [
-  { href: "/qui-sommes-nous", label: "Qui sommes-nous", type: "Page" },
-  { href: "/contact", label: "Contact", type: "Page" },
-  { href: "/mediatheque", label: "Médiathèque", type: "Page" },
-  { href: "/realisations", label: "Nos réalisations", type: "Page" },
-  { href: "/catalogue", label: "Catalogue", type: "Page" },
-  { href: "/devis", label: "Ma liste de devis", type: "Page" },
-];
+function buildSearchIndex(locale: Locale): SearchItem[] {
+  const dict = getDictionary(locale);
+  const l = (path: string) => withLocale(path, locale);
 
-const searchIndex: SearchItem[] = [
-  ...pillars.map((p) => ({ href: p.href, label: p.name, type: "Pôle d'activité" })),
-  ...sectors.map((s) => ({
-    href: s.pillar === "btp" ? "/btp" : `/secteurs#${s.slug}`,
-    label: s.name,
-    type: "Secteur",
-  })),
-  ...brands.map((b) => ({ href: `/marques/${b.slug}`, label: b.name, type: "Marque" })),
-  ...categories.map((c) => ({ href: `/catalogue/categorie/${c.slug}`, label: c.name, type: "Catégorie" })),
-  ...products.map((p) => ({ href: `/catalogue/${p.slug}`, label: p.name, type: "Produit", hint: p.reference })),
-  ...staticPageResults,
-];
+  const staticPageResults: SearchItem[] = [
+    { href: l("/qui-sommes-nous"), label: dict.header.quiSommesNous, type: dict.header.typePage },
+    { href: l("/contact"), label: dict.header.contact, type: dict.header.typePage },
+    { href: l("/mediatheque"), label: dict.header.mediatheque, type: dict.header.typePage },
+    { href: l("/realisations"), label: dict.header.realisations, type: dict.header.typePage },
+    { href: l("/catalogue"), label: dict.header.navCatalogue, type: dict.header.typePage },
+    { href: l("/devis"), label: dict.header.myQuoteList, type: dict.header.typePage },
+  ];
 
-function searchSite(query: string): SearchItem[] {
+  return [
+    ...pillars.map((p) => ({
+      href: l(p.href),
+      label: locale === "en" ? p.nameEn : p.name,
+      type: dict.header.typePillar,
+    })),
+    ...sectors.map((s) => ({
+      href: s.pillar === "btp" ? l("/btp") : l(`/secteurs#${s.slug}`),
+      label: locale === "en" ? s.nameEn : s.name,
+      type: dict.header.typeSector,
+    })),
+    ...brands.map((b) => ({ href: l(`/marques/${b.slug}`), label: b.name, type: dict.header.typeBrand })),
+    ...categories.map((c) => ({
+      href: l(`/catalogue/categorie/${c.slug}`),
+      label: locale === "en" ? c.nameEn : c.name,
+      type: dict.header.typeCategory,
+    })),
+    ...products.map((p) => ({
+      href: l(`/catalogue/${p.slug}`),
+      label: locale === "en" ? p.nameEn : p.name,
+      type: dict.header.typeProduct,
+      hint: p.reference,
+    })),
+    ...staticPageResults,
+  ];
+}
+
+function searchSite(query: string, index: SearchItem[]): SearchItem[] {
   const q = query.trim().toLowerCase();
   if (q.length < 2) return [];
-  return searchIndex
+  return index
     .filter((item) => item.label.toLowerCase().includes(q) || item.hint?.toLowerCase().includes(q))
     .slice(0, 8);
 }
@@ -163,8 +194,6 @@ function MobileSection({ children }: { children: ReactNode }) {
   return <div className="flex flex-col border-t border-steel-soft/20 pt-2 mt-2 first:mt-0 first:border-t-0 first:pt-0">{children}</div>;
 }
 
-type Lang = "fr" | "en";
-
 function ContrastToggle({ on }: { on: boolean }) {
   return (
     <span
@@ -182,10 +211,12 @@ function ContrastToggle({ on }: { on: boolean }) {
   );
 }
 
-function SearchPanel() {
+function SearchPanel({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const index = buildSearchIndex(locale);
 
   useEffect(() => {
     if (open) inputRef.current?.focus();
@@ -206,12 +237,12 @@ function SearchPanel() {
     setQuery("");
   };
 
-  const results = searchSite(query);
+  const results = searchSite(query, index);
 
   return (
     <div className="relative">
       <button
-        aria-label={open ? "Fermer la recherche" : "Rechercher"}
+        aria-label={open ? (locale === "en" ? "Close search" : "Fermer la recherche") : dict.header.search}
         className="p-2 text-blueprint hover:text-copper"
         onClick={() => setOpen((v) => !v)}
       >
@@ -227,7 +258,7 @@ function SearchPanel() {
                 ref={inputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Rechercher un produit, une marque, un secteur…"
+                placeholder={dict.header.searchPlaceholder}
                 className="w-full bg-transparent text-sm text-ink placeholder:text-steel-soft focus:outline-none"
               />
             </div>
@@ -248,7 +279,9 @@ function SearchPanel() {
                     </Link>
                   ))
                 ) : (
-                  <p className="px-4 py-4 text-sm text-steel">Aucun résultat pour « {query} ».</p>
+                  <p className="px-4 py-4 text-sm text-steel">
+                    {locale === "en" ? `No results for "${query}".` : `Aucun résultat pour « ${query} ».`}
+                  </p>
                 )}
               </div>
             )}
@@ -259,17 +292,33 @@ function SearchPanel() {
   );
 }
 
-function UtilityPanel() {
+function LangLinks({ pathname, className }: { pathname: string; className: string }) {
+  const frHref = localizedPath(pathname, "fr");
+  const enHref = localizedPath(pathname, "en");
+  const isEn = pathname.startsWith("/en");
+  return (
+    <div className={className}>
+      <Link href={frHref} className={isEn ? "text-ink hover:text-copper" : "font-semibold text-copper"}>
+        Français
+      </Link>
+      <span className="text-steel-soft">/</span>
+      <Link href={enHref} className={isEn ? "font-semibold text-copper" : "text-ink hover:text-copper"}>
+        English
+      </Link>
+    </div>
+  );
+}
+
+function UtilityPanel({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [contrastOn, setContrastOn] = useState(false);
-  const [lang, setLang] = useState<Lang>("fr");
 
   useEffect(() => {
     const savedContrast = localStorage.getItem("gat-contrast") === "1";
     setContrastOn(savedContrast);
     document.documentElement.classList.toggle("contrast-high", savedContrast);
-    const savedLang = localStorage.getItem("gat-lang");
-    if (savedLang === "en" || savedLang === "fr") setLang(savedLang);
   }, []);
 
   const toggleContrast = () => {
@@ -279,53 +328,33 @@ function UtilityPanel() {
     localStorage.setItem("gat-contrast", next ? "1" : "0");
   };
 
-  const chooseLang = (l: Lang) => {
-    setLang(l);
-    localStorage.setItem("gat-lang", l);
-    // NOTE : sélection persistée, mais le contenu du site n'est pas
-    // encore traduit — bascule fonctionnelle en attendant le chantier
-    // de traduction complète (voir échange avec le client).
-  };
+  const contactHref = withLocale("/contact", locale);
 
   return (
     <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-      <button aria-label="Plus d'options" className="p-2 text-blueprint hover:text-copper">
+      <button aria-label={dict.header.moreOptions} className="p-2 text-blueprint hover:text-copper">
         <Menu size={20} />
       </button>
       {open && (
         <div className="absolute right-0 top-full w-72 border border-blueprint-2 bg-blueprint py-2 text-mist shadow-lg">
-          <Link href="/contact" className="flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-blueprint-2">
-            <Mail size={16} /> Demande d&apos;information
+          <Link href={contactHref} className="flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-blueprint-2">
+            <Mail size={16} /> {dict.header.requestInfo}
           </Link>
-          <Link href="/contact" className="flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-blueprint-2">
-            <MapPin size={16} /> Rechercher une agence
+          <Link href={contactHref} className="flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-blueprint-2">
+            <MapPin size={16} /> {dict.header.findAgency}
           </Link>
           <button
             onClick={toggleContrast}
             className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-sm hover:bg-blueprint-2"
           >
             <span className="flex items-center gap-3">
-              <Eye size={16} /> Activer le mode contraste élevé
+              <Eye size={16} /> {dict.header.highContrast}
             </span>
             <ContrastToggle on={contrastOn} />
           </button>
-          <div className="mt-1 border-t border-mist/15 pt-1">
-            <button
-              onClick={() => chooseLang("fr")}
-              className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-sm hover:bg-blueprint-2"
-            >
-              <span className="flex items-center gap-3">
-                <Globe size={16} /> Français
-              </span>
-              {lang === "fr" && <Check size={15} className="text-copper" />}
-            </button>
-            <button
-              onClick={() => chooseLang("en")}
-              className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-sm hover:bg-blueprint-2"
-            >
-              <span className="flex items-center gap-3 pl-[26px]">English</span>
-              {lang === "en" && <Check size={15} className="text-copper" />}
-            </button>
+          <div className="mt-1 flex items-center gap-3 border-t border-mist/15 px-4 pt-2.5 pb-1 text-sm">
+            <Globe size={16} className="shrink-0" />
+            <LangLinks pathname={pathname} className="flex items-center gap-2" />
           </div>
         </div>
       )}
@@ -333,14 +362,13 @@ function UtilityPanel() {
   );
 }
 
-function MobileUtilitySection({ onNavigate }: { onNavigate: () => void }) {
+function MobileUtilitySection({ locale, onNavigate }: { locale: Locale; onNavigate: () => void }) {
+  const dict = getDictionary(locale);
+  const pathname = usePathname();
   const [contrastOn, setContrastOn] = useState(false);
-  const [lang, setLang] = useState<Lang>("fr");
 
   useEffect(() => {
     setContrastOn(localStorage.getItem("gat-contrast") === "1");
-    const savedLang = localStorage.getItem("gat-lang");
-    if (savedLang === "en" || savedLang === "fr") setLang(savedLang);
   }, []);
 
   const toggleContrast = () => {
@@ -350,52 +378,44 @@ function MobileUtilitySection({ onNavigate }: { onNavigate: () => void }) {
     localStorage.setItem("gat-contrast", next ? "1" : "0");
   };
 
-  const chooseLang = (l: Lang) => {
-    setLang(l);
-    localStorage.setItem("gat-lang", l);
-  };
+  const contactHref = withLocale("/contact", locale);
 
   return (
     <MobileSection>
-      <span className="px-2 pt-2 pb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">Options</span>
-      <Link href="/contact" className="flex items-center gap-2 px-2 py-2 text-sm text-ink hover:text-copper" onClick={onNavigate}>
-        <Mail size={15} className="text-copper" /> Demande d&apos;information
+      <span className="px-2 pt-2 pb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">
+        {locale === "en" ? "Options" : "Options"}
+      </span>
+      <Link href={contactHref} className="flex items-center gap-2 px-2 py-2 text-sm text-ink hover:text-copper" onClick={onNavigate}>
+        <Mail size={15} className="text-copper" /> {dict.header.requestInfo}
       </Link>
-      <Link href="/contact" className="flex items-center gap-2 px-2 py-2 text-sm text-ink hover:text-copper" onClick={onNavigate}>
-        <MapPin size={15} className="text-copper" /> Rechercher une agence
+      <Link href={contactHref} className="flex items-center gap-2 px-2 py-2 text-sm text-ink hover:text-copper" onClick={onNavigate}>
+        <MapPin size={15} className="text-copper" /> {dict.header.findAgency}
       </Link>
       <button
         onClick={toggleContrast}
         className="flex w-full items-center justify-between gap-2 px-2 py-2 text-sm text-ink hover:text-copper"
       >
         <span className="flex items-center gap-2">
-          <Eye size={15} className="text-copper" /> Contraste élevé
+          <Eye size={15} className="text-copper" /> {dict.header.highContrast}
         </span>
         <ContrastToggle on={contrastOn} />
       </button>
       <div className="flex items-center gap-2 px-2 py-2 text-sm text-ink">
         <Globe size={15} className="text-copper" />
-        <button
-          onClick={() => chooseLang("fr")}
-          className={lang === "fr" ? "font-semibold text-copper" : "text-ink hover:text-copper"}
-        >
-          Français
-        </button>
-        <span className="text-steel-soft">/</span>
-        <button
-          onClick={() => chooseLang("en")}
-          className={lang === "en" ? "font-semibold text-copper" : "text-ink hover:text-copper"}
-        >
-          English
-        </button>
+        <LangLinks pathname={pathname} className="flex items-center gap-2" />
       </div>
     </MobileSection>
   );
 }
 
-export function Header() {
+export function Header({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
   const [mobileOpen, setMobileOpen] = useState(false);
   const closeMobile = () => setMobileOpen(false);
+  const { sectorLinks, catalogueLinks, brandLinks, resourceLinks, aboutLinks } = buildNavData(locale);
+  const homeHref = locale === "en" ? "/en" : "/";
+  const catalogueHref = withLocale("/catalogue", locale);
+  const brandsHref = withLocale("/marques", locale);
 
   return (
     <header className="sticky top-0 z-50 border-b border-steel-soft/30 bg-paper/95 backdrop-blur-sm">
@@ -403,7 +423,7 @@ export function Header() {
         <Container className="flex h-9 items-center justify-between text-[12px]">
           <div className="flex items-center gap-4">
             <a href="tel:+22890141201" className="flex items-center gap-1.5 hover:text-copper">
-              <Phone size={12} /> +228 90 14 12 01 — Lomé, Togo
+              <Phone size={12} /> {dict.header.phoneLabel}
             </a>
             <a
               href={WHATSAPP_LINK}
@@ -415,15 +435,15 @@ export function Header() {
             </a>
           </div>
           <div className="flex items-center gap-4 font-mono uppercase tracking-[0.12em] text-steel-soft">
-            <Link href="/contact" className="hover:text-white">
-              GAT — Afrique de l&apos;Ouest
+            <Link href={withLocale("/contact", locale)} className="hover:text-white">
+              {dict.header.langSwitch}
             </Link>
           </div>
         </Container>
       </div>
 
       <Container className="flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5 font-display text-lg font-semibold text-blueprint">
+        <Link href={homeHref} className="flex items-center gap-2.5 font-display text-lg font-semibold text-blueprint">
           <Image
             src={assetPath("/images/logo-gat.png")}
             alt="GAT Group"
@@ -440,29 +460,29 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
-          <NavDropdown label="Nos secteurs" items={sectorLinks} width="w-64" />
+          <NavDropdown label={dict.header.navSectors} items={sectorLinks} width="w-64" />
           <NavDropdown
-            label="Catalogue"
+            label={dict.header.navCatalogue}
             items={catalogueLinks}
-            footerLink={{ href: "/catalogue", label: "Tout le catalogue" }}
+            footerLink={{ href: catalogueHref, label: dict.header.allCatalogue }}
             width="w-72"
           />
           <NavDropdown
-            label="Marques"
+            label={dict.header.navBrands}
             items={brandLinks}
-            footerLink={{ href: "/marques", label: "Toutes les marques" }}
+            footerLink={{ href: brandsHref, label: dict.header.allBrands }}
           />
-          <NavDropdown label="Ressources" items={resourceLinks} />
-          <NavDropdown label="À propos" items={aboutLinks} />
+          <NavDropdown label={dict.header.navResources} items={resourceLinks} />
+          <NavDropdown label={dict.header.navAbout} items={aboutLinks} />
         </nav>
 
         <div className="flex items-center gap-3">
-          <SearchPanel />
+          <SearchPanel locale={locale} />
           <div className="hidden lg:block">
-            <UtilityPanel />
+            <UtilityPanel locale={locale} />
           </div>
           <button
-            aria-label="Ouvrir le menu"
+            aria-label={locale === "en" ? "Open menu" : "Ouvrir le menu"}
             className="p-2 text-blueprint lg:hidden"
             onClick={() => setMobileOpen((v) => !v)}
           >
@@ -475,31 +495,31 @@ export function Header() {
         <div className="border-t border-steel-soft/30 bg-paper lg:hidden">
           <Container className="flex flex-col py-3">
             <MobileSection>
-              <MobileNavGroup label="Nos secteurs" items={sectorLinks} onNavigate={closeMobile} />
+              <MobileNavGroup label={dict.header.navSectors} items={sectorLinks} onNavigate={closeMobile} />
             </MobileSection>
             <MobileSection>
               <MobileNavGroup
-                label="Catalogue"
+                label={dict.header.navCatalogue}
                 items={catalogueLinks}
-                footerLink={{ href: "/catalogue", label: "Tout le catalogue" }}
+                footerLink={{ href: catalogueHref, label: dict.header.allCatalogue }}
                 onNavigate={closeMobile}
               />
             </MobileSection>
             <MobileSection>
               <MobileNavGroup
-                label="Marques"
+                label={dict.header.navBrands}
                 items={brandLinks}
-                footerLink={{ href: "/marques", label: "Toutes les marques" }}
+                footerLink={{ href: brandsHref, label: dict.header.allBrands }}
                 onNavigate={closeMobile}
               />
             </MobileSection>
             <MobileSection>
-              <MobileNavGroup label="Ressources" items={resourceLinks} onNavigate={closeMobile} />
+              <MobileNavGroup label={dict.header.navResources} items={resourceLinks} onNavigate={closeMobile} />
             </MobileSection>
             <MobileSection>
-              <MobileNavGroup label="À propos" items={aboutLinks} onNavigate={closeMobile} />
+              <MobileNavGroup label={dict.header.navAbout} items={aboutLinks} onNavigate={closeMobile} />
             </MobileSection>
-            <MobileUtilitySection onNavigate={closeMobile} />
+            <MobileUtilitySection locale={locale} onNavigate={closeMobile} />
           </Container>
         </div>
       )}

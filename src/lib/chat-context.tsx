@@ -4,11 +4,13 @@ import {
   createContext,
   useCallback,
   useContext,
+  useMemo,
   useState,
   ReactNode,
 } from "react";
 import { useRouter } from "next/navigation";
-import { chatNodes, matchKeyword, ROOT_NODE_ID, ChatOption } from "@/lib/chatbot/flow";
+import { getChatNodes, matchKeyword, ROOT_NODE_ID, ChatOption } from "@/lib/chatbot/flow";
+import { Locale } from "@/lib/i18n/dictionary";
 
 export type ChatMessage = {
   id: string;
@@ -36,8 +38,9 @@ function nextId() {
   return `msg-${idCounter}`;
 }
 
-export function ChatProvider({ children }: { children: ReactNode }) {
+export function ChatProvider({ locale, children }: { locale: Locale; children: ReactNode }) {
   const router = useRouter();
+  const chatNodes = useMemo(() => getChatNodes(locale), [locale]);
   const [isOpen, setIsOpen] = useState(false);
   const [hasUnread, setHasUnread] = useState(true);
   const [messages, setMessages] = useState<ChatMessage[]>(() => {
@@ -57,10 +60,13 @@ export function ChatProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
-  const pushBotNode = useCallback((nodeId: string) => {
-    const node = chatNodes[nodeId] ?? chatNodes.fallback;
-    setMessages((prev) => [...prev, { id: nextId(), sender: "bot", text: node.message, options: node.options }]);
-  }, []);
+  const pushBotNode = useCallback(
+    (nodeId: string) => {
+      const node = chatNodes[nodeId] ?? chatNodes.fallback;
+      setMessages((prev) => [...prev, { id: nextId(), sender: "bot", text: node.message, options: node.options }]);
+    },
+    [chatNodes]
+  );
 
   const selectOption = useCallback(
     (option: ChatOption) => {
@@ -79,10 +85,10 @@ export function ChatProvider({ children }: { children: ReactNode }) {
       const trimmed = text.trim();
       if (!trimmed) return;
       setMessages((prev) => [...prev, { id: nextId(), sender: "user", text: trimmed }]);
-      const nodeId = matchKeyword(trimmed);
+      const nodeId = matchKeyword(trimmed, locale);
       pushBotNode(nodeId);
     },
-    [pushBotNode]
+    [pushBotNode, locale]
   );
 
   return (

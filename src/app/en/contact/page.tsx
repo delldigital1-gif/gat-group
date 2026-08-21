@@ -1,0 +1,142 @@
+"use client";
+
+import { useState } from "react";
+import { Mail, MapPin, MessageCircle, Phone, CheckCircle2 } from "lucide-react";
+import { Container } from "@/components/layout/Container";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { SectionDivider } from "@/components/ui/SectionDivider";
+import { COMMERCIAL_EMAIL, WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
+
+const offices = [
+  {
+    name: "GAT Togo — Head Office",
+    address: "Djidjolé, Lomé, Togo",
+    phone: "+228 90 14 12 01",
+    email: "gat@gatgroup.org",
+  },
+];
+
+export default function ContactPage() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // TODO (mise en production) : brancher sur Formspree (cf. landing BAFE)
+    // ou un endpoint dédié, une fois l'identifiant de formulaire disponible.
+    setSubmitted(true);
+  };
+
+  return (
+    <Container className="py-12">
+      <Eyebrow>Contact</Eyebrow>
+      <h1 className="mt-3 max-w-2xl font-display text-2xl font-semibold text-blueprint sm:text-3xl">
+        Let&apos;s talk about your project
+      </h1>
+      <p className="mt-3 max-w-2xl text-base leading-relaxed text-steel">
+        A question about a product, a quote or a worksite? Our teams respond, anywhere in West
+        Africa.
+      </p>
+
+      <SectionDivider />
+
+      <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_1.1fr]">
+        <div className="space-y-5">
+          <div className="border border-copper bg-paper p-6">
+            <h2 className="font-display text-base font-semibold text-blueprint">Sales team</h2>
+            <p className="mt-1 text-sm text-steel">Fast response for your quotes and requests.</p>
+            <ul className="mt-3 space-y-2.5 text-sm text-steel">
+              <li className="flex items-center gap-2">
+                <MessageCircle size={15} className="shrink-0 text-copper" />
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-copper">
+                  {WHATSAPP_NUMBER_DISPLAY}
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail size={15} className="shrink-0 text-copper" />
+                <a href={`mailto:${COMMERCIAL_EMAIL}`} className="hover:text-copper">
+                  {COMMERCIAL_EMAIL}
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {offices.map((office) => (
+            <div key={office.name} className="border border-steel-soft/30 bg-paper p-6">
+              <h2 className="font-display text-base font-semibold text-blueprint">{office.name}</h2>
+              <ul className="mt-3 space-y-2.5 text-sm text-steel">
+                <li className="flex items-start gap-2">
+                  <MapPin size={15} className="mt-0.5 shrink-0 text-copper" /> {office.address}
+                </li>
+                <li className="flex items-center gap-2">
+                  <Phone size={15} className="shrink-0 text-copper" />
+                  {office.phone !== "—" ? (
+                    <a href={`tel:${office.phone.replace(/\s/g, "")}`} className="hover:text-copper">
+                      {office.phone}
+                    </a>
+                  ) : (
+                    office.phone
+                  )}
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail size={15} className="shrink-0 text-copper" />
+                  <a href={`mailto:${office.email}`} className="hover:text-copper">
+                    {office.email}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="border border-steel-soft/30 p-6">
+          {submitted ? (
+            <div className="flex flex-col items-center justify-center py-10 text-center">
+              <CheckCircle2 size={36} className="text-verdigris" />
+              <p className="mt-4 font-display text-lg font-semibold text-blueprint">Message sent</p>
+              <p className="mt-2 max-w-sm text-sm text-steel">
+                Thank you, your message has been received. We&apos;ll get back to you shortly.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div className="grid gap-3 sm:grid-cols-2">
+                <input
+                  required
+                  placeholder="Full name *"
+                  className="border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
+                />
+                <input
+                  required
+                  type="tel"
+                  placeholder="Phone *"
+                  className="border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
+                />
+              </div>
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
+              />
+              <input
+                placeholder="Company / institution"
+                className="w-full border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
+              />
+              <textarea
+                required
+                rows={5}
+                placeholder="Your message *"
+                className="w-full border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
+              />
+              <button
+                type="submit"
+                className="w-full border border-copper bg-copper px-5 py-2.5 text-sm font-medium text-white hover:bg-copper-2"
+              >
+                Send message
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+    </Container>
+  );
+}

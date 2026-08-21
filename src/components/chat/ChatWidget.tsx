@@ -3,8 +3,31 @@
 import { useState } from "react";
 import { MessageCircle, X, Send, Bot } from "lucide-react";
 import { useChat } from "@/lib/chat-context";
+import { Locale } from "@/lib/i18n/dictionary";
 
-export function ChatWidget() {
+const strings = {
+  fr: {
+    assistantLabel: "Assistant GAT",
+    instantReplies: "Réponses instantanées",
+    close: "Fermer l'assistant",
+    placeholder: "Écrivez votre question…",
+    send: "Envoyer",
+    openAssistant: "Ouvrir l'assistant GAT",
+    closeAssistant: "Fermer l'assistant GAT",
+  },
+  en: {
+    assistantLabel: "GAT Assistant",
+    instantReplies: "Instant replies",
+    close: "Close the assistant",
+    placeholder: "Type your question…",
+    send: "Send",
+    openAssistant: "Open the GAT assistant",
+    closeAssistant: "Close the GAT assistant",
+  },
+} as const;
+
+export function ChatWidget({ locale }: { locale: Locale }) {
+  const t = strings[locale];
   const { isOpen, toggle, close, messages, hasUnread, selectOption, sendText } = useChat();
   const [draft, setDraft] = useState("");
 
@@ -23,7 +46,7 @@ export function ChatWidget() {
       {isOpen && (
         <div
           role="dialog"
-          aria-label="Assistant GAT"
+          aria-label={t.assistantLabel}
           className="fixed bottom-24 right-5 z-50 flex h-[min(560px,calc(100vh-140px))] w-[min(360px,calc(100vw-2.5rem))] flex-col border border-steel-soft/40 bg-paper shadow-2xl"
         >
           <div className="flex items-center justify-between bg-blueprint px-4 py-3">
@@ -32,14 +55,14 @@ export function ChatWidget() {
                 <Bot size={16} className="text-white" />
               </span>
               <div>
-                <p className="font-display text-sm font-semibold text-white">Assistant GAT</p>
+                <p className="font-display text-sm font-semibold text-white">{t.assistantLabel}</p>
                 <p className="font-mono text-[10px] uppercase tracking-[0.08em] text-steel-soft">
-                  Réponses instantanées
+                  {t.instantReplies}
                 </p>
               </div>
             </div>
             <button
-              aria-label="Fermer l'assistant"
+              aria-label={t.close}
               onClick={close}
               className="p-1.5 text-steel-soft hover:text-white"
             >
@@ -82,12 +105,12 @@ export function ChatWidget() {
             <input
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
-              placeholder="Écrivez votre question…"
+              placeholder={t.placeholder}
               className="flex-1 border border-steel-soft/40 bg-mist px-3 py-2 text-sm focus:border-blueprint focus:outline-none"
             />
             <button
               type="submit"
-              aria-label="Envoyer"
+              aria-label={t.send}
               className="flex items-center justify-center border border-copper bg-copper p-2.5 text-white hover:bg-copper-2"
             >
               <Send size={15} />
@@ -98,7 +121,7 @@ export function ChatWidget() {
 
       <button
         onClick={toggle}
-        aria-label={isOpen ? "Fermer l'assistant GAT" : "Ouvrir l'assistant GAT"}
+        aria-label={isOpen ? t.closeAssistant : t.openAssistant}
         className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-copper text-white shadow-lg transition-transform hover:scale-105 hover:bg-copper-2"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}

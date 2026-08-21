@@ -1,23 +1,52 @@
 import Link from "next/link";
+import { Locale } from "@/lib/i18n/dictionary";
 
 type BrandNode = { label: string; sub: string; href: string };
 type SectorNode = { label: string; href: string };
 
-const brandNodes: BrandNode[] = [
-  { label: "Xylem", sub: "Eau & traitement", href: "/marques/xylem" },
-  { label: "Sedis", sub: "Chaînes & levage", href: "/marques/sedis" },
-  { label: "Castrol", sub: "Lubrifiants", href: "/marques/castrol" },
-  { label: "Alustar", sub: "Alu menuiserie", href: "/marques/alustar" },
-  { label: "LOUKIL", sub: "Énergie & agro", href: "/marques/loukil" },
-];
+function withLocale(path: string, locale: Locale): string {
+  return locale === "en" ? `/en${path}` : path;
+}
 
-const sectorNodes: SectorNode[] = [
-  { label: "Énergie", href: "/secteurs#energie" },
-  { label: "Eau & assainissement", href: "/secteurs#eau-assainissement" },
-  { label: "BTP & électrification", href: "/btp" },
-  { label: "Télécommunications", href: "/secteurs#telecommunications" },
-  { label: "Industrie lourde", href: "/secteurs#petrolier-industrie-lourde" },
-];
+function getBrandNodes(locale: Locale): BrandNode[] {
+  const l = (p: string) => withLocale(p, locale);
+  if (locale === "en") {
+    return [
+      { label: "Xylem", sub: "Water & treatment", href: l("/marques/xylem") },
+      { label: "Sedis", sub: "Chains & lifting", href: l("/marques/sedis") },
+      { label: "Castrol", sub: "Lubricants", href: l("/marques/castrol") },
+      { label: "Alustar", sub: "Alu joinery", href: l("/marques/alustar") },
+      { label: "LOUKIL", sub: "Energy & agro", href: l("/marques/loukil") },
+    ];
+  }
+  return [
+    { label: "Xylem", sub: "Eau & traitement", href: l("/marques/xylem") },
+    { label: "Sedis", sub: "Chaînes & levage", href: l("/marques/sedis") },
+    { label: "Castrol", sub: "Lubrifiants", href: l("/marques/castrol") },
+    { label: "Alustar", sub: "Alu menuiserie", href: l("/marques/alustar") },
+    { label: "LOUKIL", sub: "Énergie & agro", href: l("/marques/loukil") },
+  ];
+}
+
+function getSectorNodes(locale: Locale): SectorNode[] {
+  const l = (p: string) => withLocale(p, locale);
+  if (locale === "en") {
+    return [
+      { label: "Energy", href: l("/secteurs#energie") },
+      { label: "Water & sanitation", href: l("/secteurs#eau-assainissement") },
+      { label: "Construction & electrification", href: l("/btp") },
+      { label: "Telecommunications", href: l("/secteurs#telecommunications") },
+      { label: "Heavy industry", href: l("/secteurs#petrolier-industrie-lourde") },
+    ];
+  }
+  return [
+    { label: "Énergie", href: l("/secteurs#energie") },
+    { label: "Eau & assainissement", href: l("/secteurs#eau-assainissement") },
+    { label: "BTP & électrification", href: l("/btp") },
+    { label: "Télécommunications", href: l("/secteurs#telecommunications") },
+    { label: "Industrie lourde", href: l("/secteurs#petrolier-industrie-lourde") },
+  ];
+}
 
 const LEFT_X = 118;
 const RIGHT_X = 642;
@@ -27,15 +56,21 @@ const NODE_W = 168;
 const NODE_H = 46;
 const YS = [38, 132, 226, 320, 414];
 
-export function NetworkDiagram() {
+export function NetworkDiagram({ locale = "fr" }: { locale?: Locale }) {
+  const brandNodes = getBrandNodes(locale);
+  const sectorNodes = getSectorNodes(locale);
+  const svgLabel =
+    locale === "en"
+      ? "Diagram: GAT connects world-leading partner brands to African industry sectors"
+      : "Schéma : GAT relie les marques mondiales partenaires aux secteurs de l'industrie africaine";
+  const svgTitle =
+    locale === "en"
+      ? "GAT — distribution hub between world brands and African sectors"
+      : "GAT — nœud de distribution entre marques mondiales et secteurs africains";
+
   return (
-    <svg
-      viewBox="0 0 880 480"
-      className="h-auto w-full"
-      role="img"
-      aria-label="Schéma : GAT relie les marques mondiales partenaires aux secteurs de l'industrie africaine"
-    >
-      <title>GAT — nœud de distribution entre marques mondiales et secteurs africains</title>
+    <svg viewBox="0 0 880 480" className="h-auto w-full" role="img" aria-label={svgLabel}>
+      <title>{svgTitle}</title>
 
       {/* Connexions marques -> hub */}
       {brandNodes.map((n, i) => {
@@ -110,11 +145,13 @@ export function NetworkDiagram() {
       <foreignObject x={HUB_X - 56} y={HUB_Y - 56} width={112} height={112}>
         <div style={{ width: "100%", height: "100%" }}>
           <Link
-            href="/qui-sommes-nous"
+            href={withLocale("/qui-sommes-nous", locale)}
             className="flex h-full w-full flex-col items-center justify-center rounded-full border border-copper-2 bg-copper text-center no-underline transition-colors hover:bg-copper-2"
           >
             <span className="font-display text-xl font-bold text-white">GAT</span>
-            <span className="mt-1 font-mono text-[9.5px] tracking-wide text-white">DEPUIS 2007</span>
+            <span className="mt-1 font-mono text-[9.5px] tracking-wide text-white">
+              {locale === "en" ? "SINCE 2007" : "DEPUIS 2007"}
+            </span>
           </Link>
         </div>
       </foreignObject>

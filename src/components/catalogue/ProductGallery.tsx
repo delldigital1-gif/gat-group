@@ -3,15 +3,18 @@
 import { useState } from "react";
 import Image from "next/image";
 import { assetPath } from "@/lib/asset-path";
+import { Locale } from "@/lib/i18n/dictionary";
 
 export function ProductGallery({
   images,
   alt,
   fallbackInitials,
+  locale = "fr",
 }: {
   images: string[];
   alt: string;
   fallbackInitials: string;
+  locale?: Locale;
 }) {
   const [active, setActive] = useState(0);
 
@@ -36,7 +39,7 @@ export function ProductGallery({
             <button
               key={src}
               onClick={() => setActive(i)}
-              aria-label={`Voir la photo ${i + 1}`}
+              aria-label={locale === "en" ? `View photo ${i + 1}` : `Voir la photo ${i + 1}`}
               className={`relative h-16 w-16 shrink-0 overflow-hidden border ${
                 i === active ? "border-copper" : "border-steel-soft/30 hover:border-steel"
               }`}
