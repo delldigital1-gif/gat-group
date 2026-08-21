@@ -67,8 +67,13 @@ body {
 
 /* Mode contraste élevé — activé via le panneau du header, persiste en
    localStorage. Assombrit les couleurs secondaires (texte gris-acier,
-   bordures, cuivre) pour un meilleur ratio de contraste WCAG. */
+   bordures, cuivre) et la couleur principale (vert) pour un meilleur
+   ratio de contraste WCAG. --color-blueprint est la couleur la plus
+   utilisée du site (titres, nav, boutons) — sans son assombrissement
+   ici, le mode contraste élevé n'avait quasiment aucun effet visible. */
 html.contrast-high {
+  --color-blueprint: #0B5C39;
+  --color-blueprint-2: #0F7345;
   --color-steel: #2A2A27;
   --color-steel-soft: #6E6F68;
   --color-copper: #7E1E27;
