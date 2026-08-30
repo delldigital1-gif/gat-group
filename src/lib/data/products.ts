@@ -64,6 +64,7 @@ export const products: Product[] = [
       { label: "Footprint", value: "2.4 × 1.1 m" },
     ],
     availability: "sur-commande",
+    imageUrl: "/images/xylem-station-traitement-compacte.jpg",
     datasheetUrl: "/docs/xylem-industrial-solutions-catalogue.pdf",
   },
   {
