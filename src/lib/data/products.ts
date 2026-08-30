@@ -321,6 +321,7 @@ export const products: Product[] = [
       { label: "Finish", value: "RAL powder coating" },
     ],
     availability: "sur-commande",
+    imageUrl: "/images/alustar-fenetre-coulissante.png",
   },
   {
     slug: "profile-alu-porte-battante",
@@ -345,6 +346,7 @@ export const products: Product[] = [
       { label: "Finish", value: "Anodised or lacquered" },
     ],
     availability: "sur-commande",
+    imageUrl: "/images/alustar-porte-battante.png",
   },
   {
     slug: "veranda-aluminium-modulaire",
@@ -367,6 +369,7 @@ export const products: Product[] = [
       { label: "Roofing", value: "Polycarbonate or glass" },
     ],
     availability: "sur-commande",
+    imageUrl: "/images/alustar-veranda-modulaire.png",
   },
   {
     slug: "generateur-solaire-loukil",
