@@ -7,6 +7,7 @@ export const categories: Category[] = [
     nameEn: "Pumping & Water Treatment",
     description: "Pompes, systèmes de traitement et de désinfection, comptage.",
     descriptionEn: "Pumps, treatment and disinfection systems, metering.",
+    imageUrl: "/images/categorie-pompage-eau.webp",
   },
   {
     slug: "chaines-transmission-levage",

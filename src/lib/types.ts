@@ -26,6 +26,7 @@ export type Category = {
   nameEn: string;
   description: string;
   descriptionEn: string;
+  imageUrl?: string;
 };
 
 export type Product = {

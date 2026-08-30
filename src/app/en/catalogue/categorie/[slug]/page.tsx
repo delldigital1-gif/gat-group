@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -7,6 +8,7 @@ import { ProductCard } from "@/components/catalogue/ProductCard";
 import { categories, getCategory } from "@/lib/data/categories";
 import { products } from "@/lib/data/products";
 import { getBrand } from "@/lib/data/brands";
+import { assetPath } from "@/lib/asset-path";
 
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
@@ -27,24 +29,42 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         <ArrowLeft size={15} /> Full catalogue
       </Link>
 
-      <div className="mt-6 max-w-2xl">
-        <Eyebrow>Catalogue category</Eyebrow>
-        <h1 className="mt-3 font-display text-2xl font-semibold text-blueprint sm:text-3xl">
-          {category.nameEn}
-        </h1>
-        <p className="mt-3 text-base leading-relaxed text-steel">{category.descriptionEn}</p>
+      <div className={category.imageUrl ? "mt-6 grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center" : "mt-6 max-w-2xl"}>
+        <div className={category.imageUrl ? "max-w-2xl" : undefined}>
+          <Eyebrow>Catalogue category</Eyebrow>
+          <h1 className="mt-3 font-display text-2xl font-semibold text-blueprint sm:text-3xl">
+            {category.nameEn}
+          </h1>
+          <p className="mt-3 text-base leading-relaxed text-steel">{category.descriptionEn}</p>
 
-        {categoryBrands.length > 0 && (
-          <div className="mt-5 flex flex-wrap gap-2">
-            {categoryBrands.map((b) => (
-              <Link
-                key={b.slug}
-                href={`/en/marques/${b.slug}`}
-                className="border border-steel-soft/40 px-3 py-1.5 text-sm text-blueprint hover:border-copper hover:text-copper"
-              >
-                {b.name}
-              </Link>
-            ))}
+          {categoryBrands.length > 0 && (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {categoryBrands.map((b) => (
+                <Link
+                  key={b.slug}
+                  href={`/en/marques/${b.slug}`}
+                  className="border border-steel-soft/40 px-3 py-1.5 text-sm text-blueprint hover:border-copper hover:text-copper"
+                >
+                  {b.name}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {category.imageUrl && (
+          <div className="relative aspect-[16/10] w-full overflow-hidden">
+            <Image
+              src={assetPath(category.imageUrl)}
+              alt={category.nameEn}
+              fill
+              className="object-cover"
+              style={{
+                maskImage: "linear-gradient(to bottom, transparent 0%, black 18%)",
+                WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 18%)",
+              }}
+              priority
+            />
           </div>
         )}
       </div>
