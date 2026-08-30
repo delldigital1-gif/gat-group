@@ -396,6 +396,7 @@ export const products: Product[] = [
       { label: "Storage", value: "Lithium or lead-acid batteries" },
     ],
     availability: "import",
+    imageUrl: "/images/loukil-generateur-solaire.png",
   },
   {
     slug: "pylone-eclairage-public",
@@ -418,6 +419,7 @@ export const products: Product[] = [
       { label: "Treatment", value: "Hot-dip galvanising" },
     ],
     availability: "sur-commande",
+    imageUrl: "/images/loukil-pylone-eclairage.png",
   },
   {
     slug: "tracteur-agricole-loukil",
