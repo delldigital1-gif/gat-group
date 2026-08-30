@@ -9,6 +9,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { useQuote } from "@/lib/quote-context";
 import { getProduct } from "@/lib/data/products";
 import { getBrand } from "@/lib/data/brands";
+import { buildQuoteWhatsAppUrl } from "@/lib/whatsapp-quote";
 
 export default function DevisPage() {
   const { items, removeItem, setQuantity, clear } = useQuote();
@@ -18,11 +19,21 @@ export default function DevisPage() {
     .map((item) => ({ item, product: getProduct(item.productSlug) }))
     .filter((l) => l.product);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO (mise en production) : brancher ce formulaire sur Formspree ou
-    // une fonction Supabase (table quote_requests + quote_request_items)
-    // au lieu de cette simulation locale.
+    const formData = new FormData(e.currentTarget);
+    const url = buildQuoteWhatsAppUrl(
+      items,
+      {
+        name: String(formData.get("name") ?? ""),
+        company: String(formData.get("company") ?? ""),
+        phone: String(formData.get("phone") ?? ""),
+        email: String(formData.get("email") ?? ""),
+        notes: String(formData.get("notes") ?? ""),
+      },
+      "fr"
+    );
+    window.open(url, "_blank", "noopener,noreferrer");
     setSubmitted(true);
     clear();
   };
@@ -31,10 +42,13 @@ export default function DevisPage() {
     return (
       <Container className="py-20 text-center">
         <CheckCircle2 size={40} className="mx-auto text-verdigris" />
-        <h1 className="mt-5 font-display text-2xl font-semibold text-blueprint">Demande envoyée</h1>
+        <h1 className="mt-5 font-display text-2xl font-semibold text-blueprint">
+          WhatsApp s&apos;est ouvert dans un nouvel onglet
+        </h1>
         <p className="mx-auto mt-3 max-w-md text-sm text-steel">
-          Votre demande de devis a bien été enregistrée. Un commercial GAT vous recontactera sous
-          peu pour confirmer les disponibilités, délais et prix.
+          Votre liste et vos coordonnées sont pré-remplies dans le message — il ne reste qu&apos;à
+          l&apos;envoyer depuis WhatsApp pour qu&apos;un commercial GAT vous recontacte. Rien n&apos;est
+          transmis tant que vous n&apos;avez pas cliqué sur envoyer dans WhatsApp.
         </p>
         <Link
           href="/catalogue"
@@ -133,26 +147,31 @@ export default function DevisPage() {
             <div className="mt-4 space-y-3">
               <input
                 required
+                name="name"
                 placeholder="Nom et prénom *"
                 className="w-full border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
               />
               <input
+                name="company"
                 placeholder="Entreprise / institution"
                 className="w-full border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
               />
               <input
                 required
                 type="tel"
+                name="phone"
                 placeholder="Téléphone *"
                 className="w-full border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
               />
               <input
                 type="email"
+                name="email"
                 placeholder="Email"
                 className="w-full border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
               />
               <textarea
                 rows={3}
+                name="notes"
                 placeholder="Précisions sur votre besoin (délai, lieu de livraison...)"
                 className="w-full border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
               />
@@ -161,10 +180,11 @@ export default function DevisPage() {
               type="submit"
               className="mt-4 w-full border border-copper bg-copper px-5 py-2.5 text-sm font-medium text-white hover:bg-copper-2"
             >
-              Envoyer ma demande de devis
+              Envoyer ma demande via WhatsApp
             </button>
             <p className="mt-3 text-center text-[11px] text-steel-soft">
-              Aucune information bancaire n&apos;est demandée à cette étape.
+              Ouvre WhatsApp avec votre liste et vos coordonnées pré-remplies — il ne reste qu&apos;à
+              envoyer le message. Aucune information bancaire n&apos;est demandée à cette étape.
             </p>
           </form>
         </div>

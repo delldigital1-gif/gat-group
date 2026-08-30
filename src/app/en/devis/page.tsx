@@ -9,6 +9,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { useQuote } from "@/lib/quote-context";
 import { getProduct } from "@/lib/data/products";
 import { getBrand } from "@/lib/data/brands";
+import { buildQuoteWhatsAppUrl } from "@/lib/whatsapp-quote";
 
 export default function QuotePage() {
   const { items, removeItem, setQuantity, clear } = useQuote();
@@ -18,11 +19,21 @@ export default function QuotePage() {
     .map((item) => ({ item, product: getProduct(item.productSlug) }))
     .filter((l) => l.product);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO (mise en production) : brancher ce formulaire sur Formspree ou
-    // une fonction Supabase (table quote_requests + quote_request_items)
-    // au lieu de cette simulation locale.
+    const formData = new FormData(e.currentTarget);
+    const url = buildQuoteWhatsAppUrl(
+      items,
+      {
+        name: String(formData.get("name") ?? ""),
+        company: String(formData.get("company") ?? ""),
+        phone: String(formData.get("phone") ?? ""),
+        email: String(formData.get("email") ?? ""),
+        notes: String(formData.get("notes") ?? ""),
+      },
+      "en"
+    );
+    window.open(url, "_blank", "noopener,noreferrer");
     setSubmitted(true);
     clear();
   };
@@ -31,10 +42,12 @@ export default function QuotePage() {
     return (
       <Container className="py-20 text-center">
         <CheckCircle2 size={40} className="mx-auto text-verdigris" />
-        <h1 className="mt-5 font-display text-2xl font-semibold text-blueprint">Request sent</h1>
+        <h1 className="mt-5 font-display text-2xl font-semibold text-blueprint">
+          WhatsApp opened in a new tab
+        </h1>
         <p className="mx-auto mt-3 max-w-md text-sm text-steel">
-          Your quote request has been recorded. A GAT sales rep will contact you shortly to
-          confirm availability, lead times and pricing.
+          Your list and details are pre-filled in the message — just hit send in WhatsApp so a
+          GAT sales rep can get back to you. Nothing is sent until you press send in WhatsApp.
         </p>
         <Link
           href="/en/catalogue"
@@ -133,26 +146,31 @@ export default function QuotePage() {
             <div className="mt-4 space-y-3">
               <input
                 required
+                name="name"
                 placeholder="Full name *"
                 className="w-full border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
               />
               <input
+                name="company"
                 placeholder="Company / institution"
                 className="w-full border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
               />
               <input
                 required
                 type="tel"
+                name="phone"
                 placeholder="Phone *"
                 className="w-full border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
               />
               <input
                 type="email"
+                name="email"
                 placeholder="Email"
                 className="w-full border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
               />
               <textarea
                 rows={3}
+                name="notes"
                 placeholder="Details about your needs (timeline, delivery location...)"
                 className="w-full border border-steel-soft/40 bg-paper px-3 py-2.5 text-sm focus:border-blueprint"
               />
@@ -161,10 +179,11 @@ export default function QuotePage() {
               type="submit"
               className="mt-4 w-full border border-copper bg-copper px-5 py-2.5 text-sm font-medium text-white hover:bg-copper-2"
             >
-              Send my quote request
+              Send my request via WhatsApp
             </button>
             <p className="mt-3 text-center text-[11px] text-steel-soft">
-              No banking information is requested at this stage.
+              Opens WhatsApp with your list and details pre-filled — just send the message. No
+              banking information is requested at this stage.
             </p>
           </form>
         </div>
