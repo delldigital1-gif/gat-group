@@ -1,4 +1,4 @@
 :HL["/gat-group/_next/static/chunks/0fp9n29mzt9s8.css","style"]
 :HC["/",""]
 :HL["/gat-group/images/omicron-logo.jpeg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"(fr)","param":null,"prefetchHints":0,"slots":{"children":{"name":"marques","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"omicron","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"JxcgQERRYzWDZB1iW4fMh"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"(fr)","param":null,"prefetchHints":0,"slots":{"children":{"name":"marques","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"omicron","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"RwcGCxJ0-miBhrhNP32zB"}
