@@ -60,21 +60,6 @@ export const brands: Brand[] = [
     sectors: ["btp-electrification", "petrolier-industrie-lourde"],
   },
   {
-    slug: "alustar",
-    name: "Alustar",
-    tagline: "Profilés & panneaux composites aluminium",
-    taglineEn: "Aluminium profiles & composite panels",
-    description:
-      "Profilés et panneaux composites aluminium (ACP) utilisés par GAT pour ses ouvrages de menuiserie — fenêtres, portes, façades vitrées et vérandas. Livrés directement d'usine et posés par les équipes GAT partout en Afrique de l'Ouest.",
-    descriptionEn:
-      "Aluminium profiles and aluminium composite panels (ACP) used by GAT for its joinery work — windows, doors, glazed façades and verandas. Shipped directly from the factory and installed by GAT's own teams across West Africa.",
-    country: "Chine",
-    countryEn: "China",
-    logoInitials: "AS",
-    photoUrls: ["/images/alustar-usine-profiles.jpg", "/images/alustar-usine-moustiquaires.jpg", "/images/alustar-livraison-profiles.jpg"],
-    sectors: ["btp-electrification"],
-  },
-  {
     slug: "loukil",
     name: "Groupe LOUKIL",
     tagline: "Industriel tunisien, partenaire GAT depuis 2010",
@@ -109,16 +94,17 @@ export const brands: Brand[] = [
   {
     slug: "maxwell",
     name: "Maxwell",
-    tagline: "Profilés aluminium pour la menuiserie",
-    taglineEn: "Aluminium profiles for joinery",
+    tagline: "Profilés & panneaux composites aluminium",
+    taglineEn: "Aluminium profiles & composite panels",
     description:
-      "Profilés aluminium utilisés par GAT pour ses ouvrages de menuiserie — fenêtres, portes et façades. Une gamme complémentaire à Alustar, livrée directement d'usine et posée par les équipes GAT en Afrique de l'Ouest.",
+      "Profilés et panneaux composites aluminium (ACP) utilisés par GAT pour ses ouvrages de menuiserie — fenêtres, portes, façades vitrées et vérandas. Livrés directement d'usine et posés par les équipes GAT partout en Afrique de l'Ouest.",
     descriptionEn:
-      "Aluminium profiles used by GAT for its joinery work — windows, doors and façades. A range complementary to Alustar, shipped directly from the factory and installed by GAT's own teams across West Africa.",
+      "Aluminium profiles and aluminium composite panels (ACP) used by GAT for its joinery work — windows, doors, glazed façades and verandas. Shipped directly from the factory and installed by GAT's own teams across West Africa.",
     country: "Chine",
     countryEn: "China",
     logoInitials: "MW",
     logoUrl: "/images/maxwell-logo.jpeg",
+    photoUrls: ["/images/alustar-usine-profiles.jpg", "/images/alustar-usine-moustiquaires.jpg", "/images/alustar-livraison-profiles.jpg"],
     sectors: ["btp-electrification"],
   },
   {

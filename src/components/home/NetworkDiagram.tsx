@@ -15,20 +15,20 @@ function getBrandNodes(locale: Locale): BrandNode[] {
       { label: "Xylem", sub: "Water & treatment", href: l("/marques/xylem") },
       { label: "Sedis", sub: "Chains & lifting", href: l("/marques/sedis") },
       { label: "Castrol", sub: "Lubricants", href: l("/marques/castrol") },
-      { label: "Alustar", sub: "Alu joinery", href: l("/marques/alustar") },
       { label: "Maxwell", sub: "Alu joinery", href: l("/marques/maxwell") },
       { label: "Prevost", sub: "Compressed air", href: l("/marques/prevost") },
       { label: "LOUKIL", sub: "Energy & agro", href: l("/marques/loukil") },
+      { label: "OMICRON", sub: "Grid testing", href: l("/marques/omicron") },
     ];
   }
   return [
     { label: "Xylem", sub: "Eau & traitement", href: l("/marques/xylem") },
     { label: "Sedis", sub: "Chaînes & levage", href: l("/marques/sedis") },
     { label: "Castrol", sub: "Lubrifiants", href: l("/marques/castrol") },
-    { label: "Alustar", sub: "Alu menuiserie", href: l("/marques/alustar") },
     { label: "Maxwell", sub: "Alu menuiserie", href: l("/marques/maxwell") },
     { label: "Prevost", sub: "Air comprimé", href: l("/marques/prevost") },
     { label: "LOUKIL", sub: "Énergie & agro", href: l("/marques/loukil") },
+    { label: "OMICRON", sub: "Test réseaux", href: l("/marques/omicron") },
   ];
 }
 

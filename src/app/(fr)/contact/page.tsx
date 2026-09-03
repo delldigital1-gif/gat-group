@@ -7,12 +7,21 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { COMMERCIAL_EMAIL, WHATSAPP_LINK, WHATSAPP_NUMBER_DISPLAY } from "@/lib/site-config";
 
-const offices = [
+type Office = { name: string; address: string; phone: string; email: string; rccm?: string };
+
+const offices: Office[] = [
   {
     name: "GAT Togo — Siège",
     address: "Djidjolé, Lomé, Togo",
     phone: "+228 90 14 12 01",
     email: "gat@gatgroup.org",
+  },
+  {
+    name: "GAT Côte d'Ivoire — GESEC Sarl",
+    address: "Cafop II, 57 Rue Guy Kanga, Abidjan, Côte d'Ivoire",
+    phone: "+225 07 09 60 00 76",
+    email: "gesec@gatgroup.org",
+    rccm: "CI-GRDBSM-2022-B-7582",
   },
 ];
 
@@ -83,6 +92,7 @@ export default function ContactPage() {
                     {office.email}
                   </a>
                 </li>
+                {office.rccm && <li className="text-xs text-steel-soft">RCCM : {office.rccm}</li>}
               </ul>
             </div>
           ))}

@@ -4,9 +4,8 @@ import { Product } from "@/lib/types";
 // références réelles (recherchées sur les sites officiels des marques,
 // GAT étant distributeur agréé). Références internes GAT (GAT-XX-...)
 // conservées quand la marque n'a pas de référence produit publique.
-// Produits Alustar : marque confirmée par le client (visible sur les
-// profilés en usine sur les photos GAT) ; noms de produits toujours
-// génériques en attendant le catalogue Alustar détaillé.
+// Produits Maxwell (menuiserie aluminium) : noms de produits toujours
+// génériques en attendant le catalogue Maxwell détaillé.
 
 export const products: Product[] = [
   {
@@ -300,7 +299,7 @@ export const products: Product[] = [
     slug: "profile-alu-fenetre-coulissante",
     name: "Profilé aluminium fenêtre coulissante",
     nameEn: "Aluminium Sliding Window Profile",
-    brandSlug: "alustar",
+    brandSlug: "maxwell",
     categorySlug: "menuiserie-aluminium",
     sectorSlugs: ["btp-electrification"],
     reference: "GAT-AS-FEN-060",
@@ -327,7 +326,7 @@ export const products: Product[] = [
     slug: "profile-alu-porte-battante",
     name: "Profilé aluminium porte battante",
     nameEn: "Aluminium Hinged Door Profile",
-    brandSlug: "alustar",
+    brandSlug: "maxwell",
     categorySlug: "menuiserie-aluminium",
     sectorSlugs: ["btp-electrification"],
     reference: "GAT-AS-PRT-045",
@@ -352,7 +351,7 @@ export const products: Product[] = [
     slug: "veranda-aluminium-modulaire",
     name: "Système véranda aluminium modulaire",
     nameEn: "Modular Aluminium Veranda System",
-    brandSlug: "alustar",
+    brandSlug: "maxwell",
     categorySlug: "menuiserie-aluminium",
     sectorSlugs: ["btp-electrification"],
     reference: "GAT-AS-VER-030",

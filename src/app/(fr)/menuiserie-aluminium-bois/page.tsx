@@ -12,7 +12,7 @@ import { realisations } from "@/lib/data/realisations";
 const process = [
   {
     step: "Fabrication",
-    text: "Les profilés Alustar sont façonnés en usine avant d'être conditionnés pour l'export.",
+    text: "Les profilés Maxwell sont façonnés en usine avant d'être conditionnés pour l'export.",
     image: "/images/alustar-usine-profiles.jpg",
   },
   {
@@ -42,7 +42,7 @@ export default function CarpentryPage() {
           <p className="mt-3 text-base leading-relaxed text-steel">
             GAT conçoit et réalise des ouvrages de menuiserie aluminium et bois pour le
             résidentiel, le tertiaire et les bâtiments publics : fenêtres, portes, façades et
-            vérandas — avec les profilés <strong className="text-blueprint">Alustar</strong>.
+            vérandas — avec les profilés <strong className="text-blueprint">Maxwell</strong>.
           </p>
         </div>
         <div className="relative aspect-[4/5] overflow-hidden border border-steel-soft/30 lg:aspect-[3/4]">
@@ -90,7 +90,7 @@ export default function CarpentryPage() {
       </div>
 
       <div className="mt-14">
-        <SectionDivider label="Gamme Alustar" />
+        <SectionDivider label="Gamme Maxwell" />
         {carpentryProducts.length > 0 && (
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {carpentryProducts.map((p) => (

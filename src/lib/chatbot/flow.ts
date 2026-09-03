@@ -96,7 +96,7 @@ export function getChatNodes(locale: Locale): Record<string, ChatNode> {
       carpentry: {
         id: "carpentry",
         message:
-          "Our Aluminium & Wood Joinery business covers windows, doors, façades and verandas with Alustar profiles. Our teams handle transport, installation and finishing right up to the worksite — anywhere in West Africa.",
+          "Our Aluminium & Wood Joinery business covers windows, doors, façades and verandas with Maxwell profiles. Our teams handle transport, installation and finishing right up to the worksite — anywhere in West Africa.",
         options: [
           { label: "See projects", action: { type: "navigate", href: l("/menuiserie-aluminium-bois") } },
           { label: "Request a quote", action: { type: "node", nodeId: "quote" } },
@@ -203,7 +203,7 @@ export function getChatNodes(locale: Locale): Record<string, ChatNode> {
     carpentry: {
       id: "carpentry",
       message:
-        "Notre activité Menuiserie Aluminium & Bois couvre fenêtres, portes, façades et vérandas avec les profilés Alustar. Nos équipes gèrent le transport, la pose et la finition jusqu'au chantier — partout en Afrique de l'Ouest.",
+        "Notre activité Menuiserie Aluminium & Bois couvre fenêtres, portes, façades et vérandas avec les profilés Maxwell. Nos équipes gèrent le transport, la pose et la finition jusqu'au chantier — partout en Afrique de l'Ouest.",
       options: [
         { label: "Voir des réalisations", action: { type: "navigate", href: l("/menuiserie-aluminium-bois") } },
         { label: "Demander un devis", action: { type: "node", nodeId: "quote" } },
@@ -277,7 +277,7 @@ function getKeywordGroups(locale: Locale): { nodeId: string; keywords: string[] 
       },
       {
         nodeId: "carpentry",
-        keywords: ["joinery", "aluminium", "aluminum", "window", "door", "facade", "façade", "veranda", "wood", "alustar"],
+        keywords: ["joinery", "aluminium", "aluminum", "window", "door", "facade", "façade", "veranda", "wood", "maxwell"],
       },
       { nodeId: "quote", keywords: ["quote", "price", "cost", "order", "how much"] },
       {
@@ -318,7 +318,7 @@ function getKeywordGroups(locale: Locale): { nodeId: string; keywords: string[] 
     },
     {
       nodeId: "carpentry",
-      keywords: ["menuiserie", "aluminium", "fenetre", "fenêtre", "porte", "facade", "façade", "veranda", "véranda", "bois", "alustar"],
+      keywords: ["menuiserie", "aluminium", "fenetre", "fenêtre", "porte", "facade", "façade", "veranda", "véranda", "bois", "maxwell"],
     },
     { nodeId: "quote", keywords: ["devis", "prix", "tarif", "cout", "coût", "commande", "combien"] },
     {

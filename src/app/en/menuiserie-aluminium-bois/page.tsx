@@ -12,7 +12,7 @@ import { realisations } from "@/lib/data/realisations";
 const process = [
   {
     step: "Manufacturing",
-    text: "Alustar profiles are shaped at the factory before being packaged for export.",
+    text: "Maxwell profiles are shaped at the factory before being packaged for export.",
     image: "/images/alustar-usine-profiles.jpg",
   },
   {
@@ -42,7 +42,7 @@ export default function CarpentryPage() {
           <p className="mt-3 text-base leading-relaxed text-steel">
             GAT designs and builds aluminium and wood joinery for residential, commercial and
             public buildings: windows, doors, façades and verandas — with{" "}
-            <strong className="text-blueprint">Alustar</strong> profiles.
+            <strong className="text-blueprint">Maxwell</strong> profiles.
           </p>
         </div>
         <div className="relative aspect-[4/5] overflow-hidden border border-steel-soft/30 lg:aspect-[3/4]">
@@ -90,7 +90,7 @@ export default function CarpentryPage() {
       </div>
 
       <div className="mt-14">
-        <SectionDivider label="Alustar range" />
+        <SectionDivider label="Maxwell range" />
         {carpentryProducts.length > 0 && (
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {carpentryProducts.map((p) => (
