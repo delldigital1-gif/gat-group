@@ -16,6 +16,8 @@ function getBrandNodes(locale: Locale): BrandNode[] {
       { label: "Sedis", sub: "Chains & lifting", href: l("/marques/sedis") },
       { label: "Castrol", sub: "Lubricants", href: l("/marques/castrol") },
       { label: "Alustar", sub: "Alu joinery", href: l("/marques/alustar") },
+      { label: "Maxwell", sub: "Alu joinery", href: l("/marques/maxwell") },
+      { label: "Prevost", sub: "Compressed air", href: l("/marques/prevost") },
       { label: "LOUKIL", sub: "Energy & agro", href: l("/marques/loukil") },
     ];
   }
@@ -24,6 +26,8 @@ function getBrandNodes(locale: Locale): BrandNode[] {
     { label: "Sedis", sub: "Chaînes & levage", href: l("/marques/sedis") },
     { label: "Castrol", sub: "Lubrifiants", href: l("/marques/castrol") },
     { label: "Alustar", sub: "Alu menuiserie", href: l("/marques/alustar") },
+    { label: "Maxwell", sub: "Alu menuiserie", href: l("/marques/maxwell") },
+    { label: "Prevost", sub: "Air comprimé", href: l("/marques/prevost") },
     { label: "LOUKIL", sub: "Énergie & agro", href: l("/marques/loukil") },
   ];
 }
@@ -54,7 +58,9 @@ const HUB_X = 380;
 const HUB_Y = 240;
 const NODE_W = 168;
 const NODE_H = 46;
+const BRAND_NODE_H = 38;
 const YS = [38, 132, 226, 320, 414];
+const BRAND_YS = [14, 70, 126, 182, 238, 294, 350];
 
 export function NetworkDiagram({ locale = "fr" }: { locale?: Locale }) {
   const brandNodes = getBrandNodes(locale);
@@ -74,7 +80,7 @@ export function NetworkDiagram({ locale = "fr" }: { locale?: Locale }) {
 
       {/* Connexions marques -> hub */}
       {brandNodes.map((n, i) => {
-        const y = YS[i] + NODE_H / 2;
+        const y = BRAND_YS[i] + BRAND_NODE_H / 2;
         return (
           <g key={`b-line-${n.label}`}>
             <path
@@ -110,16 +116,16 @@ export function NetworkDiagram({ locale = "fr" }: { locale?: Locale }) {
 
       {/* Nœuds marques — cliquables vers leur page */}
       {brandNodes.map((n, i) => (
-        <foreignObject key={n.label} x={LEFT_X} y={YS[i]} width={NODE_W} height={NODE_H}>
+        <foreignObject key={n.label} x={LEFT_X} y={BRAND_YS[i]} width={NODE_W} height={BRAND_NODE_H}>
           <div style={{ width: "100%", height: "100%" }}>
             <Link
               href={n.href}
-              className="group flex h-full w-full flex-col justify-center border border-steel-soft bg-paper px-3 py-1.5 no-underline transition-colors hover:border-copper hover:bg-mist-2"
+              className="group flex h-full w-full flex-col justify-center border border-steel-soft bg-paper px-3 py-1 no-underline transition-colors hover:border-copper hover:bg-mist-2"
             >
-              <span className="font-display text-[14px] font-semibold leading-tight text-blueprint group-hover:text-copper">
+              <span className="font-display text-[13px] font-semibold leading-tight text-blueprint group-hover:text-copper">
                 {n.label}
               </span>
-              <span className="font-mono text-[10px] leading-tight text-steel">{n.sub}</span>
+              <span className="font-mono text-[9.5px] leading-tight text-steel">{n.sub}</span>
             </Link>
           </div>
         </foreignObject>
