@@ -56,6 +56,7 @@ export const brands: Brand[] = [
     countryEn: "United Kingdom",
     website: "https://www.castrol.com",
     logoInitials: "CA",
+    logoUrl: "/images/castrol-logo.jpeg",
     sectors: ["btp-electrification", "petrolier-industrie-lourde"],
   },
   {
@@ -85,6 +86,7 @@ export const brands: Brand[] = [
     country: "Tunisie",
     countryEn: "Tunisia",
     logoInitials: "LK",
+    logoUrl: "/images/loukil-logo.jpeg",
     sectors: ["energie", "telecommunications", "agro-industrie"],
   },
   {
@@ -100,8 +102,40 @@ export const brands: Brand[] = [
     countryEn: "Austria",
     website: "https://www.omicronenergy.com",
     logoInitials: "OM",
+    logoUrl: "/images/omicron-logo.jpeg",
     photoUrls: ["/images/omicron-cmc500.png"],
     sectors: ["energie", "automatisme"],
+  },
+  {
+    slug: "maxwell",
+    name: "Maxwell",
+    tagline: "Profilés aluminium pour la menuiserie",
+    taglineEn: "Aluminium profiles for joinery",
+    description:
+      "Profilés aluminium utilisés par GAT pour ses ouvrages de menuiserie — fenêtres, portes et façades. Une gamme complémentaire à Alustar, livrée directement d'usine et posée par les équipes GAT en Afrique de l'Ouest.",
+    descriptionEn:
+      "Aluminium profiles used by GAT for its joinery work — windows, doors and façades. A range complementary to Alustar, shipped directly from the factory and installed by GAT's own teams across West Africa.",
+    country: "Chine",
+    countryEn: "China",
+    logoInitials: "MW",
+    logoUrl: "/images/maxwell-logo.jpeg",
+    sectors: ["btp-electrification"],
+  },
+  {
+    slug: "prevost",
+    name: "Prevost",
+    tagline: "Raccords et réseaux d'air comprimé",
+    taglineEn: "Compressed air fittings and networks",
+    description:
+      "Fabricant français de raccords rapides et de réseaux d'air comprimé pour l'industrie. GAT distribue la gamme Prevost pour l'équipement des ateliers, chantiers et sites industriels en Afrique de l'Ouest.",
+    descriptionEn:
+      "French manufacturer of quick-connect fittings and compressed air network solutions for industry. GAT distributes the Prevost range to equip workshops, construction sites and industrial facilities across West Africa.",
+    country: "France",
+    countryEn: "France",
+    website: "https://www.prevost.fr",
+    logoInitials: "PR",
+    logoUrl: "/images/prevost-logo.jpeg",
+    sectors: ["petrolier-industrie-lourde", "btp-electrification"],
   },
 ];
 
